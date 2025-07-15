@@ -248,6 +248,17 @@ const Index = () => {
             >
               Philanthropist
             </Button>
+            <Link to="/how-we-do-it">
+              <Button 
+                className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+                style={{ 
+                  backgroundColor: '#ffffff', 
+                  color: '#0f33bb'
+                }}
+              >
+                How We Do It
+              </Button>
+            </Link>
             <Button 
               className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
               style={{ 
