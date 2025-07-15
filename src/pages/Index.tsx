@@ -213,11 +213,23 @@ const Index = () => {
           
           {/* Action Buttons with improved accessibility */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">
-            {["Parent", "Government", "Philanthropist", "School", "Entrepreneur"].map((role, index) => (
+            {[
+              { role: "Parent", path: "/dashboard" },
+              { role: "Government", path: "/dashboard" },
+              { role: "Philanthropist", path: "/dashboard" },
+              { role: "School", path: "/dashboard" },
+              { role: "Entrepreneur", path: "/dashboard" }
+            ].map(({ role, path }, index) => (
               <Button 
                 key={role}
                 className="h-12 px-6 bg-brand-accent text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-full transition-all duration-200 font-cal"
-                onClick={() => index === 0 ? parentRef.current?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+                onClick={() => {
+                  if (index === 0) {
+                    parentRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = path;
+                  }
+                }}
                 aria-label={`Learn more about Timeback for ${role.toLowerCase()}s`}
               >
                 {role}
@@ -298,65 +310,63 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Learning Science Section with improved accessibility */}
-      <section className="px-6 py-20 relative overflow-hidden bg-brand-primary" aria-labelledby="science-heading">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-20 right-20 w-60 h-60 bg-brand-accent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-40 h-40 bg-brand-secondary rounded-full blur-2xl"></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          {/* Tab Navigation with improved accessibility */}
-          <nav className="flex border-b border-text-inverse/20 mb-16 overflow-x-auto bg-brand-secondary rounded-2xl p-2 shadow-lg" role="tablist" aria-label="Learning approaches">
-            {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
-              <button
-                key={index}
-                role="tab"
-                aria-selected={index === 0}
-                aria-controls={`panel-${index}`}
-                className={`px-6 py-4 text-sm font-medium whitespace-nowrap rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent ${
-                  index === 0
-                    ? 'bg-brand-accent text-brand-secondary shadow-lg transform scale-105'
-                    : 'text-text-inverse hover:text-text-secondary hover:bg-text-inverse/10'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </nav>
+      {/* Learning Science Section - Dashboard Style */}
+      <section className="px-6 py-20 bg-surface-primary" aria-labelledby="science-heading">
+        <div className="max-w-6xl mx-auto">
+          {/* Tab Navigation */}
+          <div className="border-b border-border bg-surface-primary mb-12">
+            <nav className="flex space-x-8 overflow-x-auto" role="tablist">
+              {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
+                <button
+                  key={index}
+                  role="tab"
+                  aria-selected={index === 0}
+                  className={`py-4 px-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200 font-system ${
+                    index === 0
+                      ? "border-warning text-text-primary"
+                      : "border-transparent text-text-secondary hover:text-text-primary"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </nav>
+          </div>
 
-          {/* Content Section with improved typography */}
-          <div className="text-center mb-16" id="panel-0" role="tabpanel">
-            <h2 id="science-heading" className="text-3xl md:text-4xl font-bold font-cal text-text-inverse mb-8">
+          {/* Content Section */}
+          <div className="text-center mb-12">
+            <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
               Built on 40 Years of Learning Science
             </h2>
             
-            <p className="text-base md:text-lg text-text-inverse/90 leading-relaxed max-w-4xl mx-auto mb-12 bg-text-inverse/10 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-text-inverse/20">
-              Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
-            </p>
-            
-            {/* Video Placeholder with improved accessibility */}
-            <div className="max-w-4xl mx-auto mb-12">
-              <button 
-                className="w-full aspect-video bg-gradient-to-br from-text-inverse/10 to-text-inverse/5 rounded-2xl flex items-center justify-center shadow-2xl border border-text-inverse/20 backdrop-blur-sm group hover:shadow-3xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"
-                aria-label="Play educational research video"
-              >
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                  <p className="text-text-inverse font-medium text-lg">Educational Research Video</p>
-                  <p className="text-text-inverse/80 text-sm mt-2">Click to play</p>
-                </div>
-              </button>
+            <div className="space-y-2 mb-8">
+              <p className="text-text-secondary font-system">
+                Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction.
+              </p>
+              <p className="text-text-secondary font-system">
+                Alpha's 99th percentile results align perfectly with this finding. <span className="font-semibold text-text-primary">AI tutoring can theoretically provide this one-on-one experience at scale.</span>
+              </p>
             </div>
-            
-            <Button className="bg-gradient-to-r from-brand-accent to-brand-secondary text-text-brand px-8 py-4 rounded-full font-medium hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 transition-all duration-300 font-cal">
-              Read the Full White Paper →
-            </Button>
+
+            <button className="text-warning hover:text-warning/80 font-medium transition-colors duration-200 font-system">
+              Read the Full White Paper
+            </button>
+          </div>
+          
+          {/* Video/Content Area - Dashboard Style */}
+          <div className="bg-surface-secondary rounded-2xl p-8 shadow-sm border border-border">
+            <div className="aspect-video bg-surface-tertiary rounded-xl flex items-center justify-center relative overflow-hidden">
+              {/* Video placeholder matching dashboard style */}
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <p className="text-text-secondary font-medium text-lg font-system">Educational Research Video</p>
+                <p className="text-text-secondary/80 text-sm mt-2 font-system">Click to play</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
