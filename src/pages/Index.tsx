@@ -285,39 +285,39 @@ const Index = () => {
           <div className="flex flex-col gap-20 md:gap-24 max-w-2xl mx-auto">
             {/* Stat 1 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 1535
               </div>
-              <div className="text-xl md:text-2xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 Average SAT Score
               </div>
-              <p className="text-base md:text-lg font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
                 Average SAT score for seniors at Alpha — the highest in Texas
               </p>
             </div>
 
             {/* Stat 2 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 99th %ile
               </div>
-              <div className="text-xl md:text-2xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 Academic Performance
               </div>
-              <p className="text-base md:text-lg font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
                 Students are outperforming 99% of peers in both academic achievement and growth
               </p>
             </div>
 
             {/* Stat 3 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 4x Faster
               </div>
-              <div className="text-xl md:text-2xl font-cal" style={{ color: '#0f33bb' }}>
+              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 Learning Speed
               </div>
-              <p className="text-base md:text-lg font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
                 Students using Timeback are learning up to 4x faster than traditional schools
               </p>
             </div>
