@@ -271,14 +271,16 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Banner */}
+      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
+        <h2 className="text-3xl md:text-4xl font-cal text-center" style={{ color: '#0f33bb' }}>
+          Timeback at a glance
+        </h2>
+      </div>
+
       {/* Results Section */}
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-6xl mx-auto text-center space-y-16">
-          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
-            <h2 className="text-3xl md:text-4xl font-cal text-center" style={{ color: '#0f33bb' }}>
-              Timeback at a glance
-            </h2>
-          </div>
           
           <div className="flex flex-col gap-20 md:gap-24 max-w-2xl mx-auto">
             {/* Stat 1 */}
