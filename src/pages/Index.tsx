@@ -325,6 +325,56 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Testimonials Section */}
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-20" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="max-w-6xl mx-auto text-center space-y-16">
+          <h2 className="text-3xl md:text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>
+            Hear from Timeback families
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {/* Testimonial 1 */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+              <div className="aspect-[4/5] bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <h3 className="text-white font-cal text-lg font-normal">Sarah</h3>
+                <p className="text-white/90 font-cal text-sm">Middle School Student</p>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+              <div className="aspect-[4/5] bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <h3 className="text-white font-cal text-lg font-normal">Maria</h3>
+                <p className="text-white/90 font-cal text-sm">High School Parent</p>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+              <div className="aspect-[4/5] bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <h3 className="text-white font-cal text-lg font-normal">James</h3>
+                <p className="text-white/90 font-cal text-sm">Middle School Student</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       {/* Background decoration */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
