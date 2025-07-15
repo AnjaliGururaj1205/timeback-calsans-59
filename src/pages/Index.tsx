@@ -273,7 +273,7 @@ const Index = () => {
 
       {/* Banner */}
       <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
-        <h2 className="text-2xl md:text-3xl font-cal text-center" style={{ color: '#0f33bb' }}>
+        <h2 className="text-2xl md:text-3xl text-center" style={{ color: '#0f33bb' }}>
           Timeback at a glance
         </h2>
       </div>
