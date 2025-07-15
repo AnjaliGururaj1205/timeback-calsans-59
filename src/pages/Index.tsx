@@ -335,7 +335,7 @@ const Index = () => {
                 key={index}
                 className={`px-6 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   index === 0
-                    ? 'border-orange-500 text-orange-600'
+                    ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -347,18 +347,11 @@ const Index = () => {
           {/* Content Section */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Academic backing for why your kid only needs 2 hours a day, theoretically predicted by learning science
+              Built on 40 Years of Learning Science
             </h1>
             
-            <div className="text-lg text-gray-600 mb-4">
-              Your child's learning outcomes will appear in your <span className="font-semibold text-gray-900">Superpower dashboard</span>.
-            </div>
-            <div className="text-lg text-gray-600 mb-8">
-              Store all your <span className="font-semibold text-gray-900">learning analytics</span>. Real-time progress tracking coming soon.
-            </div>
-            
-            <button className="text-orange-600 font-medium hover:text-orange-700 transition-colors">
-              View everything we teach →
+            <button className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
+              Read the Full White Paper →
             </button>
           </div>
         </div>
