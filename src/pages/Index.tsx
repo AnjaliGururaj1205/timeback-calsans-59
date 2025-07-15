@@ -349,14 +349,14 @@ const Index = () => {
         
         <div className="max-w-6xl mx-auto relative z-10">
           {/* Tab Navigation */}
-          <div className="flex border-b border-gray-200 mb-16 overflow-x-auto bg-white/60 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
+          <div className="flex border-b border-white/20 mb-16 overflow-x-auto backdrop-blur-sm rounded-2xl p-2 shadow-lg" style={{ backgroundColor: '#0f33bb' }}>
             {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
               <button
                 key={index}
                 className={`px-6 py-4 text-sm font-medium whitespace-nowrap rounded-xl transition-all duration-300 ${
                   index === 0
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105'
-                    : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
+                    ? 'bg-white text-blue-900 shadow-lg transform scale-105'
+                    : 'text-white hover:text-gray-200 hover:bg-white/10'
                 }`}
               >
                 {tab}
