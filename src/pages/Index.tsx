@@ -247,23 +247,16 @@ const Index = () => {
       </section>
 
       {/* Stats Section with improved accessibility and contrast */}
-      <section className="bg-surface-primary px-4 py-20 relative overflow-hidden" aria-labelledby="stats-heading">
-        {/* Accessible background decoration */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-brand-primary rounded-full animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-brand-secondary rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-success rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto text-center space-y-16 relative z-10">
+      <section className="bg-surface-primary px-4 py-20" aria-labelledby="stats-heading">
+        <div className="max-w-6xl mx-auto text-center space-y-16">
           <h2 id="stats-heading" className="sr-only">Key Performance Statistics</h2>
           
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center">
             {/* Stat 1 - SAT Scores */}
             <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/20 to-brand-secondary/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
                   1535
                 </div>
                 <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
@@ -278,8 +271,8 @@ const Index = () => {
             {/* Stat 2 - Performance */}
             <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-success/20 to-brand-primary/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-success to-brand-primary bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
                   99th %ile
                 </div>
                 <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
@@ -294,8 +287,8 @@ const Index = () => {
             {/* Stat 3 - Learning Speed */}
             <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-warning/20 to-error/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-warning to-error bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
                   4x Faster
                 </div>
                 <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
