@@ -247,6 +247,70 @@ const Index = () => {
         </h2>
       </section>
 
+      {/* Learning Engine Section */}
+      <section className="bg-surface-primary px-4 py-16" aria-labelledby="learning-engine-heading">
+        <div className="max-w-6xl mx-auto text-center space-y-12">
+          <div className="space-y-4">
+            <h2 id="learning-engine-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-text-primary">
+              This Isn't a Chatbot. It's a Learning Engine.
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-text-secondary opacity-90">
+              Our AI is far more advanced — it sees, understands, evaluates, and adapts. In real time.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
+            {/* Vision-powered understanding */}
+            <div className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                <span className="text-red-600 text-2xl">👁️</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-text-primary">
+                Vision-powered understanding
+              </h3>
+              <p className="text-text-secondary leading-relaxed">
+                It can actually see your child's work — not just typed answers. Whether your child is solving math on paper or diagramming a sentence, Timeback's AI can evaluate the work visually.
+              </p>
+            </div>
+
+            {/* Instant feedback */}
+            <div className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                <span className="text-orange-600 text-2xl">🏠</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-text-primary">
+                Instant feedback on actual performance
+              </h3>
+              <p className="text-text-secondary leading-relaxed">
+                The AI doesn't wait for input. It observes, identifies gaps, and provides next-step lessons.
+              </p>
+            </div>
+
+            {/* Learning Science + Data-Driven */}
+            <div className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                <span className="text-blue-600 text-2xl">📊</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-text-primary">
+                Learning Science + Data-Driven Adaptation
+              </h3>
+              <p className="text-text-secondary leading-relaxed">
+                Every lesson is built on what your child just did, not a generic curriculum sequence.
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex justify-center space-x-2 mt-12">
+            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section with improved accessibility and contrast */}
       <section className="bg-surface-primary px-4 py-8" aria-labelledby="stats-heading">
         <div className="max-w-6xl mx-auto text-center space-y-16">
@@ -274,7 +338,7 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
-                  99th %ile
+                  99th %
                 </div>
                 <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
                   Academic Performance
