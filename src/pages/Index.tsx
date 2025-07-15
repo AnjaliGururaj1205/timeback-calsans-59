@@ -346,9 +346,13 @@ const Index = () => {
 
           {/* Content Section */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               Built on 40 Years of Learning Science
             </h1>
+            
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
+              Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
+            </p>
             
             <button className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
               Read the Full White Paper →
