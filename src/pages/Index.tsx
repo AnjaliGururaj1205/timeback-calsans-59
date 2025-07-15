@@ -267,6 +267,45 @@ const Index = () => {
               Entrepreneur
             </Button>
           </div>
+
+          {/* Results Section */}
+          <div className="mt-16 bg-white rounded-3xl p-12 md:p-16 shadow-lg border border-gray-100">
+            <h2 className="text-3xl md:text-4xl font-bold font-cal text-center mb-12" style={{ color: '#0f33bb' }}>
+              The Results Speak for Themselves
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              {/* Stat 1 */}
+              <div className="text-center space-y-3">
+                <div className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  1535
+                </div>
+                <p className="text-sm md:text-base font-cal leading-relaxed" style={{ color: '#1abeff' }}>
+                  Average SAT score for seniors at Alpha — the highest in Texas
+                </p>
+              </div>
+
+              {/* Stat 2 */}
+              <div className="text-center space-y-3">
+                <div className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  99th %ile
+                </div>
+                <p className="text-sm md:text-base font-cal leading-relaxed" style={{ color: '#1abeff' }}>
+                  Students are outperforming 99% of peers in both academic achievement and growth
+                </p>
+              </div>
+
+              {/* Stat 3 */}
+              <div className="text-center space-y-3">
+                <div className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  4x Faster
+                </div>
+                <p className="text-sm md:text-base font-cal leading-relaxed" style={{ color: '#1abeff' }}>
+                  Students using Timeback are learning up to 4x faster than traditional schools
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
