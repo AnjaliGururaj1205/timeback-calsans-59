@@ -274,8 +274,8 @@ const Index = () => {
       {/* Results Section */}
       <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 pt-20">
         <div className="max-w-6xl mx-auto text-center space-y-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-cal" style={{ color: '#0f33bb' }}>
-            The Results Speak for Themselves
+          <h2 className="text-3xl md:text-4xl font-cal" style={{ color: '#0f33bb' }}>
+            Timeback at a glance
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
