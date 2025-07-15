@@ -340,7 +340,7 @@ const Index = () => {
       </div>
 
       {/* How We Do It Section */}
-      <div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 px-6 py-20 relative overflow-hidden">
+      <div className="px-6 py-20 relative overflow-hidden" style={{ backgroundColor: '#1abeff' }}>
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-30">
           <div className="absolute top-20 right-20 w-60 h-60 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full blur-3xl"></div>
