@@ -270,54 +270,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Parent Section */}
-      <div ref={parentRef} className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center space-y-16">
-          {/* Main Question */}
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
-              Why is school still stuck in the past?
-            </h2>
-            <p className="text-lg md:text-xl font-cal max-w-3xl mx-auto" style={{ color: '#0f33bb' }}>
-              With all the technology and science we have today, why do students still spend 7 hours a day in class — and fall behind anyway?
-            </p>
-          </div>
-
-          {/* Questions Section */}
-          <div className="bg-orange-500 rounded-3xl p-12 md:p-16 space-y-8">
-            <div className="space-y-6">
-              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
-                What if school only took 2 hours?
-              </p>
-              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
-                Would students actually learn more?
-              </p>
-              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
-                How do we know if students are truly learning?
-              </p>
-              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
-                What do they actually need to succeed?
-              </p>
-            </div>
-          </div>
-
-          {/* Results Section */}
-          <div className="bg-black rounded-3xl p-12 md:p-16 space-y-8">
-            <div className="space-y-6">
-              <p className="text-2xl md:text-3xl font-bold font-cal text-white">
-                The questions are simple.
-              </p>
-              <p className="text-2xl md:text-3xl font-bold font-cal">
-                <span className="text-white">The results? </span>
-                <span className="text-orange-500">Unbelievable.</span>
-              </p>
-              <p className="text-3xl md:text-4xl font-bold font-cal text-white mt-12">
-                Education deserves a revolution.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Background decoration */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
