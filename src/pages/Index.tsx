@@ -280,33 +280,33 @@ const Index = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="flex flex-col gap-16 md:gap-24 max-w-2xl mx-auto">
             {/* Stat 1 */}
-            <div className="rounded-xl p-8 text-center space-y-4" style={{ backgroundColor: '#0f33bb' }}>
-              <div className="text-4xl md:text-5xl font-cal text-white">
+            <div className="rounded-xl p-12 md:p-16 text-center space-y-6" style={{ backgroundColor: '#0f33bb' }}>
+              <div className="text-5xl md:text-6xl font-cal text-white">
                 1535
               </div>
-              <p className="text-sm md:text-base font-cal leading-relaxed text-white">
+              <p className="text-lg md:text-xl font-cal leading-relaxed text-white">
                 Average SAT score for seniors at Alpha — the highest in Texas
               </p>
             </div>
 
             {/* Stat 2 */}
-            <div className="rounded-xl p-8 text-center space-y-4" style={{ backgroundColor: '#1abeff' }}>
-              <div className="text-4xl md:text-5xl font-cal text-white">
+            <div className="rounded-xl p-12 md:p-16 text-center space-y-6" style={{ backgroundColor: '#1abeff' }}>
+              <div className="text-5xl md:text-6xl font-cal text-white">
                 99th %ile
               </div>
-              <p className="text-sm md:text-base font-cal leading-relaxed text-white">
+              <p className="text-lg md:text-xl font-cal leading-relaxed text-white">
                 Students are outperforming 99% of peers in both academic achievement and growth
               </p>
             </div>
 
             {/* Stat 3 */}
-            <div className="rounded-xl p-8 text-center space-y-4" style={{ backgroundColor: '#0f33bb' }}>
-              <div className="text-4xl md:text-5xl font-cal text-white">
+            <div className="rounded-xl p-12 md:p-16 text-center space-y-6" style={{ backgroundColor: '#0f33bb' }}>
+              <div className="text-5xl md:text-6xl font-cal text-white">
                 4x Faster
               </div>
-              <p className="text-sm md:text-base font-cal leading-relaxed text-white">
+              <p className="text-lg md:text-xl font-cal leading-relaxed text-white">
                 Students using Timeback are learning up to 4x faster than traditional schools
               </p>
             </div>
