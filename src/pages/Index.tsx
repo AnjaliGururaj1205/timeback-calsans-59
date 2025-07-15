@@ -350,9 +350,23 @@ const Index = () => {
               Built on 40 Years of Learning Science
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
               Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
             </p>
+            
+            {/* Video Placeholder */}
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-gray-600 font-medium">Video Placeholder</p>
+                </div>
+              </div>
+            </div>
             
             <button className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
               Read the Full White Paper →
