@@ -133,75 +133,43 @@ const Index = () => {
       {/* Main Section */}
       <div className="min-h-screen flex flex-col items-center justify-center px-4">
         <div className="max-w-4xl mx-auto text-center space-y-12">
-          {/* Logo */}
-          <div className="animate-fade-in">
-            <img 
-              src="/lovable-uploads/5914131b-3128-49af-af97-d359cb8d0d5f.png" 
-              alt="Timeback - Learning just got schooled"
-              className="mx-auto w-72 h-auto"
-              style={{ opacity: 0.95 }}
-            />
-          </div>
-
-          {/* Main Headline */}
-          <div className="space-y-4 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold font-cal leading-tight" style={{ color: '#0f33bb' }}>
-              {/* Mobile version - two lines */}
-              <div className="block md:hidden text-2xl" style={{ color: '#0f33bb' }}>
-                <div>Your kid can crush academics</div>
-                <div>in only 2 hours per day</div>
-              </div>
-              {/* Desktop/Tablet version - keep original structure */}
-              <div className="hidden md:block" style={{ color: '#0f33bb' }}>
-                <div style={{ color: '#0f33bb' }}>
-                  Your kid can crush academics
-                </div>
-                <div className="mt-2" style={{ color: '#0f33bb' }}>
-                  in only 2 hours per day
-                </div>
-              </div>
+          {/* Main Title */}
+          <div className="space-y-12 animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold font-cal leading-tight" style={{ color: '#0f33bb' }}>
+              What 2 Hours a Day Can Do
             </h1>
-          </div>
-
-          {/* Email Signup */}
-          <div className="max-w-md mx-auto animate-fade-in-up delay-200">
-            <form onSubmit={handleEmailSubmit} className="space-y-4">
-              <div className="flex gap-2">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 h-12 text-lg border-2 rounded-xl placeholder:text-[#1abeff] font-cal"
-                  style={{ 
-                    borderColor: '#0f33bb', 
-                    backgroundColor: '#0f33bb', 
-                    color: '#1abeff'
-                  }}
-                  disabled={isSubmitting}
-                  required
-                />
-                <Button 
-                  type="submit"
-                  className="h-12 px-8 font-semibold rounded-xl transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
-                  style={{ 
-                    backgroundColor: '#ffffff', 
-                    color: '#0f33bb'
-                  }}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "..." : "Get Started"}
-                </Button>
+            
+            {/* Stats Section */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+              {/* Stat 1 */}
+              <div className="text-center">
+                <div className="text-6xl md:text-8xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  99th
+                </div>
+                <div className="text-lg md:text-xl font-cal mt-2" style={{ color: '#0f33bb' }}>
+                  Percentile Growth & Achievement
+                </div>
               </div>
-            </form>
-          </div>
-
-          {/* Coming Soon Message with Typewriter Effect */}
-          <div className="animate-fade-in-up delay-300">
-            <div className="h-7 flex items-center justify-center">
-              <p className={`text-lg font-medium transition-opacity duration-500 font-cal ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ color: '#0f33bb' }}>
-                {typewriterText}
-              </p>
+              
+              {/* Stat 2 */}
+              <div className="text-center">
+                <div className="text-6xl md:text-8xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  1535
+                </div>
+                <div className="text-lg md:text-xl font-cal mt-2" style={{ color: '#0f33bb' }}>
+                  Average SAT
+                </div>
+              </div>
+              
+              {/* Stat 3 */}
+              <div className="text-center">
+                <div className="text-6xl md:text-8xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+                  2x to 4x
+                </div>
+                <div className="text-lg md:text-xl font-cal mt-2" style={{ color: '#0f33bb' }}>
+                  Faster Learning
+                </div>
+              </div>
             </div>
           </div>
         </div>
