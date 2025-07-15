@@ -551,7 +551,7 @@ const Index = () => {
       <section className="relative py-24 bg-gradient-to-b from-surface-primary via-gray-900 to-black text-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-cal">
-            Unlock your peak potential
+            Ready to Give Your Kid Their Time Back?
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-8 font-system">
@@ -562,7 +562,7 @@ const Index = () => {
             size="lg" 
             className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
           >
-            Start testing
+            Let's Talk About My Kid
           </Button>
         </div>
         
