@@ -272,35 +272,44 @@ const Index = () => {
 
       {/* Parent Section */}
       <div ref={parentRef} className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+        <div className="max-w-6xl mx-auto text-center space-y-16">
+          <h2 className="text-4xl md:text-5xl font-bold font-cal mt-8" style={{ color: '#0f33bb' }}>
             What 2 Hours a Day Can Do
           </h2>
           
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
-                99th
+              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+                  99th
+                </div>
               </div>
+              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Percentile Growth & Achievement
               </p>
             </div>
             
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
-                1535
+              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+                  1535
+                </div>
               </div>
+              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Average SAT
               </p>
             </div>
             
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
-                2x to 4x
+              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+                  2x to 4x
+                </div>
               </div>
+              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Faster Learning
               </p>
