@@ -346,7 +346,7 @@ const Index = () => {
                 </div>
 
                 <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  Read the Full White Paper
+                  See the Science for Yourself
                 </button>
               </>
             )}
@@ -364,7 +364,7 @@ const Index = () => {
                 </div>
 
                 <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  Read the Full White Paper
+                  See the Science for Yourself
                 </button>
               </>
             )}
@@ -382,7 +382,28 @@ const Index = () => {
                 </div>
 
                 <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  Read the Full White Paper
+                  See the Science for Yourself
+                </button>
+              </>
+            )}
+
+            {activeTab === 3 && (
+              <>
+                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
+                  Right in the Learning Sweet Spot
+                </h2>
+                
+                <div className="space-y-2 mb-8">
+                  <p className="text-text-secondary font-system">
+                    Every child has a "sweet spot" where learning is most effective — not too easy to be boring, not too hard to be discouraging. This is called the Zone of Proximal Development, and it's where real progress happens.
+                  </p>
+                  <p className="text-text-secondary font-system">
+                    Timeback's AI identifies this zone for your child in real time and delivers lessons that stretch them just enough to grow. That's how we build confidence, momentum, and rapid learning — without stress or burnout.
+                  </p>
+                </div>
+
+                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
+                  See the Science for Yourself
                 </button>
               </>
             )}
