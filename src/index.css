@@ -8,9 +8,32 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
+    /* Brand colors */
+    --brand-primary: 218 100% 56%;     /* #1abeff */
+    --brand-secondary: 226 82% 31%;    /* #0f33bb */
+    --brand-accent: 0 0% 100%;         /* white */
+    
+    /* Status colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    
+    /* Surface colors */
+    --surface-primary: 0 0% 100%;
+    --surface-secondary: 210 40% 98%;
+    --surface-tertiary: 210 40% 96%;
+    
+    /* Text colors */
+    --text-primary: 222.2 84% 4.9%;
+    --text-secondary: 215.4 16.3% 46.9%;
+    --text-inverse: 0 0% 100%;
+    --text-brand: 226 82% 31%;
+
+    /* Component tokens */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
@@ -38,20 +61,14 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Sidebar tokens */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 

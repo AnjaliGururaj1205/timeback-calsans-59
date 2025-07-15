@@ -130,66 +130,55 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1abeff' }}>
+    <div className="min-h-screen bg-brand-primary">
       {/* Main Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div className="max-w-4xl mx-auto text-center space-y-8 lg:space-y-12">
           {/* Logo */}
           <div className="animate-fade-in">
             <img 
               src="/lovable-uploads/5914131b-3128-49af-af97-d359cb8d0d5f.png" 
               alt="Timeback - Learning just got schooled"
-              className="mx-auto w-72 h-auto"
+              className="mx-auto w-60 md:w-72 h-auto"
               style={{ opacity: 0.95 }}
             />
           </div>
 
-          {/* Main Headline */}
+          {/* Main Headline with improved hierarchy */}
           <div className="space-y-4 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold font-cal leading-tight" style={{ color: '#0f33bb' }}>
-              {/* Mobile version - two lines */}
-              <div className="block md:hidden text-2xl" style={{ color: '#0f33bb' }}>
-                <div>Your kid can crush academics</div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal leading-tight text-brand-secondary">
+              {/* Mobile version - optimized spacing */}
+              <div className="block md:hidden">
+                <div className="mb-2">Your kid can crush academics</div>
                 <div>in only 2 hours per day</div>
               </div>
-              {/* Desktop/Tablet version - keep original structure */}
-              <div className="hidden md:block" style={{ color: '#0f33bb' }}>
-                <div style={{ color: '#0f33bb' }}>
-                  Your kid can crush academics
-                </div>
-                <div className="mt-2" style={{ color: '#0f33bb' }}>
-                  in only 2 hours per day
-                </div>
+              {/* Desktop/Tablet version */}
+              <div className="hidden md:block">
+                <div>Your kid can crush academics</div>
+                <div className="mt-2">in only 2 hours per day</div>
               </div>
             </h1>
           </div>
 
-          {/* Email Signup */}
+          {/* Email Signup with improved UX */}
           <div className="max-w-md mx-auto animate-fade-in-up delay-200">
             <form onSubmit={handleEmailSubmit} className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 h-12 text-lg border-2 rounded-xl placeholder:text-[#1abeff] font-cal"
-                  style={{ 
-                    borderColor: '#0f33bb', 
-                    backgroundColor: '#0f33bb', 
-                    color: '#1abeff'
-                  }}
+                  className="flex-1 h-12 text-base border-2 border-brand-secondary bg-brand-secondary text-brand-primary placeholder:text-brand-primary/70 rounded-xl font-medium focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all"
                   disabled={isSubmitting}
                   required
+                  aria-label="Email address for Timeback updates"
                 />
                 <Button 
                   type="submit"
-                  className="h-12 px-8 font-semibold rounded-xl transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
-                  style={{ 
-                    backgroundColor: '#ffffff', 
-                    color: '#0f33bb'
-                  }}
+                  className="h-12 px-8 bg-brand-accent text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
                   disabled={isSubmitting}
+                  aria-label={isSubmitting ? "Submitting..." : "Get started with Timeback"}
                 >
                   {isSubmitting ? "..." : "Get Started"}
                 </Button>
@@ -197,10 +186,14 @@ const Index = () => {
             </form>
           </div>
 
-          {/* Coming Soon Message with Typewriter Effect */}
+          {/* Coming Soon Message with improved accessibility */}
           <div className="animate-fade-in-up delay-300">
             <div className="h-7 flex items-center justify-center">
-              <p className={`text-lg font-medium transition-opacity duration-500 font-cal ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ color: '#0f33bb' }}>
+              <p 
+                className={`text-lg font-medium font-cal text-brand-secondary transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                aria-live="polite"
+                aria-label="Coming soon announcement"
+              >
                 {typewriterText}
               </p>
             </div>
@@ -208,193 +201,165 @@ const Index = () => {
         </div>
       </div>
 
-      {/* About Section */}
-      <div ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4">
+      {/* About Section with improved spacing and hierarchy */}
+      <section ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
             About
           </h2>
-          <p className="text-lg md:text-xl font-cal leading-relaxed max-w-3xl" style={{ color: '#0f33bb' }}>
+          <p className="text-lg md:text-xl leading-relaxed max-w-3xl text-brand-secondary opacity-90">
             TimeBack is the AI-powered EducationOS behind Alpha schools, empowering kids to master their academics in just 2 hours a day—freeing up the rest of the day for what they love. Built on learning science, it generates personalized lessons, optimal lesson plans, and AI coaching to create self-driven learners. Independent standardized tests confirm learning gains up to 10× faster.
           </p>
           
-          {/* Bubble Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Button 
-              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#0f33bb'
-              }}
-              onClick={() => parentRef.current?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Parent
-            </Button>
-            <Button 
-              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#0f33bb'
-              }}
-            >
-              Government
-            </Button>
-            <Button 
-              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#0f33bb'
-              }}
-            >
-              Philanthropist
-            </Button>
-            <Button 
-              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#0f33bb'
-              }}
-            >
-              School
-            </Button>
-            <Button 
-              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#0f33bb'
-              }}
-            >
-              Entrepreneur
-            </Button>
+          {/* Action Buttons with improved accessibility */}
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            {["Parent", "Government", "Philanthropist", "School", "Entrepreneur"].map((role, index) => (
+              <Button 
+                key={role}
+                className="h-12 px-6 bg-brand-accent text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-full transition-all duration-200 font-cal"
+                onClick={() => index === 0 ? parentRef.current?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+                aria-label={`Learn more about Timeback for ${role.toLowerCase()}s`}
+              >
+                {role}
+              </Button>
+            ))}
           </div>
-
         </div>
-      </div>
+      </section>
 
-      {/* Banner */}
-      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
-        <h2 className="text-2xl md:text-3xl text-center font-cal" style={{ color: '#0f33bb' }}>
+      {/* Section Divider with improved semantics */}
+      <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-12 bg-surface-secondary border-y border-border" aria-labelledby="glance-heading">
+        <h2 id="glance-heading" className="text-2xl md:text-3xl text-center font-cal text-text-brand">
           Timeback at a glance
         </h2>
-      </div>
+      </section>
 
-      {/* Results Section */}
-      <div className="bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
-        {/* Floating background elements */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-100 rounded-full opacity-30 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 animate-pulse delay-500"></div>
+      {/* Stats Section with improved accessibility and contrast */}
+      <section className="bg-surface-primary px-4 py-20 relative overflow-hidden" aria-labelledby="stats-heading">
+        {/* Accessible background decoration */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-brand-primary rounded-full animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-brand-secondary rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-success rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        </div>
         
         <div className="max-w-6xl mx-auto text-center space-y-16 relative z-10">
+          <h2 id="stats-heading" className="sr-only">Key Performance Statistics</h2>
           
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center">
-            {/* Stat 1 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
+            {/* Stat 1 - SAT Scores */}
+            <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/20 to-brand-secondary/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
                   1535
                 </div>
-                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
                   Average SAT Score
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-gray-700">
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
                   Average SAT score for seniors at Alpha — the highest in Texas
                 </p>
               </div>
-            </div>
+            </article>
 
-            {/* Stat 2 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
+            {/* Stat 2 - Performance */}
+            <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-gradient-to-r from-success/20 to-brand-primary/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-success to-brand-primary bg-clip-text text-transparent">
                   99th %ile
                 </div>
-                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
                   Academic Performance
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-gray-700">
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
                   Students are outperforming 99% of peers in both academic achievement and growth
                 </p>
               </div>
-            </div>
+            </article>
 
-            {/* Stat 3 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
+            {/* Stat 3 - Learning Speed */}
+            <article className="group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                <div className="absolute inset-0 bg-gradient-to-r from-warning/20 to-error/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-warning to-error bg-clip-text text-transparent">
                   4x Faster
                 </div>
-                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                <h3 className="text-xl md:text-2xl font-cal font-semibold mb-3 text-text-brand">
                   Learning Speed
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-gray-700">
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
                   Students using Timeback are learning up to 4x faster than traditional schools
                 </p>
               </div>
-            </div>
+            </article>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* How We Do It Section */}
-      <div className="px-6 py-20 relative overflow-hidden" style={{ backgroundColor: '#1abeff' }}>
+      {/* Learning Science Section with improved accessibility */}
+      <section className="px-6 py-20 relative overflow-hidden bg-brand-primary" aria-labelledby="science-heading">
         {/* Background decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-20 right-20 w-60 h-60 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-br from-green-200 to-teal-200 rounded-full blur-2xl"></div>
+        <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-20 right-20 w-60 h-60 bg-brand-accent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-40 h-40 bg-brand-secondary rounded-full blur-2xl"></div>
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10">
-          {/* Tab Navigation */}
-          <div className="flex border-b border-white/20 mb-16 overflow-x-auto backdrop-blur-sm rounded-2xl p-2 shadow-lg" style={{ backgroundColor: '#0f33bb' }}>
+          {/* Tab Navigation with improved accessibility */}
+          <nav className="flex border-b border-text-inverse/20 mb-16 overflow-x-auto bg-brand-secondary rounded-2xl p-2 shadow-lg" role="tablist" aria-label="Learning approaches">
             {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
               <button
                 key={index}
-                className={`px-6 py-4 text-sm font-medium whitespace-nowrap rounded-xl transition-all duration-300 ${
+                role="tab"
+                aria-selected={index === 0}
+                aria-controls={`panel-${index}`}
+                className={`px-6 py-4 text-sm font-medium whitespace-nowrap rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent ${
                   index === 0
-                    ? 'bg-white text-blue-900 shadow-lg transform scale-105'
-                    : 'text-white hover:text-gray-200 hover:bg-white/10'
+                    ? 'bg-brand-accent text-brand-secondary shadow-lg transform scale-105'
+                    : 'text-text-inverse hover:text-text-secondary hover:bg-text-inverse/10'
                 }`}
               >
                 {tab}
               </button>
             ))}
-          </div>
+          </nav>
 
-          {/* Content Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-bold font-cal bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-8">
+          {/* Content Section with improved typography */}
+          <div className="text-center mb-16" id="panel-0" role="tabpanel">
+            <h2 id="science-heading" className="text-3xl md:text-4xl font-bold font-cal text-text-inverse mb-8">
               Built on 40 Years of Learning Science
-            </h1>
+            </h2>
             
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
+            <p className="text-base md:text-lg text-text-inverse/90 leading-relaxed max-w-4xl mx-auto mb-12 bg-text-inverse/10 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-text-inverse/20">
               Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
             </p>
             
-            {/* Video Placeholder */}
+            {/* Video Placeholder with improved accessibility */}
             <div className="max-w-4xl mx-auto mb-12">
-              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center shadow-2xl border border-white/50 backdrop-blur-sm group hover:shadow-3xl transition-all duration-300">
+              <button 
+                className="w-full aspect-video bg-gradient-to-br from-text-inverse/10 to-text-inverse/5 rounded-2xl flex items-center justify-center shadow-2xl border border-text-inverse/20 backdrop-blur-sm group hover:shadow-3xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                aria-label="Play educational research video"
+              >
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600 font-medium text-lg">Educational Research Video</p>
-                  <p className="text-gray-500 text-sm mt-2">Click to play</p>
+                  <p className="text-text-inverse font-medium text-lg">Educational Research Video</p>
+                  <p className="text-text-inverse/80 text-sm mt-2">Click to play</p>
                 </div>
-              </div>
+              </button>
             </div>
             
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
+            <Button className="bg-gradient-to-r from-brand-accent to-brand-secondary text-text-brand px-8 py-4 rounded-full font-medium hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 transition-all duration-300 font-cal">
               Read the Full White Paper →
-            </button>
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Testimonials Section */}
       <div className="min-h-screen flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: '#f8f9fa' }}>

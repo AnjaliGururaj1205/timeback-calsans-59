@@ -25,6 +25,34 @@ export default {
         'cal': ['Cal Sans', 'sans-serif'],
       },
 			colors: {
+				/* Brand colors */
+				brand: {
+					primary: 'hsl(var(--brand-primary))',
+					secondary: 'hsl(var(--brand-secondary))',
+					accent: 'hsl(var(--brand-accent))',
+				},
+				
+				/* Status colors */
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))',
+				error: 'hsl(var(--error))',
+				
+				/* Surface colors */
+				surface: {
+					primary: 'hsl(var(--surface-primary))',
+					secondary: 'hsl(var(--surface-secondary))',
+					tertiary: 'hsl(var(--surface-tertiary))',
+				},
+				
+				/* Text colors */
+				text: {
+					primary: 'hsl(var(--text-primary))',
+					secondary: 'hsl(var(--text-secondary))',
+					inverse: 'hsl(var(--text-inverse))',
+					brand: 'hsl(var(--text-brand))',
+				},
+
+				/* Shadcn default tokens */
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
