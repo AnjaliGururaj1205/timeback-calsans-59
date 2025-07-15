@@ -273,7 +273,7 @@ const Index = () => {
 
       {/* Banner */}
       <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
-        <h2 className="text-3xl md:text-4xl font-cal text-center" style={{ color: '#0f33bb' }}>
+        <h2 className="text-2xl md:text-3xl font-cal text-center" style={{ color: '#0f33bb' }}>
           Timeback at a glance
         </h2>
       </div>
@@ -285,7 +285,7 @@ const Index = () => {
           <div className="flex flex-col gap-20 md:gap-24 max-w-2xl mx-auto">
             {/* Stat 1 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
+              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 1535
               </div>
               <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
@@ -298,7 +298,7 @@ const Index = () => {
 
             {/* Stat 2 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
+              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 99th %ile
               </div>
               <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
@@ -311,7 +311,7 @@ const Index = () => {
 
             {/* Stat 3 */}
             <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-cal font-normal" style={{ color: '#0f33bb' }}>
+              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
                 4x Faster
               </div>
               <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
