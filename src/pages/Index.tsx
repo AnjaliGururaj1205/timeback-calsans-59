@@ -370,7 +370,7 @@ const Index = () => {
               Built on 40 Years of Learning Science
             </h1>
             
-            <p className="text-base md:text-lg font-cal text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
               Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
             </p>
             
