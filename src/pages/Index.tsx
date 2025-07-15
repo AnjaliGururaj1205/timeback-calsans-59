@@ -216,6 +216,55 @@ const Index = () => {
           <p className="text-lg md:text-xl font-cal leading-relaxed max-w-3xl" style={{ color: '#0f33bb' }}>
             TimeBack is the AI-powered EducationOS behind Alpha schools, empowering kids to master their academics in just 2 hours a day—freeing up the rest of the day for what they love. Built on learning science, it generates personalized lessons, optimal lesson plans, and AI coaching to create self-driven learners. Independent standardized tests confirm learning gains up to 10× faster.
           </p>
+          
+          {/* Bubble Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <Button 
+              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#0f33bb'
+              }}
+            >
+              Parent
+            </Button>
+            <Button 
+              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#0f33bb'
+              }}
+            >
+              Government
+            </Button>
+            <Button 
+              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#0f33bb'
+              }}
+            >
+              Philanthropist
+            </Button>
+            <Button 
+              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#0f33bb'
+              }}
+            >
+              School
+            </Button>
+            <Button 
+              className="h-12 px-6 font-semibold rounded-full transition-all duration-200 hover:scale-105 font-cal"
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#0f33bb'
+              }}
+            >
+              Entrepreneur
+            </Button>
+          </div>
         </div>
       </div>
 
