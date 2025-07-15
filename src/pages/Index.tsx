@@ -326,51 +326,117 @@ const Index = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-20" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="max-w-6xl mx-auto text-center space-y-16">
+      <div className="min-h-screen flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-            Hear from Timeback families
+            Real families, real results
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {/* Testimonial 1 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-              <div className="aspect-[4/5] bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+        </div>
+        
+        <div className="relative h-96 md:h-[500px]">
+          <div 
+            className="flex gap-6 transition-transform duration-300 ease-out"
+            style={{ transform: 'translateX(0)' }}
+            onMouseMove={(e) => {
+              const container = e.currentTarget;
+              const rect = container.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const containerWidth = rect.width;
+              const scrollAmount = ((x / containerWidth) - 0.5) * -200;
+              container.style.transform = `translateX(${scrollAmount}px)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateX(0)';
+            }}
+          >
+            {/* Duplicate testimonials for infinite scroll effect */}
+            {[...Array(3)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-6 shrink-0">
+                {/* Testimonial 1 */}
+                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
+                  <div className="h-full bg-gradient-to-br from-blue-100 to-blue-200 flex flex-col justify-between p-8">
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center space-y-6">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
+                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>95%</div>
+                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Improved Test Scores</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Sarah Martinez</h3>
+                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>Middle School Student</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-white font-cal text-lg font-normal">Sarah</h3>
-                <p className="text-white/90 font-cal text-sm">Middle School Student</p>
-              </div>
-            </div>
 
-            {/* Testimonial 2 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-              <div className="aspect-[4/5] bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                {/* Testimonial 2 */}
+                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
+                  <div className="h-full bg-gradient-to-br from-purple-100 to-purple-200 flex flex-col justify-between p-8">
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center space-y-6">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
+                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>2 Hours</div>
+                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Daily Study Time</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Maria Rodriguez</h3>
+                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>High School Parent</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-white font-cal text-lg font-normal">Maria</h3>
-                <p className="text-white/90 font-cal text-sm">High School Parent</p>
-              </div>
-            </div>
 
-            {/* Testimonial 3 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-              <div className="aspect-[4/5] bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-l-[12px] border-l-blue-600 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
+                {/* Testimonial 3 */}
+                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
+                  <div className="h-full bg-gradient-to-br from-green-100 to-green-200 flex flex-col justify-between p-8">
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center space-y-6">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
+                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>A+ Average</div>
+                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Grade Improvement</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>James Wilson</h3>
+                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>Middle School Student</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Testimonial 4 */}
+                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
+                  <div className="h-full bg-gradient-to-br from-yellow-100 to-orange-200 flex flex-col justify-between p-8">
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center space-y-6">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
+                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>1200→1480</div>
+                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>SAT Score Jump</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Emma Thompson</h3>
+                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>High School Student</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-white font-cal text-lg font-normal">James</h3>
-                <p className="text-white/90 font-cal text-sm">Middle School Student</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
