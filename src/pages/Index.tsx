@@ -306,9 +306,9 @@ const Index = () => {
       {/* Learning Science Section - Dashboard Style */}
       <section className="px-6 py-20 bg-surface-primary" aria-labelledby="science-heading">
         <div className="max-w-6xl mx-auto">
-          {/* Tab Navigation */}
+          {/* Tab Navigation - Centered */}
           <div className="border-b border-border bg-surface-primary mb-12">
-            <nav className="flex space-x-8 overflow-x-auto" role="tablist">
+            <nav className="flex justify-center space-x-8 overflow-x-auto" role="tablist">
               {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
                 <button
                   key={index}
@@ -316,7 +316,7 @@ const Index = () => {
                   aria-selected={index === 0}
                   className={`py-4 px-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200 font-system ${
                     index === 0
-                      ? "border-warning text-text-primary"
+                      ? "border-brand-secondary text-text-primary"
                       : "border-transparent text-text-secondary hover:text-text-primary"
                   }`}
                 >
@@ -326,8 +326,8 @@ const Index = () => {
             </nav>
           </div>
 
-          {/* Content Section */}
-          <div className="text-center mb-12">
+          {/* Content Section - Centered */}
+          <div className="text-center mb-12 max-w-4xl mx-auto">
             <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
               Built on 40 Years of Learning Science
             </h2>
@@ -341,23 +341,25 @@ const Index = () => {
               </p>
             </div>
 
-            <button className="text-warning hover:text-warning/80 font-medium transition-colors duration-200 font-system">
+            <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
               Read the Full White Paper
             </button>
           </div>
           
-          {/* Video/Content Area - Dashboard Style */}
-          <div className="bg-surface-secondary rounded-2xl p-8 shadow-sm border border-border">
-            <div className="aspect-video bg-surface-tertiary rounded-xl flex items-center justify-center relative overflow-hidden">
-              {/* Video placeholder matching dashboard style */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+          {/* Video/Content Area - Dashboard Style and Centered */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-surface-secondary rounded-2xl p-8 shadow-sm border border-border">
+              <div className="aspect-video bg-surface-tertiary rounded-xl flex items-center justify-center relative overflow-hidden">
+                {/* Video placeholder matching dashboard style */}
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-text-secondary font-medium text-lg font-system">Educational Research Video</p>
+                  <p className="text-text-secondary/80 text-sm mt-2 font-system">Click to play</p>
                 </div>
-                <p className="text-text-secondary font-medium text-lg font-system">Educational Research Video</p>
-                <p className="text-text-secondary/80 text-sm mt-2 font-system">Click to play</p>
               </div>
             </div>
           </div>

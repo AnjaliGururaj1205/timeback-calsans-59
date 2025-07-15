@@ -16,7 +16,7 @@ const Dashboard = () => {
       {/* Header with navigation tabs */}
       <div className="border-b border-border bg-surface-primary">
         <div className="max-w-6xl mx-auto px-6">
-          <nav className="flex space-x-8 overflow-x-auto" role="tablist">
+          <nav className="flex justify-center space-x-8 overflow-x-auto" role="tablist">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -25,7 +25,7 @@ const Dashboard = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`py-4 px-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200 ${
                   tab === activeTab
-                    ? "border-warning text-text-primary"
+                    ? "border-brand-secondary text-text-primary"
                     : "border-transparent text-text-secondary hover:text-text-primary"
                 }`}
               >
@@ -52,7 +52,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <button className="text-warning hover:text-warning/80 font-medium transition-colors duration-200">
+          <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200">
             View everything we test
           </button>
         </div>
