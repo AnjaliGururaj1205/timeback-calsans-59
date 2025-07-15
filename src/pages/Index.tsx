@@ -18,6 +18,7 @@ const Index = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
   const aboutRef = useRef<HTMLDivElement>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
   const fullText = "COMING IN 2026";
 
   useEffect(() => {
@@ -225,6 +226,7 @@ const Index = () => {
                 backgroundColor: '#ffffff', 
                 color: '#0f33bb'
               }}
+              onClick={() => parentRef.current?.scrollIntoView({ behavior: 'smooth' })}
             >
               Parent
             </Button>
@@ -264,6 +266,45 @@ const Index = () => {
             >
               Entrepreneur
             </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Parent Section */}
+      <div ref={parentRef} className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
+        <div className="max-w-6xl mx-auto text-center space-y-12">
+          <h2 className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+            What 2 Hours a Day Can Do
+          </h2>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="text-center">
+              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
+                99th
+              </div>
+              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
+                Percentile Growth & Achievement
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
+                1535
+              </div>
+              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
+                Average SAT
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-5xl md:text-6xl font-bold font-cal mb-2" style={{ color: '#0f33bb' }}>
+                2x to 4x
+              </div>
+              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
+                Faster Learning
+              </p>
+            </div>
           </div>
         </div>
       </div>
