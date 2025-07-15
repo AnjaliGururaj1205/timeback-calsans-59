@@ -368,6 +368,24 @@ const Index = () => {
                 </button>
               </>
             )}
+
+            {activeTab === 2 && (
+              <>
+                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
+                  Learning That Adapts to Your Child — Not the Other Way Around
+                </h2>
+                
+                <div className="space-y-2 mb-8">
+                  <p className="text-text-secondary font-system">
+                    No two kids learn the same way — so why teach them the same way? Timeback creates a personalized, adaptive learning path for each child, adjusting every lesson in real time to meet their exact needs.
+                  </p>
+                </div>
+
+                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
+                  Read the Full White Paper
+                </button>
+              </>
+            )}
           </div>
           
           {/* Video/Content Area - Dashboard Style and Centered */}
