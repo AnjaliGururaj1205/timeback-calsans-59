@@ -280,40 +280,42 @@ const Index = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
                   99th
                 </div>
               </div>
-              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Percentile Growth & Achievement
               </p>
             </div>
             
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
                   1535
                 </div>
               </div>
-              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Average SAT
               </p>
             </div>
             
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full mb-4" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-3xl md:text-4xl font-bold font-cal text-white">
+              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
+                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
                   2x to 4x
                 </div>
               </div>
-              <div className="w-16 h-0.5 mx-auto mb-4" style={{ backgroundColor: '#1abeff' }}></div>
               <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
                 Faster Learning
               </p>
             </div>
+          </div>
+          
+          {/* Continuous line below all bubbles */}
+          <div className="w-full max-w-4xl mx-auto">
+            <div className="h-0.5 w-full" style={{ backgroundColor: '#1abeff' }}></div>
           </div>
         </div>
       </div>
