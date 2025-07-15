@@ -547,6 +547,83 @@ const Index = () => {
 
 
       {/* Background decoration */}
+      {/* Final CTA Section */}
+      <section className="relative py-24 bg-gradient-to-b from-surface-primary via-gray-900 to-black text-center overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-cal">
+            Unlock your peak potential
+          </h2>
+          
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 font-system">
+            For people who want more
+          </p>
+          
+          <Button 
+            size="lg" 
+            className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
+          >
+            Start testing
+          </Button>
+        </div>
+        
+        {/* Timeback Branding Section */}
+        <div className="mt-16 py-16 border-t border-gray-800">
+          <div className="max-w-6xl mx-auto px-4">
+            <h3 className="text-6xl md:text-8xl lg:text-9xl font-bold text-center">
+              <span className="bg-gradient-to-r from-brand-secondary via-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                timeback
+              </span>
+            </h3>
+            
+            {/* Footer Links */}
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-8 text-left max-w-4xl mx-auto">
+              <div className="space-y-4">
+                <h4 className="text-white font-semibold">How It Works</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">What's Included</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Get Started</a></li>
+                </ul>
+              </div>
+              
+              <div className="space-y-4">
+                <h4 className="text-white font-semibold">Learning</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Science</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Research</a></li>
+                </ul>
+              </div>
+              
+              <div className="space-y-4">
+                <h4 className="text-white font-semibold">Company</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                </ul>
+              </div>
+              
+              <div className="space-y-4">
+                <h4 className="text-white font-semibold">Social</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+              </div>
+              
+              <div className="space-y-4">
+                <h4 className="text-white font-semibold">Legal</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      </section>
+
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
