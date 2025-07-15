@@ -279,64 +279,84 @@ const Index = () => {
       </div>
 
       {/* Results Section */}
-      <div className="bg-white flex flex-col items-center justify-center px-4 py-16">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
+      <div className="bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
+        {/* Floating background elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-100 rounded-full opacity-30 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 animate-pulse delay-500"></div>
+        
+        <div className="max-w-6xl mx-auto text-center space-y-16 relative z-10">
           
-          <div className="flex flex-col gap-20 md:gap-24 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
             {/* Stat 1 */}
-            <div className="text-center space-y-4">
-              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                1535
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  1535
+                </div>
+                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                  Average SAT Score
+                </div>
+                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                  Average SAT score for seniors at Alpha — the highest in Texas
+                </p>
               </div>
-              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                Average SAT Score
-              </div>
-              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
-                Average SAT score for seniors at Alpha — the highest in Texas
-              </p>
             </div>
 
             {/* Stat 2 */}
-            <div className="text-center space-y-4">
-              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                99th %ile
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
+                  99th %ile
+                </div>
+                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                  Academic Performance
+                </div>
+                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                  Students are outperforming 99% of peers in both academic achievement and growth
+                </p>
               </div>
-              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                Academic Performance
-              </div>
-              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
-                Students are outperforming 99% of peers in both academic achievement and growth
-              </p>
             </div>
 
             {/* Stat 3 */}
-            <div className="text-center space-y-4">
-              <div className="text-4xl md:text-5xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                4x Faster
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  4x Faster
+                </div>
+                <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
+                  Learning Speed
+                </div>
+                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                  Students using Timeback are learning up to 4x faster than traditional schools
+                </p>
               </div>
-              <div className="text-xl md:text-2xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-                Learning Speed
-              </div>
-              <p className="text-base md:text-lg font-cal font-normal leading-relaxed" style={{ color: '#0f33bb' }}>
-                Students using Timeback are learning up to 4x faster than traditional schools
-              </p>
             </div>
           </div>
         </div>
       </div>
 
       {/* How We Do It Section */}
-      <div className="bg-white px-6 py-16">
-        <div className="max-w-6xl mx-auto">
+      <div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 px-6 py-20 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-20 right-20 w-60 h-60 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-br from-green-200 to-teal-200 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           {/* Tab Navigation */}
-          <div className="flex border-b border-gray-200 mb-12 overflow-x-auto">
+          <div className="flex border-b border-gray-200 mb-16 overflow-x-auto bg-white/60 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
             {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
               <button
                 key={index}
-                className={`px-6 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
+                className={`px-6 py-4 text-sm font-medium whitespace-nowrap rounded-xl transition-all duration-300 ${
                   index === 0
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105'
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
                 }`}
               >
                 {tab}
@@ -346,29 +366,30 @@ const Index = () => {
 
           {/* Content Section */}
           <div className="text-center mb-16">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-8">
               Built on 40 Years of Learning Science
             </h1>
             
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
               Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
             </p>
             
             {/* Video Placeholder */}
-            <div className="max-w-4xl mx-auto mb-8">
-              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+            <div className="max-w-4xl mx-auto mb-12">
+              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center shadow-2xl border border-white/50 backdrop-blur-sm group hover:shadow-3xl transition-all duration-300">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600 font-medium">Video Placeholder</p>
+                  <p className="text-gray-600 font-medium text-lg">Educational Research Video</p>
+                  <p className="text-gray-500 text-sm mt-2">Click to play</p>
                 </div>
               </div>
             </div>
             
-            <button className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
               Read the Full White Paper →
             </button>
           </div>
