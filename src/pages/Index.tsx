@@ -272,50 +272,49 @@ const Index = () => {
 
       {/* Parent Section */}
       <div ref={parentRef} className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
-        <div className="max-w-6xl mx-auto text-center space-y-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-cal mt-8" style={{ color: '#0f33bb' }}>
-            What 2 Hours a Day Can Do
-          </h2>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
-                  99th
-                </div>
-              </div>
-              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
-                Percentile Growth & Achievement
+        <div className="max-w-4xl mx-auto text-center space-y-16">
+          {/* Main Question */}
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold font-cal" style={{ color: '#0f33bb' }}>
+              Why is school still stuck in the past?
+            </h2>
+            <p className="text-lg md:text-xl font-cal max-w-3xl mx-auto" style={{ color: '#0f33bb' }}>
+              With all the technology and science we have today, why do students still spend 7 hours a day in class — and fall behind anyway?
+            </p>
+          </div>
+
+          {/* Questions Section */}
+          <div className="bg-orange-500 rounded-3xl p-12 md:p-16 space-y-8">
+            <div className="space-y-6">
+              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
+                What if school only took 2 hours?
               </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
-                  1535
-                </div>
-              </div>
-              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
-                Average SAT
+              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
+                Would students actually learn more?
               </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-40 h-24 md:w-48 md:h-28 rounded-2xl mb-6" style={{ backgroundColor: '#1abeff' }}>
-                <div className="text-2xl md:text-3xl font-bold font-cal text-white">
-                  2x to 4x
-                </div>
-              </div>
-              <p className="text-lg font-cal" style={{ color: '#1abeff' }}>
-                Faster Learning
+              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
+                How do we know if students are truly learning?
+              </p>
+              <p className="text-2xl md:text-3xl font-bold font-cal text-white leading-relaxed">
+                What do they actually need to succeed?
               </p>
             </div>
           </div>
-          
-          {/* Continuous line below all bubbles */}
-          <div className="w-full max-w-4xl mx-auto">
-            <div className="h-0.5 w-full" style={{ backgroundColor: '#1abeff' }}></div>
+
+          {/* Results Section */}
+          <div className="bg-black rounded-3xl p-12 md:p-16 space-y-8">
+            <div className="space-y-6">
+              <p className="text-2xl md:text-3xl font-bold font-cal text-white">
+                The questions are simple.
+              </p>
+              <p className="text-2xl md:text-3xl font-bold font-cal">
+                <span className="text-white">The results? </span>
+                <span className="text-orange-500">Unbelievable.</span>
+              </p>
+              <p className="text-3xl md:text-4xl font-bold font-cal text-white mt-12">
+                Education deserves a revolution.
+              </p>
+            </div>
           </div>
         </div>
       </div>
