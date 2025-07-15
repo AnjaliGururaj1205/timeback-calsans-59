@@ -560,7 +560,7 @@ const Index = () => {
           
           <Button 
             size="lg" 
-            className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
+            className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 font-system"
           >
             Let's Talk About My Kid
           </Button>
