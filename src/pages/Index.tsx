@@ -241,14 +241,14 @@ const Index = () => {
       </section>
 
       {/* Section Divider with improved semantics */}
-      <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-12 bg-surface-secondary border-y border-border" aria-labelledby="glance-heading">
-        <h2 id="glance-heading" className="text-2xl md:text-3xl text-center font-cal text-text-brand">
+      <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-6 bg-surface-secondary border-y border-border" aria-labelledby="glance-heading">
+        <h2 id="glance-heading" className="text-xl md:text-2xl text-center font-cal text-text-brand">
           Timeback at a glance
         </h2>
       </section>
 
       {/* Stats Section with improved accessibility and contrast */}
-      <section className="bg-surface-primary px-4 py-20" aria-labelledby="stats-heading">
+      <section className="bg-surface-primary px-4 py-8" aria-labelledby="stats-heading">
         <div className="max-w-6xl mx-auto text-center space-y-16">
           <h2 id="stats-heading" className="sr-only">Key Performance Statistics</h2>
           
