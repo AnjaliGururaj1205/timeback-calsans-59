@@ -298,7 +298,7 @@ const Index = () => {
                 <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
                   Average SAT Score
                 </div>
-                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                <p className="text-base md:text-lg leading-relaxed text-gray-700">
                   Average SAT score for seniors at Alpha — the highest in Texas
                 </p>
               </div>
@@ -314,7 +314,7 @@ const Index = () => {
                 <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
                   Academic Performance
                 </div>
-                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                <p className="text-base md:text-lg leading-relaxed text-gray-700">
                   Students are outperforming 99% of peers in both academic achievement and growth
                 </p>
               </div>
@@ -330,7 +330,7 @@ const Index = () => {
                 <div className="text-xl md:text-2xl font-cal font-semibold mb-3" style={{ color: '#0f33bb' }}>
                   Learning Speed
                 </div>
-                <p className="text-base md:text-lg font-cal leading-relaxed text-gray-700">
+                <p className="text-base md:text-lg leading-relaxed text-gray-700">
                   Students using Timeback are learning up to 4x faster than traditional schools
                 </p>
               </div>
@@ -383,13 +383,13 @@ const Index = () => {
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600 font-cal font-medium text-lg">Educational Research Video</p>
-                  <p className="text-gray-500 font-cal text-sm mt-2">Click to play</p>
+                  <p className="text-gray-600 font-medium text-lg">Educational Research Video</p>
+                  <p className="text-gray-500 text-sm mt-2">Click to play</p>
                 </div>
               </div>
             </div>
             
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-cal font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
               Read the Full White Paper →
             </button>
           </div>
