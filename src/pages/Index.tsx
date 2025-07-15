@@ -273,7 +273,7 @@ const Index = () => {
 
       {/* Banner */}
       <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-8" style={{ backgroundColor: '#e6f7ff' }}>
-        <h2 className="text-2xl md:text-3xl text-center" style={{ color: '#0f33bb' }}>
+        <h2 className="text-2xl md:text-3xl text-center font-cal" style={{ color: '#0f33bb' }}>
           Timeback at a glance
         </h2>
       </div>
@@ -287,9 +287,9 @@ const Index = () => {
         
         <div className="max-w-6xl mx-auto text-center space-y-16 relative z-10">
           
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center">
             {/* Stat 1 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -305,7 +305,7 @@ const Index = () => {
             </div>
 
             {/* Stat 2 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
@@ -321,7 +321,7 @@ const Index = () => {
             </div>
 
             {/* Stat 3 */}
-            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50">
+            <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/50 max-w-md">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
@@ -366,11 +366,11 @@ const Index = () => {
 
           {/* Content Section */}
           <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold font-cal bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-8">
               Built on 40 Years of Learning Science
             </h1>
             
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
+            <p className="text-base md:text-lg font-cal text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-white/50">
               Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction. Alpha's 99th percentile results align perfectly with this finding. AI tutoring can theoretically provide this one-on-one experience at scale.
             </p>
             
@@ -383,13 +383,13 @@ const Index = () => {
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600 font-medium text-lg">Educational Research Video</p>
-                  <p className="text-gray-500 text-sm mt-2">Click to play</p>
+                  <p className="text-gray-600 font-cal font-medium text-lg">Educational Research Video</p>
+                  <p className="text-gray-500 font-cal text-sm mt-2">Click to play</p>
                 </div>
               </div>
             </div>
             
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-cal font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg">
               Read the Full White Paper →
             </button>
           </div>
