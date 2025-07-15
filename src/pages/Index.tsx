@@ -17,6 +17,7 @@ const Index = () => {
   const [typewriterText, setTypewriterText] = useState("");
   const [isVisible, setIsVisible] = useState(true);
   const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
   const aboutRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const fullText = "COMING IN 2026";
@@ -313,9 +314,10 @@ const Index = () => {
                 <button
                   key={index}
                   role="tab"
-                  aria-selected={index === 0}
+                  aria-selected={index === activeTab}
+                  onClick={() => setActiveTab(index)}
                   className={`py-4 px-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200 font-system ${
-                    index === 0
+                    index === activeTab
                       ? "border-brand-secondary text-text-primary"
                       : "border-transparent text-text-secondary hover:text-text-primary"
                   }`}
@@ -328,22 +330,44 @@ const Index = () => {
 
           {/* Content Section - Centered */}
           <div className="text-center mb-12 max-w-4xl mx-auto">
-            <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
-              Built on 40 Years of Learning Science
-            </h2>
-            
-            <div className="space-y-2 mb-8">
-              <p className="text-text-secondary font-system">
-                Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction.
-              </p>
-              <p className="text-text-secondary font-system">
-                Alpha's 99th percentile results align perfectly with this finding. <span className="font-semibold text-text-primary">AI tutoring can theoretically provide this one-on-one experience at scale.</span>
-              </p>
-            </div>
+            {activeTab === 0 && (
+              <>
+                <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
+                  Built on 40 Years of Learning Science
+                </h2>
+                
+                <div className="space-y-2 mb-8">
+                  <p className="text-text-secondary font-system">
+                    Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction.
+                  </p>
+                  <p className="text-text-secondary font-system">
+                    Alpha's 99th percentile results align perfectly with this finding. <span className="font-semibold text-text-primary">AI tutoring can theoretically provide this one-on-one experience at scale.</span>
+                  </p>
+                </div>
 
-            <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-              Read the Full White Paper
-            </button>
+                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
+                  Read the Full White Paper
+                </button>
+              </>
+            )}
+            
+            {activeTab === 1 && (
+              <>
+                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
+                  Confidence Through Competence
+                </h2>
+                
+                <div className="space-y-2 mb-8">
+                  <p className="text-text-secondary font-system">
+                    Mastery-based learning has been proven in decades of research to dramatically improve student outcomes — especially when combined with personalized instruction. That's the engine behind Timeback.
+                  </p>
+                </div>
+
+                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
+                  Read the Full White Paper
+                </button>
+              </>
+            )}
           </div>
           
           {/* Video/Content Area - Dashboard Style and Centered */}
