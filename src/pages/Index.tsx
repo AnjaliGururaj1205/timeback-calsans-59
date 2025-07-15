@@ -279,8 +279,8 @@ const Index = () => {
       </div>
 
       {/* Results Section */}
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 pt-20">
-        <div className="max-w-6xl mx-auto text-center space-y-16">
+      <div className="bg-white flex flex-col items-center justify-center px-4 py-16">
+        <div className="max-w-6xl mx-auto text-center space-y-12">
           
           <div className="flex flex-col gap-20 md:gap-24 max-w-2xl mx-auto">
             {/* Stat 1 */}
