@@ -20,9 +20,12 @@ import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
 import { TrustIndicators } from "@/components/TrustIndicators";
 import { FAQSection } from "@/components/FAQSection";
 import { FloatingFAQHelper } from "@/components/FloatingFAQHelper";
+import { FloatingNavigation } from "@/components/FloatingNavigation";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
+import { Home, Users, BarChart3, HelpCircle, Star, Map, Zap, BookOpen, Award } from "lucide-react";
 
 // Email validation schema
 const emailSchema = z.object({
@@ -39,6 +42,20 @@ const Index = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const fullText = "COMING IN 2026";
+
+  // Use scroll animation hook
+  useScrollAnimation();
+
+  // Navigation sections for floating nav
+  const navigationSections = [
+    { id: 'hero', label: 'Home', icon: <Home className="w-4 h-4" /> },
+    { id: 'about', label: 'About', icon: <BookOpen className="w-4 h-4" /> },
+    { id: 'proof', label: 'Results', icon: <BarChart3 className="w-4 h-4" /> },
+    { id: 'map', label: 'Map', icon: <Map className="w-4 h-4" /> },
+    { id: 'technical', label: 'Technology', icon: <Zap className="w-4 h-4" /> },
+    { id: 'testimonials', label: 'Stories', icon: <Star className="w-4 h-4" /> },
+    { id: 'faq', label: 'FAQ', icon: <HelpCircle className="w-4 h-4" /> },
+  ];
 
   useEffect(() => {
     let currentIndex = 0;
@@ -176,9 +193,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-primary">
-      {/* Main Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-brand-primary page-transition">
+      {/* Floating Navigation */}
+      <FloatingNavigation sections={navigationSections} />
+      
+      {/* Hero Section */}
+      <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-4 py-12 section-connector">
         <div className="max-w-4xl mx-auto text-center space-y-8 lg:space-y-12">
           {/* Logo */}
           <div className="animate-fade-in">
@@ -245,10 +265,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* About Section with improved spacing and hierarchy */}
-      <section ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary">
+      <section id="about" ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary section-connector animate-on-scroll">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
             About
@@ -286,7 +306,7 @@ const Index = () => {
       </section>
 
       {/* Comprehensive Proof Section */}
-      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="proof-heading">
+      <section id="proof" className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20 section-connector animate-on-scroll" aria-labelledby="proof-heading">
         <div className="max-w-7xl mx-auto space-y-20">
           
           {/* Section Header */}
