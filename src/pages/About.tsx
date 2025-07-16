@@ -50,6 +50,44 @@ const About = () => {
             </a> schools, empowering kids to master their academics in just 2 hours a day—freeing up the rest of the day for what they love. Built on learning science, it generates personalized lessons, optimal lesson plans, and AI coaching to create self-driven learners. Independent standardized tests confirm learning gains up to 10× faster.
           </p>
         </div>
+
+        {/* Interactive Buttons */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 animate-fade-in-up delay-400">
+          <button 
+            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Timeback for my kid
+          </button>
+          
+          <button 
+            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Timeback for my country
+          </button>
+          
+          <button 
+            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Support Timeback
+          </button>
+          
+          <button 
+            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Timeback for my school
+          </button>
+          
+          <button 
+            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 md:col-span-2 lg:col-span-1"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Want to start my own Timeback school
+          </button>
+        </div>
       </div>
     </div>
   );
