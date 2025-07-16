@@ -20,6 +20,7 @@ import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
 import { TrustIndicators } from "@/components/TrustIndicators";
 import { FAQSection } from "@/components/FAQSection";
 import { FloatingFAQHelper } from "@/components/FloatingFAQHelper";
+import { MultiStepForm } from "@/components/MultiStepForm";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -527,12 +528,7 @@ const Index = () => {
             For people who want more
           </p>
           
-          <Button 
-            size="lg" 
-            className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 font-system"
-          >
-            Let's Talk About My Kid
-          </Button>
+          <MultiStepForm />
         </div>
         
         {/* Timeback Branding Section */}
