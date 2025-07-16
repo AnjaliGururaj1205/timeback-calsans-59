@@ -96,8 +96,8 @@ export const InteractiveComparison: React.FC = () => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="bg-brand-primary/5 rounded-lg p-3 border border-brand-primary/20">
-                  <div className="text-lg font-poppins font-semibold text-brand-primary">Timeback AI</div>
+                <div className="bg-brand-secondary/5 rounded-lg p-3 border border-brand-secondary/20">
+                  <div className="text-lg font-poppins font-semibold text-brand-secondary">Timeback AI</div>
                   <div className="text-sm text-text-secondary font-poppins">Advanced Learning Engine</div>
                 </div>
               </div>
@@ -110,8 +110,8 @@ export const InteractiveComparison: React.FC = () => {
                   <div 
                     className={`grid grid-cols-3 gap-4 p-4 rounded-lg border transition-all duration-300 cursor-pointer ${
                       expandedFeature === item.feature
-                        ? 'bg-brand-primary/5 border-brand-primary/20 shadow-md'
-                        : 'bg-surface-secondary border-border hover:bg-surface-tertiary hover:border-brand-primary/20'
+                        ? 'bg-brand-secondary/5 border-brand-secondary/20 shadow-md'
+                        : 'bg-surface-secondary border-border hover:bg-surface-tertiary hover:border-brand-secondary/20'
                     } ${animatingFeature === item.feature ? 'scale-[1.01]' : ''}`}
                     onClick={() => handleFeatureClick(item.feature)}
                   >
@@ -119,7 +119,7 @@ export const InteractiveComparison: React.FC = () => {
                       <span className="font-medium text-text-primary font-poppins">{item.feature}</span>
                       {item.details && (
                         expandedFeature === item.feature 
-                          ? <ChevronUp className="w-4 h-4 text-brand-primary" />
+                          ? <ChevronUp className="w-4 h-4 text-brand-secondary" />
                           : <ChevronDown className="w-4 h-4 text-text-secondary" />
                       )}
                     </div>
@@ -136,9 +136,9 @@ export const InteractiveComparison: React.FC = () => {
                     </div>
                     
                     <div className="flex items-center justify-center space-x-2">
-                      <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-primary' : 'text-success'}`} />
+                      <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-secondary' : 'text-success'}`} />
                       <span className={`text-sm text-center font-medium font-poppins ${
-                        item.timeback.highlight ? 'text-brand-primary' : 'text-text-primary'
+                        item.timeback.highlight ? 'text-brand-secondary' : 'text-text-primary'
                       }`}>
                         {item.timeback.value}
                       </span>
@@ -147,7 +147,7 @@ export const InteractiveComparison: React.FC = () => {
 
                   {/* Expanded Details */}
                   {expandedFeature === item.feature && item.details && (
-                    <div className="mt-2 p-4 bg-brand-primary/5 rounded-lg border border-brand-primary/20 animate-fade-in">
+                    <div className="mt-2 p-4 bg-brand-secondary/5 rounded-lg border border-brand-secondary/20 animate-fade-in">
                       <p className="text-text-primary leading-relaxed font-poppins">
                         {item.details}
                       </p>

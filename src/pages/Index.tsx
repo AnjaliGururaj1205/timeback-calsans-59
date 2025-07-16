@@ -303,12 +303,12 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="group bg-gradient-to-br from-card via-surface-secondary to-brand-accent/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
               <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-brand-accent">SAT</span>
+                <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-brand-secondary">SAT</span>
                 </div>
                 <AnimatedCounter 
                   end={1535} 
-                  className="text-5xl md:text-6xl font-cal font-bold text-brand-accent"
+                  className="text-5xl md:text-6xl font-cal font-bold text-brand-secondary"
                 />
                 <h3 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
                   Average SAT Score
