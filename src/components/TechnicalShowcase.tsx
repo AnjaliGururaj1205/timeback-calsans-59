@@ -104,7 +104,7 @@ export const TechnicalShowcase: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
+        <h3 className="text-2xl md:text-3xl font-poppins font-bold text-text-brand">
           Technical Capabilities
         </h3>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
@@ -116,13 +116,13 @@ export const TechnicalShowcase: React.FC = () => {
         {capabilities.map((capability) => (
           <Card
             key={capability.id}
-            className={`group cursor-pointer transition-all duration-500 hover:scale-105 ${
-              hoveredCard === capability.id ? 'shadow-2xl' : 'shadow-lg hover:shadow-xl'
+            className={`group cursor-pointer transition-all duration-300 hover:scale-[1.02] bg-surface-primary border ${
+              hoveredCard === capability.id ? 'shadow-lg' : 'shadow-sm hover:shadow-md'
             } ${
               selectedCapability === capability.id 
-                ? 'ring-2 ring-brand-accent border-brand-accent/50' 
-                : 'border-border/50 hover:border-border'
-            }`}
+                ? 'ring-2 ring-brand-primary border-brand-primary/30' 
+                : 'border-border hover:border-brand-primary/20'
+            } rounded-lg overflow-hidden`}
             onMouseEnter={() => setHoveredCard(capability.id)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => setSelectedCapability(
@@ -130,19 +130,19 @@ export const TechnicalShowcase: React.FC = () => {
             )}
           >
             <div className="p-6 space-y-4">
-              {/* Icon with gradient background */}
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${capability.color} p-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                <div className="text-white">
+              {/* Icon with solid background */}
+              <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/15 transition-colors duration-300">
+                <div className="text-brand-primary">
                   {capability.icon}
                 </div>
               </div>
 
               {/* Title and description */}
-              <div className="space-y-2">
-                <h4 className="text-lg font-cal font-semibold text-text-brand group-hover:text-brand-accent transition-colors">
+              <div className="space-y-3">
+                <h4 className="text-lg font-poppins font-semibold text-text-primary group-hover:text-brand-primary transition-colors">
                   {capability.title}
                 </h4>
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-text-secondary leading-relaxed font-poppins">
                   {capability.description}
                 </p>
               </div>
@@ -150,19 +150,19 @@ export const TechnicalShowcase: React.FC = () => {
               {/* Metrics */}
               <div className="grid grid-cols-1 gap-2">
                 {capability.metrics.map((metric, index) => (
-                  <div key={index} className="flex justify-between items-center text-xs">
+                  <div key={index} className="flex justify-between items-center text-xs font-poppins">
                     <span className="text-text-secondary">{metric.label}</span>
-                    <span className="font-semibold text-text-brand">{metric.value}</span>
+                    <span className="font-semibold text-text-primary">{metric.value}</span>
                   </div>
                 ))}
               </div>
 
               {/* Expand indicator */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-2 border-t border-border/50">
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="text-brand-accent hover:text-brand-secondary hover:bg-brand-accent/10 p-0"
+                  className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary/5 p-0 font-poppins"
                 >
                   Learn more
                   <ChevronRight className={`w-4 h-4 ml-1 transition-transform ${
@@ -177,7 +177,7 @@ export const TechnicalShowcase: React.FC = () => {
 
       {/* Detailed view */}
       {selectedCapability && (
-        <Card className="bg-gradient-to-br from-brand-accent/5 to-brand-secondary/5 border border-brand-accent/20 rounded-3xl p-8 shadow-xl animate-fade-in">
+        <Card className="bg-surface-secondary border border-border rounded-lg p-8 shadow-lg animate-fade-in">
           {(() => {
             const capability = capabilities.find(c => c.id === selectedCapability);
             if (!capability) return null;
@@ -185,26 +185,26 @@ export const TechnicalShowcase: React.FC = () => {
             return (
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${capability.color} p-3 flex items-center justify-center`}>
-                    <div className="text-white scale-75">
+                  <div className="w-12 h-12 rounded-lg bg-brand-primary/10 p-3 flex items-center justify-center">
+                    <div className="text-brand-primary scale-75">
                       {capability.icon}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-cal font-bold text-text-brand">{capability.title}</h4>
-                    <p className="text-text-secondary">Technical Deep Dive</p>
+                    <h4 className="text-xl font-poppins font-bold text-text-primary">{capability.title}</h4>
+                    <p className="text-text-secondary font-poppins">Technical Deep Dive</p>
                   </div>
                 </div>
                 
-                <p className="text-text-brand leading-relaxed">
+                <p className="text-text-primary leading-relaxed font-poppins">
                   {capability.technicalDetail}
                 </p>
                 
                 <div className="grid md:grid-cols-3 gap-4">
                   {capability.metrics.map((metric, index) => (
-                    <div key={index} className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                      <div className="text-2xl font-cal font-bold text-brand-accent">{metric.value}</div>
-                      <div className="text-sm text-text-secondary">{metric.label}</div>
+                    <div key={index} className="bg-surface-primary border border-border rounded-lg p-4">
+                      <div className="text-2xl font-poppins font-bold text-brand-primary">{metric.value}</div>
+                      <div className="text-sm text-text-secondary font-poppins">{metric.label}</div>
                     </div>
                   ))}
                 </div>

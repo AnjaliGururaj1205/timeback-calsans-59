@@ -229,7 +229,7 @@ export const AnimatedDiagrams: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
+        <h3 className="text-2xl md:text-3xl font-poppins font-bold text-text-brand">
           Learning Principles in Action
         </h3>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
@@ -247,10 +247,10 @@ export const AnimatedDiagrams: React.FC = () => {
               setIsAnimating(false);
               setAnimationStep(0);
             }}
-            className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
+            className={`px-4 py-2 rounded-lg font-medium font-poppins transition-all duration-300 ${
               selectedDiagram === index
-                ? 'bg-brand-accent text-brand-secondary'
-                : 'bg-surface-secondary/50 text-text-secondary hover:bg-surface-secondary hover:text-text-brand'
+                ? 'bg-brand-primary text-white'
+                : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary'
             }`}
           >
             {diagram.title}
@@ -259,18 +259,18 @@ export const AnimatedDiagrams: React.FC = () => {
       </div>
 
       {/* Main Diagram */}
-      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-3xl shadow-xl">
+      <Card className="bg-surface-primary border border-border rounded-lg shadow-lg">
         <div className="p-8 space-y-6">
           <div className="text-center space-y-2">
-            <h4 className="text-xl font-cal font-bold text-text-brand">
+            <h4 className="text-xl font-poppins font-bold text-text-primary">
               {diagrams[selectedDiagram].title}
             </h4>
-            <p className="text-text-secondary">
+            <p className="text-text-secondary font-poppins">
               {diagrams[selectedDiagram].description}
             </p>
           </div>
 
-          <div className="bg-surface-secondary/30 rounded-2xl p-6 border border-border/30">
+          <div className="bg-surface-secondary rounded-lg p-6 border border-border">
             {renderDiagram()}
           </div>
 
@@ -278,14 +278,14 @@ export const AnimatedDiagrams: React.FC = () => {
             <button
               onClick={startAnimation}
               disabled={isAnimating}
-              className="px-6 py-2 bg-brand-accent text-brand-secondary rounded-xl font-medium hover:bg-brand-secondary hover:text-brand-accent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-2 bg-brand-primary text-white rounded-lg font-medium font-poppins hover:bg-brand-secondary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isAnimating ? 'Playing...' : 'Start Animation'}
             </button>
             <button
               onClick={stopAnimation}
               disabled={!isAnimating}
-              className="px-6 py-2 bg-surface-secondary text-text-brand rounded-xl font-medium hover:bg-border transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-2 bg-surface-secondary text-text-primary rounded-lg font-medium font-poppins hover:bg-surface-tertiary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Stop
             </button>
