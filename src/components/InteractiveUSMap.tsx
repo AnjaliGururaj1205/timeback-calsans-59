@@ -103,7 +103,7 @@ export const InteractiveUSMap: React.FC = () => {
   }, [isDragging, dragStart]);
 
   return (
-    <div className="space-y-8 animate-on-scroll">
+    <div className="space-y-8 animate-on-scroll" id="map">
       <div className="text-center space-y-4">
         <h3 className="text-2xl md:text-3xl font-bold text-text-brand">
           Interactive Performance Map
@@ -161,31 +161,43 @@ export const InteractiveUSMap: React.FC = () => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          {/* US Map Background */}
+          {/* US Map Background - Simplified Geographic Representation */}
           <div 
-            className="absolute inset-0 bg-gradient-to-br from-brand-light/20 to-brand-primary/10 transition-transform duration-200"
+            className="absolute inset-0 transition-transform duration-200"
             style={{
               transform: `scale(${zoomLevel}) translate(${panX / zoomLevel}px, ${panY / zoomLevel}px)`,
-              backgroundImage: `
-                radial-gradient(circle at 20% 80%, hsl(var(--brand-primary) / 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, hsl(var(--brand-secondary) / 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, hsl(var(--brand-glow) / 0.05) 0%, transparent 50%)
-              `
             }}
           >
-            {/* State Outlines (simplified) */}
+            {/* Simplified US Map SVG */}
             <svg 
-              className="absolute inset-0 w-full h-full opacity-20" 
-              viewBox="0 0 100 100" 
+              className="absolute inset-0 w-full h-full" 
+              viewBox="0 0 1000 600" 
               preserveAspectRatio="xMidYMid slice"
             >
-              <path 
-                d="M10,20 L90,20 L90,80 L10,80 Z M30,30 L70,30 L70,70 L30,70 Z" 
-                fill="none" 
-                stroke="hsl(var(--brand-primary))" 
-                strokeWidth="0.5"
-                className="opacity-30"
-              />
+              {/* US States Outline (simplified) */}
+              <g fill="none" stroke="hsl(var(--brand-primary))" strokeWidth="2" opacity="0.3">
+                {/* Continental US outline */}
+                <path d="M 150 150 L 850 150 L 850 450 L 150 450 Z" />
+                {/* State boundaries (simplified grid) */}
+                <line x1="250" y1="150" x2="250" y2="450" />
+                <line x1="350" y1="150" x2="350" y2="450" />
+                <line x1="450" y1="150" x2="450" y2="450" />
+                <line x1="550" y1="150" x2="550" y2="450" />
+                <line x1="650" y1="150" x2="650" y2="450" />
+                <line x1="750" y1="150" x2="750" y2="450" />
+                <line x1="150" y1="225" x2="850" y2="225" />
+                <line x1="150" y1="300" x2="850" y2="300" />
+                <line x1="150" y1="375" x2="850" y2="375" />
+              </g>
+              
+              {/* Background gradient overlay */}
+              <defs>
+                <radialGradient id="mapGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="hsl(var(--brand-primary))" stopOpacity="0.1" />
+                  <stop offset="100%" stopColor="hsl(var(--brand-secondary))" stopOpacity="0.05" />
+                </radialGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#mapGradient)" />
             </svg>
 
             {/* District Markers */}
@@ -199,16 +211,16 @@ export const InteractiveUSMap: React.FC = () => {
                 >
                   <Button
                     onClick={() => handleCityClick(district)}
-                    className="w-4 h-4 min-w-4 min-h-4 rounded-full bg-brand-accent border-2 border-brand-primary hover:bg-brand-primary hover:scale-150 transition-all duration-300 p-0 shadow-md hover:shadow-lg relative"
+                    className="w-6 h-6 min-w-6 min-h-6 rounded-full bg-brand-primary border-2 border-brand-accent hover:bg-brand-accent hover:scale-150 transition-all duration-300 p-0 shadow-md hover:shadow-lg relative"
                     variant="ghost"
                   >
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-text-primary text-text-inverse text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-text-primary text-text-inverse text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
                       {district.city}, {district.state}
                     </div>
                   </Button>
                   
                   {/* Ripple effect for better visibility */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-brand-primary rounded-full animate-ping opacity-30"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 border-2 border-brand-primary rounded-full animate-ping opacity-30"></div>
                 </div>
               );
             })}
@@ -217,7 +229,7 @@ export const InteractiveUSMap: React.FC = () => {
           {/* Map Legend */}
           <div className="absolute top-4 left-4 bg-surface-primary/90 backdrop-blur-sm rounded-lg p-3 shadow-md border border-brand-primary/20">
             <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded-full bg-brand-primary border border-brand-secondary"></div>
+              <div className="w-3 h-3 rounded-full bg-brand-primary border border-brand-accent"></div>
               <span className="text-text-secondary">School Districts</span>
             </div>
             <div className="text-xs text-text-muted mt-1">
@@ -256,7 +268,7 @@ export const InteractiveUSMap: React.FC = () => {
 
       {/* Comparison Results */}
       {selectedDistrict && (
-        <Card className="bg-gradient-to-br from-brand-accent/95 to-surface-secondary border border-brand-primary/30 rounded-3xl p-6 md:p-8 shadow-xl animate-fade-in">
+        <Card className="bg-gradient-to-br from-surface-primary/95 to-surface-secondary border border-brand-primary/30 rounded-3xl p-6 md:p-8 shadow-xl animate-fade-in">
           <div className="space-y-6">
             <div className="flex items-start justify-between">
               <div className="space-y-2">
