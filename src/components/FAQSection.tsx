@@ -107,11 +107,11 @@ const faqData: FAQ[] = [
 ];
 
 const categories = [
-  { id: 'Getting Started', icon: BookOpen, color: 'text-blue-400' },
-  { id: 'Academic Results', icon: GraduationCap, color: 'text-green-400' },
-  { id: 'Technology & Safety', icon: Shield, color: 'text-purple-400' },
-  { id: 'Pricing & Plans', icon: CreditCard, color: 'text-yellow-400' },
-  { id: 'Implementation', icon: Settings, color: 'text-pink-400' }
+  { id: 'Getting Started', icon: BookOpen, color: 'text-brand-primary' },
+  { id: 'Academic Results', icon: GraduationCap, color: 'text-brand-secondary' },
+  { id: 'Technology & Safety', icon: Shield, color: 'text-brand-primary' },
+  { id: 'Pricing & Plans', icon: CreditCard, color: 'text-brand-secondary' },
+  { id: 'Implementation', icon: Settings, color: 'text-brand-primary' }
 ];
 
 export const FAQSection: React.FC = () => {
@@ -156,22 +156,22 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 bg-surface-primary py-12 px-4">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-        <p className="text-gray-300 text-lg">Everything parents want to know about Timeback</p>
+        <h2 className="text-4xl font-poppins font-bold text-text-primary mb-4">Frequently Asked Questions</h2>
+        <p className="text-text-secondary text-lg font-poppins">Everything parents want to know about Timeback</p>
       </div>
 
       {/* Search Bar */}
       <div className="max-w-2xl mx-auto">
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-secondary w-5 h-5" />
           <Input
             type="text"
             placeholder="Search frequently asked questions..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 h-12 rounded-full"
+            className="pl-12 bg-surface-secondary border-border text-text-primary placeholder:text-text-secondary h-12 rounded-full font-poppins"
           />
         </div>
       </div>
@@ -181,10 +181,10 @@ export const FAQSection: React.FC = () => {
         <Button
           onClick={() => setSelectedCategory(null)}
           variant={selectedCategory === null ? 'default' : 'outline'}
-          className={`transition-all duration-300 ${
+          className={`transition-all duration-300 font-poppins ${
             selectedCategory === null
-              ? 'bg-brand-primary text-white'
-              : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+              ? 'bg-brand-primary text-white hover:bg-brand-secondary'
+              : 'bg-surface-secondary text-text-primary border-border hover:bg-surface-tertiary'
           }`}
         >
           All Questions
@@ -194,10 +194,10 @@ export const FAQSection: React.FC = () => {
             key={id}
             onClick={() => setSelectedCategory(id)}
             variant={selectedCategory === id ? 'default' : 'outline'}
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-300 font-poppins ${
               selectedCategory === id
-                ? 'bg-brand-primary text-white'
-                : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+                ? 'bg-brand-primary text-white hover:bg-brand-secondary'
+                : 'bg-surface-secondary text-text-primary border-border hover:bg-surface-tertiary'
             }`}
           >
             <Icon className={`w-4 h-4 mr-2 ${color}`} />
@@ -208,7 +208,7 @@ export const FAQSection: React.FC = () => {
 
       {/* FAQ Results Count */}
       <div className="text-center">
-        <p className="text-gray-400">
+        <p className="text-text-secondary font-poppins">
           Showing {filteredFAQs.length} of {faqData.length} questions
           {selectedCategory && ` in "${selectedCategory}"`}
           {searchTerm && ` matching "${searchTerm}"`}
@@ -227,19 +227,19 @@ export const FAQSection: React.FC = () => {
                 <AccordionItem
                   key={faq.id}
                   value={faq.id}
-                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden"
+                  className="bg-surface-secondary border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <AccordionTrigger
                     onClick={() => handleAccordionChange(faq.id)}
-                    className="px-6 py-4 hover:no-underline hover:bg-white/5 transition-colors duration-300"
+                    className="px-6 py-4 hover:no-underline hover:bg-surface-tertiary transition-colors duration-300"
                   >
                     <div className="flex items-start space-x-4 text-left">
                       {category && (
                         <category.icon className={`w-5 h-5 mt-1 ${category.color} flex-shrink-0`} />
                       )}
                       <div className="flex-1">
-                        <h3 className="text-white font-semibold text-lg">{faq.question}</h3>
-                        <Badge className="mt-2 bg-white/10 text-gray-300 border-white/20">
+                        <h3 className="text-text-primary font-poppins font-semibold text-lg">{faq.question}</h3>
+                        <Badge className="mt-2 bg-brand-primary/10 text-brand-primary border-brand-primary/20 font-poppins">
                           {faq.category}
                         </Badge>
                       </div>
@@ -247,11 +247,11 @@ export const FAQSection: React.FC = () => {
                   </AccordionTrigger>
                   <AccordionContent className="px-6 pb-6">
                     <div className="space-y-4">
-                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                      <p className="text-text-secondary leading-relaxed font-poppins">{faq.answer}</p>
                       
                       {relatedQuestions.length > 0 && (
-                        <div className="border-t border-white/10 pt-4">
-                          <h4 className="text-white font-medium mb-3">Related Questions:</h4>
+                        <div className="border-t border-border pt-4">
+                          <h4 className="text-text-primary font-poppins font-medium mb-3">Related Questions:</h4>
                           <div className="space-y-2">
                             {relatedQuestions.map((related) => (
                               <button
@@ -266,7 +266,7 @@ export const FAQSection: React.FC = () => {
                                     element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                   }, 100);
                                 }}
-                                className="flex items-center space-x-2 text-brand-primary hover:text-brand-secondary transition-colors duration-200 text-sm"
+                                className="flex items-center space-x-2 text-brand-primary hover:text-brand-secondary transition-colors duration-200 text-sm font-poppins"
                               >
                                 <ChevronRight className="w-3 h-3" />
                                 <span>{related.question}</span>
@@ -283,9 +283,9 @@ export const FAQSection: React.FC = () => {
           </Accordion>
         ) : (
           <div className="text-center py-12">
-            <HelpCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-white text-xl font-semibold mb-2">No questions found</h3>
-            <p className="text-gray-400">
+            <HelpCircle className="w-16 h-16 text-text-secondary mx-auto mb-4" />
+            <h3 className="text-text-primary text-xl font-poppins font-semibold mb-2">No questions found</h3>
+            <p className="text-text-secondary font-poppins">
               Try adjusting your search terms or browse different categories
             </p>
           </div>
@@ -293,42 +293,42 @@ export const FAQSection: React.FC = () => {
       </div>
 
       {/* Contact Options */}
-      <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+      <div className="bg-surface-secondary border border-border rounded-lg p-8 shadow-sm">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-white mb-2">Still have questions?</h3>
-          <p className="text-gray-300">We're here to help! Choose how you'd like to connect with us.</p>
+          <h3 className="text-2xl font-poppins font-bold text-text-primary mb-2">Still have questions?</h3>
+          <p className="text-text-secondary font-poppins">We're here to help! Choose how you'd like to connect with us.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-white font-semibold mb-2">Live Chat</h4>
-            <p className="text-gray-300 text-sm mb-4">Get instant answers from our support team</p>
-            <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+            <h4 className="text-text-primary font-poppins font-semibold mb-2">Live Chat</h4>
+            <p className="text-text-secondary font-poppins text-sm mb-4">Get instant answers from our support team</p>
+            <Button className="bg-brand-primary hover:bg-brand-secondary text-white font-poppins">
               Start Chat
             </Button>
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-brand-secondary rounded-full flex items-center justify-center mx-auto mb-4">
               <Mail className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-white font-semibold mb-2">Email Support</h4>
-            <p className="text-gray-300 text-sm mb-4">Detailed responses within 24 hours</p>
-            <Button className="bg-green-500 hover:bg-green-600 text-white">
+            <h4 className="text-text-primary font-poppins font-semibold mb-2">Email Support</h4>
+            <p className="text-text-secondary font-poppins text-sm mb-4">Detailed responses within 24 hours</p>
+            <Button className="bg-brand-secondary hover:bg-brand-primary text-white font-poppins">
               Send Email
             </Button>
           </div>
 
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <Phone className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-white font-semibold mb-2">Phone Consultation</h4>
-            <p className="text-gray-300 text-sm mb-4">Free 15-minute consultation call</p>
-            <Button className="bg-purple-500 hover:bg-purple-600 text-white">
+            <h4 className="text-text-primary font-poppins font-semibold mb-2">Phone Consultation</h4>
+            <p className="text-text-secondary font-poppins text-sm mb-4">Free 15-minute consultation call</p>
+            <Button className="bg-brand-primary hover:bg-brand-secondary text-white font-poppins">
               Schedule Call
             </Button>
           </div>
