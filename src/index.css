@@ -15,7 +15,7 @@ All colors MUST be HSL.
     /* Brand colors */
     --brand-primary: 206 96% 67%;     /* #5bbbfc */
     --brand-secondary: 226 82% 31%;    /* #0f33bb */
-    --brand-accent: 0 0% 100%;         /* white */
+    --brand-accent: 226 82% 31%;         /* blue - changed from white for better contrast */
     
     /* Status colors - change orange to blue */
     --success: 142 76% 36%;

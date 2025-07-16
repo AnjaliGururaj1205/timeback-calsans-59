@@ -137,7 +137,7 @@ export const DemoVideoPlayer: React.FC = () => {
                     </div>
                     <Button
                       onClick={togglePlayPause}
-                      className="bg-brand-accent hover:bg-brand-secondary text-brand-secondary hover:text-brand-accent rounded-full w-16 h-16"
+                      className="bg-white hover:bg-brand-secondary text-brand-secondary hover:text-white rounded-full w-16 h-16"
                     >
                       {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
                     </Button>
@@ -190,7 +190,7 @@ export const DemoVideoPlayer: React.FC = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="hover:bg-brand-accent/10 hover:text-brand-accent hover:border-brand-accent"
+                      className="hover:bg-brand-secondary/10 hover:text-brand-secondary hover:border-brand-secondary"
                     >
                       Watch Full Demo
                     </Button>

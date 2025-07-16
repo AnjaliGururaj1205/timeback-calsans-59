@@ -223,7 +223,7 @@ const Index = () => {
                 />
                 <Button 
                   type="submit"
-                  className="h-12 px-8 bg-brand-accent text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
+                  className="h-12 px-8 bg-white text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-secondary focus:ring-offset-2 font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
                   disabled={isSubmitting}
                   aria-label={isSubmitting ? "Submitting..." : "Get started with Timeback"}
                 >
@@ -381,7 +381,7 @@ const Index = () => {
                 beforeValue="32nd percentile"
                 afterValue="94th percentile"
                 description="Average improvement after 6 months with Timeback's adaptive reading program"
-                icon={<span className="text-2xl text-brand-accent font-bold">READ</span>}
+                icon={<span className="text-2xl text-brand-secondary font-bold">READ</span>}
               />
               
               <BeforeAfterCard

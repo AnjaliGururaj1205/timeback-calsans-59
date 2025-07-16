@@ -75,7 +75,7 @@ export const InteractiveTestimonial: React.FC = () => {
               </div>
               
               <div className="relative">
-                <Quote className="absolute top-0 left-0 w-6 h-6 text-brand-accent/20 -translate-x-1 -translate-y-1" />
+                <Quote className="absolute top-0 left-0 w-6 h-6 text-brand-secondary/20 -translate-x-1 -translate-y-1" />
                 <p className="text-text-secondary italic pl-4 group-hover:text-text-brand transition-colors">
                   "{testimonial.quote}"
                 </p>
@@ -84,7 +84,7 @@ export const InteractiveTestimonial: React.FC = () => {
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-brand-accent hover:text-brand-secondary hover:bg-brand-accent/10"
+                className="text-brand-secondary hover:text-brand-primary hover:bg-brand-secondary/10"
               >
                 Read full story →
               </Button>
@@ -121,7 +121,7 @@ export const InteractiveTestimonial: React.FC = () => {
             </div>
             
             <div className="relative">
-              <Quote className="absolute top-0 left-0 w-8 h-8 text-brand-accent/20 -translate-x-2 -translate-y-2" />
+              <Quote className="absolute top-0 left-0 w-8 h-8 text-brand-secondary/20 -translate-x-2 -translate-y-2" />
               <p className="text-lg text-text-brand leading-relaxed pl-6 italic">
                 "{selectedTestimonial.fullTestimonial}"
               </p>

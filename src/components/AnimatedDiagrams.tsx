@@ -116,7 +116,7 @@ export const AnimatedDiagrams: React.FC = () => {
               <div 
                 key={step.id}
                 className={`text-xs p-2 rounded transition-all duration-500 ${
-                  isActive ? 'bg-brand-accent/10 text-brand-accent border border-brand-accent/20' : 'text-text-secondary'
+                  isActive ? 'bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20' : 'text-text-secondary'
                 }`}
               >
                 {step.description}
@@ -182,7 +182,7 @@ export const AnimatedDiagrams: React.FC = () => {
                   x={x}
                   y={y + 50}
                   textAnchor="middle"
-                  className={`text-xs font-medium ${isActive ? 'fill-brand-accent' : 'fill-gray-600'}`}
+                  className={`text-xs font-medium ${isActive ? 'fill-brand-secondary' : 'fill-gray-600'}`}
                 >
                   {step.title}
                 </text>
@@ -200,9 +200,9 @@ export const AnimatedDiagrams: React.FC = () => {
         
         {/* Current step description */}
         {isAnimating && (
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-brand-accent/10 rounded-lg border border-brand-accent/20">
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-brand-secondary/10 rounded-lg border border-brand-secondary/20">
             <div className="text-center">
-              <h5 className="font-semibold text-brand-accent">
+              <h5 className="font-semibold text-brand-secondary">
                 {currentDiagram.steps[animationStep]?.title}
               </h5>
               <p className="text-sm text-text-secondary">

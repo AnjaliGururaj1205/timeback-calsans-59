@@ -147,7 +147,7 @@ export const InteractiveUSMap: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-text-secondary">Average MAP Score</span>
-                    <span className="text-2xl font-cal font-bold text-brand-accent">
+                    <span className="text-2xl font-cal font-bold text-brand-secondary">
                       {selectedDistrict.alphaScore}
                     </span>
                   </div>
@@ -171,9 +171,9 @@ export const InteractiveUSMap: React.FC = () => {
               </div>
               <p className="text-text-brand leading-relaxed">
                 Alpha students in {selectedDistrict.city} outperform local district students by{' '}
-                <span className="font-bold text-brand-accent">{selectedDistrict.improvement} points</span>{' '}
+                <span className="font-bold text-brand-secondary">{selectedDistrict.improvement} points</span>{' '}
                 on MAP assessments, representing a{' '}
-                <span className="font-bold text-brand-accent">
+                <span className="font-bold text-brand-secondary">
                   {Math.round((selectedDistrict.improvement / selectedDistrict.mapScore) * 100)}%
                 </span>{' '}
                 improvement over traditional education methods.

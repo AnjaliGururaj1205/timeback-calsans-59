@@ -129,11 +129,11 @@ export const LearningPathComparison: React.FC = () => {
         </Card>
 
         {/* Timeback Path */}
-        <Card className="bg-gradient-to-br from-brand-accent/5 to-brand-secondary/5 border border-brand-accent/20 rounded-3xl p-8 shadow-lg">
+        <Card className="bg-gradient-to-br from-brand-secondary/5 to-brand-primary/5 border border-brand-secondary/20 rounded-3xl p-8 shadow-lg">
           <div className="space-y-6">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-lg font-bold text-brand-accent">AI</span>
+              <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                <span className="text-lg font-bold text-brand-secondary">AI</span>
               </div>
               <h4 className="text-xl font-cal font-bold text-text-brand">Timeback AI Learning</h4>
               <p className="text-sm text-text-secondary">Adaptive, personalized journey</p>
@@ -143,8 +143,8 @@ export const LearningPathComparison: React.FC = () => {
               {timebackPath.map((step, index) => (
                 <div key={index} className="flex items-start space-x-4 relative">
                   <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-brand-accent/10 rounded-full flex items-center justify-center">
-                      <div className="text-brand-accent">
+                    <div className="w-10 h-10 bg-brand-secondary/10 rounded-full flex items-center justify-center">
+                      <div className="text-brand-secondary">
                         {step.icon}
                       </div>
                     </div>
@@ -153,7 +153,7 @@ export const LearningPathComparison: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <h5 className="font-semibold text-text-brand">{step.title}</h5>
                       {step.time && (
-                        <span className="text-xs text-brand-accent bg-brand-accent/10 px-2 py-1 rounded-full">
+                        <span className="text-xs text-brand-secondary bg-brand-secondary/10 px-2 py-1 rounded-full">
                           {step.time}
                         </span>
                       )}
@@ -163,15 +163,15 @@ export const LearningPathComparison: React.FC = () => {
                     </p>
                   </div>
                   {index < timebackPath.length - 1 && (
-                    <div className="absolute left-[2.5rem] mt-10 w-0.5 h-8 bg-brand-accent/30"></div>
+                    <div className="absolute left-[2.5rem] mt-10 w-0.5 h-8 bg-brand-secondary/30"></div>
                   )}
                 </div>
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-brand-accent/10 to-brand-secondary/10 rounded-xl p-4 border border-brand-accent/20">
+            <div className="bg-gradient-to-r from-brand-secondary/10 to-brand-primary/10 rounded-xl p-4 border border-brand-secondary/20">
               <div className="text-center space-y-2">
-                <div className="text-lg font-cal font-semibold text-brand-accent">Result: Accelerated Mastery</div>
+                <div className="text-lg font-cal font-semibold text-brand-secondary">Result: Accelerated Mastery</div>
                 <p className="text-sm text-text-brand">
                   Students learn 4-10x faster with deeper understanding and long-term retention
                 </p>

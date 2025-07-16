@@ -168,7 +168,7 @@ export const LearningTimeline: React.FC = () => {
         <div className="relative">
           <div className="w-full bg-surface-secondary/50 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-brand-accent to-brand-secondary h-2 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-brand-secondary to-brand-primary h-2 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -179,10 +179,10 @@ export const LearningTimeline: React.FC = () => {
                 onClick={() => goToEvent(index)}
                 className={`w-4 h-4 rounded-full border-2 transition-all duration-300 -mt-1 ${
                   index === currentEventIndex
-                    ? 'bg-brand-accent border-brand-accent scale-125'
+                    ? 'bg-brand-secondary border-brand-secondary scale-125'
                     : index < currentEventIndex
                     ? 'bg-brand-secondary border-brand-secondary'
-                    : 'bg-surface-primary border-border hover:border-brand-accent'
+                    : 'bg-surface-primary border-border hover:border-brand-secondary'
                 }`}
                 style={{ marginLeft: index === 0 ? '0' : '-8px', marginRight: index === timelineEvents.length - 1 ? '0' : '-8px' }}
               />
@@ -214,7 +214,7 @@ export const LearningTimeline: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-cal font-bold text-brand-accent">{currentEvent.year}</div>
+                    <div className="text-3xl font-cal font-bold text-brand-secondary">{currentEvent.year}</div>
                     <div className={`text-sm px-3 py-1 rounded-full bg-gradient-to-r ${categoryColors[currentEvent.category]} text-white font-medium`}>
                       {categoryLabels[currentEvent.category]}
                     </div>
@@ -229,7 +229,7 @@ export const LearningTimeline: React.FC = () => {
                     variant="outline" 
                     size="sm" 
                     onClick={() => setAutoPlay(!autoPlay)}
-                    className={autoPlay ? 'bg-brand-accent/10 text-brand-accent' : ''}
+                    className={autoPlay ? 'bg-brand-secondary/10 text-brand-secondary' : ''}
                   >
                     {autoPlay ? 'Pause' : 'Play'}
                   </Button>
@@ -270,7 +270,7 @@ export const LearningTimeline: React.FC = () => {
                       key={event.year}
                       className={`flex items-center space-x-3 p-2 rounded-lg transition-all duration-300 ${
                         event.year === currentEvent.year 
-                          ? 'bg-brand-accent/10 border border-brand-accent/20' 
+                          ? 'bg-brand-secondary/10 border border-brand-secondary/20' 
                           : 'opacity-60'
                       }`}
                     >

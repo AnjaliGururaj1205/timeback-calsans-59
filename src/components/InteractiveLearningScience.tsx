@@ -252,7 +252,7 @@ export const InteractiveLearningScience: React.FC = () => {
                 </div>
                 <Button variant="ghost" size="sm">
                   {expandedPrinciple === principle.id ? 
-                    <ChevronUp className="w-5 h-5 text-brand-accent" /> : 
+                    <ChevronUp className="w-5 h-5 text-brand-secondary" /> : 
                     <ChevronDown className="w-5 h-5 text-text-secondary" />
                   }
                 </Button>
