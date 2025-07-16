@@ -20,12 +20,9 @@ import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
 import { TrustIndicators } from "@/components/TrustIndicators";
 import { FAQSection } from "@/components/FAQSection";
 import { FloatingFAQHelper } from "@/components/FloatingFAQHelper";
-import { FloatingNavigation } from "@/components/FloatingNavigation";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { Home, Users, BarChart3, HelpCircle, Star, Map, Zap, BookOpen, Award } from "lucide-react";
 
 // Email validation schema
 const emailSchema = z.object({
@@ -42,20 +39,6 @@ const Index = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const fullText = "COMING IN 2026";
-
-  // Use scroll animation hook
-  useScrollAnimation();
-
-  // Navigation sections for floating nav
-  const navigationSections = [
-    { id: 'hero', label: 'Home', icon: <Home className="w-4 h-4" /> },
-    { id: 'about', label: 'About', icon: <BookOpen className="w-4 h-4" /> },
-    { id: 'proof', label: 'Results', icon: <BarChart3 className="w-4 h-4" /> },
-    { id: 'map', label: 'Map', icon: <Map className="w-4 h-4" /> },
-    { id: 'technical', label: 'Technology', icon: <Zap className="w-4 h-4" /> },
-    { id: 'testimonials', label: 'Stories', icon: <Star className="w-4 h-4" /> },
-    { id: 'faq', label: 'FAQ', icon: <HelpCircle className="w-4 h-4" /> },
-  ];
 
   useEffect(() => {
     let currentIndex = 0;
@@ -193,12 +176,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-primary page-transition">
-      {/* Floating Navigation */}
-      <FloatingNavigation sections={navigationSections} />
-      
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-4 py-12 section-connector">
+    <div className="min-h-screen bg-brand-primary">
+      {/* Main Section */}
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
         <div className="max-w-4xl mx-auto text-center space-y-8 lg:space-y-12">
           {/* Logo */}
           <div className="animate-fade-in">
@@ -265,10 +245,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* About Section with improved spacing and hierarchy */}
-      <section id="about" ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary section-connector animate-on-scroll">
+      <section ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
             About
@@ -306,7 +286,7 @@ const Index = () => {
       </section>
 
       {/* Comprehensive Proof Section */}
-      <section id="proof" className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20 section-connector animate-on-scroll" aria-labelledby="proof-heading">
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="proof-heading">
         <div className="max-w-7xl mx-auto space-y-20">
           
           {/* Section Header */}
@@ -509,14 +489,14 @@ const Index = () => {
 
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 bg-gradient-to-br from-surface-primary to-surface-secondary">
+      <section className="py-24 bg-gradient-to-b from-surface-primary via-gray-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 space-y-16">
           {/* Compact What People Are Saying */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-brand mb-4">
+            <h2 className="text-3xl md:text-4xl font-cal font-bold text-white mb-4">
               Hear From Our Community
             </h2>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Real stories from parents and educators who've witnessed the transformation
             </p>
           </div>
@@ -530,36 +510,36 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-gradient-to-br from-surface-primary to-surface-secondary">
+      <section id="faq-section" className="py-24 bg-gradient-to-b from-black via-surface-primary to-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <FAQSection />
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-brand-primary to-brand-secondary text-center overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-b from-surface-primary via-gray-900 to-black text-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-brand-accent mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-cal">
             Ready to Give Your Kid Their Time Back?
           </h2>
           
-          <p className="text-xl md:text-2xl text-brand-accent/80 mb-8">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 font-system">
             For people who want more
           </p>
           
           <Button 
             size="lg" 
-            className="bg-brand-accent text-brand-secondary hover:bg-surface-secondary font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105"
+            className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 font-system"
           >
             Let's Talk About My Kid
           </Button>
         </div>
         
         {/* Timeback Branding Section */}
-        <div className="mt-16 py-16 border-t border-brand-accent/20">
+        <div className="mt-16 py-16 border-t border-gray-800">
           <div className="max-w-6xl mx-auto px-4">
             <h3 className="text-6xl md:text-8xl lg:text-9xl font-bold text-center">
-              <span className="bg-gradient-to-r from-brand-accent via-brand-accent to-brand-accent bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-secondary via-brand-primary to-brand-secondary bg-clip-text text-transparent">
                 timeback
               </span>
             </h3>
@@ -567,42 +547,42 @@ const Index = () => {
             {/* Footer Links */}
             <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-8 text-left max-w-4xl mx-auto">
               <div className="space-y-4">
-                <h4 className="text-brand-accent font-semibold">How It Works</h4>
-                <ul className="space-y-2 text-brand-accent/70">
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">What's Included</a></li>
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Get Started</a></li>
+                <h4 className="text-white font-semibold">How It Works</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">What's Included</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Get Started</a></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
-                <h4 className="text-brand-accent font-semibold">Learning</h4>
-                <ul className="space-y-2 text-brand-accent/70">
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Science</a></li>
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Research</a></li>
+                <h4 className="text-white font-semibold">Learning</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Science</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Research</a></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
-                <h4 className="text-brand-accent font-semibold">Company</h4>
-                <ul className="space-y-2 text-brand-accent/70">
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">About</a></li>
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Careers</a></li>
+                <h4 className="text-white font-semibold">Company</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
-                <h4 className="text-brand-accent font-semibold">Social</h4>
-                <ul className="space-y-2 text-brand-accent/70">
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Twitter</a></li>
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">LinkedIn</a></li>
+                <h4 className="text-white font-semibold">Social</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
-                <h4 className="text-brand-accent font-semibold">Legal</h4>
-                <ul className="space-y-2 text-brand-accent/70">
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Terms</a></li>
-                  <li><a href="#" className="hover:text-brand-accent transition-colors">Privacy</a></li>
+                <h4 className="text-white font-semibold">Legal</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
                 </ul>
               </div>
             </div>

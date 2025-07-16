@@ -20,9 +20,9 @@ export default {
 		},
 		extend: {
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
+        'satoshi': ['Satoshi', 'sans-serif'],
+        'crimson': ['Crimson Pro', 'serif'],
         'cal': ['Cal Sans', 'sans-serif'],
-        'sans': ['Poppins', 'system-ui', 'sans-serif'],
         'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
       },
 			colors: {
@@ -31,8 +31,6 @@ export default {
 					primary: 'hsl(var(--brand-primary))',
 					secondary: 'hsl(var(--brand-secondary))',
 					accent: 'hsl(var(--brand-accent))',
-					light: 'hsl(var(--brand-light))',
-					glow: 'hsl(var(--brand-glow))',
 				},
 				
 				/* Status colors */
@@ -45,7 +43,6 @@ export default {
 					primary: 'hsl(var(--surface-primary))',
 					secondary: 'hsl(var(--surface-secondary))',
 					tertiary: 'hsl(var(--surface-tertiary))',
-					card: 'hsl(var(--surface-card))',
 				},
 				
 				/* Text colors */
@@ -54,7 +51,6 @@ export default {
 					secondary: 'hsl(var(--text-secondary))',
 					inverse: 'hsl(var(--text-inverse))',
 					brand: 'hsl(var(--text-brand))',
-					muted: 'hsl(var(--text-muted))',
 				},
 
 				/* Shadcn default tokens */
@@ -143,28 +139,13 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
-				},
-				'slide-in-right': {
-					'0%': { transform: 'translateX(100%)' },
-					'100%': { transform: 'translateX(0)' }
-				},
-				'slide-up': {
-					'0%': { transform: 'translateY(100px)', opacity: '0' },
-					'100%': { transform: 'translateY(0)', opacity: '1' }
-				},
-				'scale-in': {
-					'0%': { transform: 'scale(0.9)', opacity: '0' },
-					'100%': { transform: 'scale(1)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
-				'fade-in-up': 'fade-in-up 0.6s ease-out',
-				'slide-in-right': 'slide-in-right 0.5s ease-out',
-				'slide-up': 'slide-up 0.6s ease-out',
-				'scale-in': 'scale-in 0.4s ease-out',
+				'fade-in-up': 'fade-in-up 0.6s ease-out'
 			}
 		}
 	},

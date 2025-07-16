@@ -76,7 +76,7 @@ export const InteractiveComparison: React.FC = () => {
     <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-3xl p-8 shadow-xl overflow-hidden">
       <div className="space-y-6">
         <div className="text-center space-y-4">
-          <h3 className="text-2xl md:text-3xl font-bold text-text-brand">
+          <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
             Traditional AI vs. Timeback AI
           </h3>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
@@ -88,16 +88,16 @@ export const InteractiveComparison: React.FC = () => {
           <div className="min-w-[600px]">
             {/* Header */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="text-lg font-semibold text-text-brand">Feature</div>
+              <div className="text-lg font-cal font-semibold text-text-brand">Feature</div>
               <div className="text-center">
                 <div className="bg-surface-secondary/50 rounded-xl p-3 border border-border/30">
-                  <div className="text-lg font-semibold text-text-brand">Traditional AI</div>
+                  <div className="text-lg font-cal font-semibold text-text-brand">Traditional AI</div>
                   <div className="text-sm text-text-secondary">Chatbots & Basic Tutoring</div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 rounded-xl p-3 border border-brand-primary/20">
-                  <div className="text-lg font-semibold text-brand-primary">Timeback AI</div>
+                <div className="bg-gradient-to-br from-brand-accent/10 to-brand-secondary/10 rounded-xl p-3 border border-brand-accent/20">
+                  <div className="text-lg font-cal font-semibold text-brand-accent">Timeback AI</div>
                   <div className="text-sm text-text-secondary">Advanced Learning Engine</div>
                 </div>
               </div>
@@ -136,9 +136,9 @@ export const InteractiveComparison: React.FC = () => {
                     </div>
                     
                     <div className="flex items-center justify-center space-x-2">
-                      <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-primary' : 'text-green-500'}`} />
+                      <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-accent' : 'text-green-500'}`} />
                       <span className={`text-sm text-center font-medium ${
-                        item.timeback.highlight ? 'text-brand-primary' : 'text-text-brand'
+                        item.timeback.highlight ? 'text-brand-accent' : 'text-text-brand'
                       }`}>
                         {item.timeback.value}
                       </span>
@@ -147,7 +147,7 @@ export const InteractiveComparison: React.FC = () => {
 
                   {/* Expanded Details */}
                   {expandedFeature === item.feature && item.details && (
-                    <div className="mt-2 p-4 bg-gradient-to-r from-brand-primary/5 to-brand-secondary/5 rounded-xl border border-brand-primary/20 animate-fade-in">
+                    <div className="mt-2 p-4 bg-gradient-to-r from-brand-accent/5 to-brand-secondary/5 rounded-xl border border-brand-accent/20 animate-fade-in">
                       <p className="text-text-brand leading-relaxed">
                         {item.details}
                       </p>

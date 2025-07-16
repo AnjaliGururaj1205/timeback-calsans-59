@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { X, TrendingUp, Award, Search, MapPin, ZoomIn, ZoomOut } from 'lucide-react';
+import { X, TrendingUp, Award } from 'lucide-react';
 
 interface SchoolDistrictData {
   city: string;
@@ -12,301 +11,128 @@ interface SchoolDistrictData {
   alphaScore: number;
   improvement: number;
   studentCount: number;
-  lat: number;
-  lng: number;
 }
 
 const schoolDistrictData: SchoolDistrictData[] = [
-  { city: 'Austin', state: 'TX', districtName: 'Austin ISD', mapScore: 205, alphaScore: 235, improvement: 30, studentCount: 850, lat: 30.2672, lng: -97.7431 },
-  { city: 'Dallas', state: 'TX', districtName: 'Dallas ISD', mapScore: 198, alphaScore: 232, improvement: 34, studentCount: 1200, lat: 32.7767, lng: -96.7970 },
-  { city: 'Houston', state: 'TX', districtName: 'Houston ISD', mapScore: 201, alphaScore: 238, improvement: 37, studentCount: 980, lat: 29.7604, lng: -95.3698 },
-  { city: 'San Antonio', state: 'TX', districtName: 'San Antonio ISD', mapScore: 196, alphaScore: 229, improvement: 33, studentCount: 720, lat: 29.4241, lng: -98.4936 },
-  { city: 'Phoenix', state: 'AZ', districtName: 'Phoenix Union High School District', mapScore: 190, alphaScore: 225, improvement: 35, studentCount: 950, lat: 33.4484, lng: -112.0740 },
-  { city: 'Los Angeles', state: 'CA', districtName: 'Los Angeles USD', mapScore: 195, alphaScore: 230, improvement: 35, studentCount: 1500, lat: 34.0522, lng: -118.2437 },
-  { city: 'Miami', state: 'FL', districtName: 'Miami-Dade County Public Schools', mapScore: 188, alphaScore: 228, improvement: 40, studentCount: 1100, lat: 25.7617, lng: -80.1918 },
-  { city: 'Chicago', state: 'IL', districtName: 'Chicago Public Schools', mapScore: 185, alphaScore: 222, improvement: 37, studentCount: 1300, lat: 41.8781, lng: -87.6298 },
-  { city: 'New York', state: 'NY', districtName: 'New York City Department of Education', mapScore: 192, alphaScore: 228, improvement: 36, studentCount: 1800, lat: 40.7128, lng: -74.0060 },
-  { city: 'Atlanta', state: 'GA', districtName: 'Atlanta Public Schools', mapScore: 187, alphaScore: 224, improvement: 37, studentCount: 900, lat: 33.7490, lng: -84.3880 },
-  { city: 'Denver', state: 'CO', districtName: 'Denver Public Schools', mapScore: 203, alphaScore: 240, improvement: 37, studentCount: 800, lat: 39.7392, lng: -104.9903 },
-  { city: 'Seattle', state: 'WA', districtName: 'Seattle Public Schools', mapScore: 208, alphaScore: 245, improvement: 37, studentCount: 750, lat: 47.6062, lng: -122.3321 }
+  {
+    city: 'Austin',
+    state: 'TX', 
+    districtName: 'Austin ISD',
+    mapScore: 205,
+    alphaScore: 235,
+    improvement: 30,
+    studentCount: 850
+  },
+  {
+    city: 'Dallas',
+    state: 'TX',
+    districtName: 'Dallas ISD', 
+    mapScore: 198,
+    alphaScore: 232,
+    improvement: 34,
+    studentCount: 1200
+  },
+  {
+    city: 'Houston',
+    state: 'TX',
+    districtName: 'Houston ISD',
+    mapScore: 201,
+    alphaScore: 238,
+    improvement: 37,
+    studentCount: 980
+  },
+  {
+    city: 'San Antonio',
+    state: 'TX',
+    districtName: 'San Antonio ISD',
+    mapScore: 196,
+    alphaScore: 229,
+    improvement: 33,
+    studentCount: 720
+  }
 ];
 
 export const InteractiveUSMap: React.FC = () => {
   const [selectedDistrict, setSelectedDistrict] = useState<SchoolDistrictData | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const [panX, setPanX] = useState(0);
-  const [panY, setPanY] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const mapRef = useRef<HTMLDivElement>(null);
-
-  const filteredDistricts = schoolDistrictData.filter(district =>
-    district.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    district.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    district.districtName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   const handleCityClick = (district: SchoolDistrictData) => {
     setSelectedDistrict(district);
   };
 
-  const handleZoomIn = () => {
-    setZoomLevel(prev => Math.min(prev + 0.5, 3));
-  };
-
-  const handleZoomOut = () => {
-    setZoomLevel(prev => Math.max(prev - 0.5, 0.5));
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStart({ x: e.clientX - panX, y: e.clientY - panY });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    setPanX(e.clientX - dragStart.x);
-    setPanY(e.clientY - dragStart.y);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  // Calculate position for each district marker based on lat/lng
-  const getMarkerPosition = (lat: number, lng: number) => {
-    // Simple projection for US map (not geographically accurate but visually appealing)
-    const x = ((lng + 125) / 58) * 100; // Normalize longitude to 0-100%
-    const y = ((50 - lat) / 25) * 100;  // Normalize latitude to 0-100%
-    return { x: Math.max(5, Math.min(95, x)), y: Math.max(5, Math.min(95, y)) };
-  };
-
-  useEffect(() => {
-    const handleGlobalMouseUp = () => setIsDragging(false);
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      if (isDragging) {
-        setPanX(e.clientX - dragStart.x);
-        setPanY(e.clientY - dragStart.y);
-      }
-    };
-
-    if (isDragging) {
-      document.addEventListener('mouseup', handleGlobalMouseUp);
-      document.addEventListener('mousemove', handleGlobalMouseMove);
-    }
-
-    return () => {
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-      document.removeEventListener('mousemove', handleGlobalMouseMove);
-    };
-  }, [isDragging, dragStart]);
-
   return (
-    <div className="space-y-8 animate-on-scroll" id="map">
+    <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h3 className="text-2xl md:text-3xl font-bold text-text-brand">
-          Interactive Performance Map
+        <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
+          See How Alpha Students Compare
         </h3>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-          Explore how Alpha students perform compared to local school districts across the United States
+          Click on any city below to see how Alpha students perform compared to local school districts on standardized MAP assessments
         </p>
       </div>
 
-      {/* Search and Controls */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between max-w-4xl mx-auto">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary w-4 h-4" />
-          <Input
-            type="text"
-            placeholder="Search by city, state, or district..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-surface-secondary border-brand-primary/20 focus:border-brand-primary"
-          />
-        </div>
-        
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleZoomOut}
-            disabled={zoomLevel <= 0.5}
-            className="border-brand-primary/20 hover:bg-brand-primary/10"
-          >
-            <ZoomOut className="w-4 h-4" />
-          </Button>
-          <span className="text-sm text-text-secondary min-w-[60px] text-center">
-            {Math.round(zoomLevel * 100)}%
-          </span>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleZoomIn}
-            disabled={zoomLevel >= 3}
-            className="border-brand-primary/20 hover:bg-brand-primary/10"
-          >
-            <ZoomIn className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Interactive Map */}
-      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-brand-primary/20 rounded-3xl p-4 shadow-lg overflow-hidden">
-        <div 
-          ref={mapRef}
-          className="relative bg-gradient-to-br from-brand-primary/5 to-brand-secondary/5 rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"
-          style={{ height: '500px' }}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-        >
-          {/* US Map Background - Simplified Geographic Representation */}
-          <div 
-            className="absolute inset-0 transition-transform duration-200"
-            style={{
-              transform: `scale(${zoomLevel}) translate(${panX / zoomLevel}px, ${panY / zoomLevel}px)`,
-            }}
-          >
-            {/* Simplified US Map SVG */}
-            <svg 
-              className="absolute inset-0 w-full h-full" 
-              viewBox="0 0 1000 600" 
-              preserveAspectRatio="xMidYMid slice"
-            >
-              {/* US States Outline (simplified) */}
-              <g fill="none" stroke="hsl(var(--brand-primary))" strokeWidth="2" opacity="0.3">
-                {/* Continental US outline */}
-                <path d="M 150 150 L 850 150 L 850 450 L 150 450 Z" />
-                {/* State boundaries (simplified grid) */}
-                <line x1="250" y1="150" x2="250" y2="450" />
-                <line x1="350" y1="150" x2="350" y2="450" />
-                <line x1="450" y1="150" x2="450" y2="450" />
-                <line x1="550" y1="150" x2="550" y2="450" />
-                <line x1="650" y1="150" x2="650" y2="450" />
-                <line x1="750" y1="150" x2="750" y2="450" />
-                <line x1="150" y1="225" x2="850" y2="225" />
-                <line x1="150" y1="300" x2="850" y2="300" />
-                <line x1="150" y1="375" x2="850" y2="375" />
-              </g>
-              
-              {/* Background gradient overlay */}
-              <defs>
-                <radialGradient id="mapGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="hsl(var(--brand-primary))" stopOpacity="0.1" />
-                  <stop offset="100%" stopColor="hsl(var(--brand-secondary))" stopOpacity="0.05" />
-                </radialGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#mapGradient)" />
-            </svg>
-
-            {/* District Markers */}
-            {filteredDistricts.map((district) => {
-              const { x, y } = getMarkerPosition(district.lat, district.lng);
-              return (
-                <div
-                  key={`${district.city}-${district.state}`}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
-                  style={{ left: `${x}%`, top: `${y}%` }}
-                >
-                  <Button
-                    onClick={() => handleCityClick(district)}
-                    className="w-6 h-6 min-w-6 min-h-6 rounded-full bg-brand-primary border-2 border-brand-accent hover:bg-brand-accent hover:scale-150 transition-all duration-300 p-0 shadow-md hover:shadow-lg relative"
-                    variant="ghost"
-                  >
-                    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-text-primary text-text-inverse text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
-                      {district.city}, {district.state}
-                    </div>
-                  </Button>
-                  
-                  {/* Ripple effect for better visibility */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 border-2 border-brand-primary rounded-full animate-ping opacity-30"></div>
+      {/* Simplified Interactive Map - City Buttons */}
+      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-3xl p-8 shadow-lg">
+        <div className="relative bg-brand-secondary/5 rounded-2xl p-8 min-h-[400px]">
+          <div className="text-center mb-8">
+            <h4 className="text-xl font-cal font-semibold text-text-brand mb-2">Texas School Districts</h4>
+            <p className="text-text-secondary">Click on a city to compare MAP test results</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            {schoolDistrictData.map((district) => (
+              <Button
+                key={`${district.city}-${district.state}`}
+                onClick={() => handleCityClick(district)}
+                className="group h-16 bg-brand-accent/10 hover:bg-brand-accent text-text-brand hover:text-brand-secondary border border-brand-accent/20 hover:border-brand-accent rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                variant="outline"
+              >
+                <div className="text-center">
+                  <div className="font-cal font-semibold">{district.city}</div>
+                  <div className="text-sm opacity-80">{district.state}</div>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Map Legend */}
-          <div className="absolute top-4 left-4 bg-surface-primary/90 backdrop-blur-sm rounded-lg p-3 shadow-md border border-brand-primary/20">
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded-full bg-brand-primary border border-brand-accent"></div>
-              <span className="text-text-secondary">School Districts</span>
-            </div>
-            <div className="text-xs text-text-muted mt-1">
-              Click markers to compare results
-            </div>
-          </div>
-
-          {/* Navigation Hint */}
-          <div className="absolute bottom-4 right-4 bg-surface-primary/90 backdrop-blur-sm rounded-lg p-2 shadow-md border border-brand-primary/20">
-            <div className="text-xs text-text-muted">
-              Drag to pan • Use zoom controls
-            </div>
+              </Button>
+            ))}
           </div>
         </div>
       </Card>
 
-      {/* Quick Access Grid for Mobile */}
-      <div className="block md:hidden">
-        <h4 className="text-lg font-semibold text-text-brand mb-4">Quick Access</h4>
-        <div className="grid grid-cols-2 gap-3">
-          {filteredDistricts.slice(0, 6).map((district) => (
-            <Button
-              key={`${district.city}-${district.state}`}
-              onClick={() => handleCityClick(district)}
-              variant="outline"
-              className="h-auto p-3 text-left border-brand-primary/20 hover:bg-brand-primary/10"
-            >
-              <div>
-                <div className="font-semibold text-sm">{district.city}</div>
-                <div className="text-xs text-text-muted">{district.state}</div>
-              </div>
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* Comparison Results */}
+      {/* Comparison Popup */}
       {selectedDistrict && (
-        <Card className="bg-gradient-to-br from-surface-primary/95 to-surface-secondary border border-brand-primary/30 rounded-3xl p-6 md:p-8 shadow-xl animate-fade-in">
+        <Card className="bg-gradient-to-br from-brand-accent/5 to-brand-secondary/5 border border-brand-accent/20 rounded-3xl p-8 shadow-xl">
           <div className="space-y-6">
-            <div className="flex items-start justify-between">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-brand-primary" />
-                  <h3 className="text-xl md:text-2xl font-bold text-text-brand">
-                    {selectedDistrict.city}, {selectedDistrict.state}
-                  </h3>
-                </div>
-                <p className="text-text-secondary font-medium">{selectedDistrict.districtName}</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-cal font-bold text-text-brand">
+                  {selectedDistrict.city}, {selectedDistrict.state}
+                </h3>
+                <p className="text-text-secondary">{selectedDistrict.districtName}</p>
               </div>
               <Button 
                 variant="ghost" 
                 size="sm"
                 onClick={() => setSelectedDistrict(null)}
-                className="hover:bg-surface-secondary text-text-secondary hover:text-text-brand"
+                className="hover:bg-surface-secondary"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </Button>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {/* Local District Performance */}
-              <div className="bg-surface-secondary/70 rounded-2xl p-6 border border-brand-primary/10">
-                <h4 className="text-lg font-bold text-text-brand mb-4 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-text-secondary rounded-full"></div>
-                  Local District
+              <div className="bg-surface-secondary/50 rounded-2xl p-6 border border-border/30">
+                <h4 className="text-lg font-cal font-semibold text-text-brand mb-4">
+                  {selectedDistrict.districtName}
                 </h4>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-text-secondary font-medium">Average MAP Score</span>
-                    <span className="text-2xl md:text-3xl font-bold text-text-brand">
+                    <span className="text-text-secondary">Average MAP Score</span>
+                    <span className="text-2xl font-cal font-bold text-text-brand">
                       {selectedDistrict.mapScore}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-secondary font-medium">Students Tested</span>
-                    <span className="font-bold text-text-brand">
+                    <span className="text-text-secondary">Students Tested</span>
+                    <span className="font-semibold text-text-brand">
                       {selectedDistrict.studentCount.toLocaleString()}
                     </span>
                   </div>
@@ -314,23 +140,22 @@ export const InteractiveUSMap: React.FC = () => {
               </div>
 
               {/* Alpha Performance */}
-              <div className="bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 rounded-2xl p-6 border border-brand-primary/30">
-                <h4 className="text-lg font-bold text-text-brand mb-4 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-brand-primary rounded-full"></div>
-                  Alpha Students
+              <div className="bg-gradient-to-br from-brand-accent/10 to-brand-secondary/10 rounded-2xl p-6 border border-brand-accent/20">
+                <h4 className="text-lg font-cal font-semibold text-text-brand mb-4">
+                  Alpha School Students
                 </h4>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-text-secondary font-medium">Average MAP Score</span>
-                    <span className="text-2xl md:text-3xl font-bold text-brand-primary">
+                    <span className="text-text-secondary">Average MAP Score</span>
+                    <span className="text-2xl font-cal font-bold text-brand-accent">
                       {selectedDistrict.alphaScore}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-secondary font-medium">Performance Gap</span>
+                    <span className="text-text-secondary">Performance Gap</span>
                     <div className="flex items-center space-x-2">
-                      <TrendingUp className="w-4 h-4 text-success" />
-                      <span className="font-bold text-success">
+                      <TrendingUp className="w-4 h-4 text-green-500" />
+                      <span className="font-semibold text-green-500">
                         +{selectedDistrict.improvement} points
                       </span>
                     </div>
@@ -339,22 +164,20 @@ export const InteractiveUSMap: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-success/10 to-brand-primary/10 rounded-2xl p-6 border border-success/20">
-              <div className="flex items-start gap-3">
-                <Award className="w-6 h-6 text-success mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="text-lg font-bold text-text-brand mb-2">Performance Summary</h4>
-                  <p className="text-text-brand leading-relaxed">
-                    Alpha students in {selectedDistrict.city} outperform local district students by{' '}
-                    <span className="font-bold text-brand-primary">{selectedDistrict.improvement} points</span>{' '}
-                    on MAP assessments, representing a{' '}
-                    <span className="font-bold text-brand-primary">
-                      {Math.round((selectedDistrict.improvement / selectedDistrict.mapScore) * 100)}%
-                    </span>{' '}
-                    improvement over traditional education methods.
-                  </p>
-                </div>
+            <div className="bg-gradient-to-r from-green-500/10 to-brand-accent/10 rounded-2xl p-6 border border-green-500/20">
+              <div className="flex items-center space-x-3 mb-3">
+                <Award className="w-6 h-6 text-green-500" />
+                <h4 className="text-lg font-cal font-semibold text-text-brand">Performance Summary</h4>
               </div>
+              <p className="text-text-brand leading-relaxed">
+                Alpha students in {selectedDistrict.city} outperform local district students by{' '}
+                <span className="font-bold text-brand-accent">{selectedDistrict.improvement} points</span>{' '}
+                on MAP assessments, representing a{' '}
+                <span className="font-bold text-brand-accent">
+                  {Math.round((selectedDistrict.improvement / selectedDistrict.mapScore) * 100)}%
+                </span>{' '}
+                improvement over traditional education methods.
+              </p>
             </div>
           </div>
         </Card>

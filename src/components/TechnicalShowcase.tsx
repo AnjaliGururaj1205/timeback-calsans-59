@@ -104,7 +104,7 @@ export const TechnicalShowcase: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h3 className="text-2xl md:text-3xl font-bold text-text-brand">
+        <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
           Technical Capabilities
         </h3>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
@@ -131,7 +131,7 @@ export const TechnicalShowcase: React.FC = () => {
           >
             <div className="p-6 space-y-4">
               {/* Icon with gradient background */}
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-primary to-brand-glow p-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${capability.color} p-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                 <div className="text-white">
                   {capability.icon}
                 </div>
@@ -139,7 +139,7 @@ export const TechnicalShowcase: React.FC = () => {
 
               {/* Title and description */}
               <div className="space-y-2">
-                <h4 className="text-lg font-semibold text-text-brand group-hover:text-brand-primary transition-colors">
+                <h4 className="text-lg font-cal font-semibold text-text-brand group-hover:text-brand-accent transition-colors">
                   {capability.title}
                 </h4>
                 <p className="text-sm text-text-secondary leading-relaxed">
@@ -162,7 +162,7 @@ export const TechnicalShowcase: React.FC = () => {
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="text-brand-primary hover:text-brand-secondary hover:bg-brand-primary/10 p-0"
+                  className="text-brand-accent hover:text-brand-secondary hover:bg-brand-accent/10 p-0"
                 >
                   Learn more
                   <ChevronRight className={`w-4 h-4 ml-1 transition-transform ${
@@ -177,7 +177,7 @@ export const TechnicalShowcase: React.FC = () => {
 
       {/* Detailed view */}
       {selectedCapability && (
-        <Card className="bg-gradient-to-br from-brand-primary/5 to-brand-secondary/5 border border-brand-primary/20 rounded-3xl p-8 shadow-xl animate-fade-in">
+        <Card className="bg-gradient-to-br from-brand-accent/5 to-brand-secondary/5 border border-brand-accent/20 rounded-3xl p-8 shadow-xl animate-fade-in">
           {(() => {
             const capability = capabilities.find(c => c.id === selectedCapability);
             if (!capability) return null;
@@ -185,13 +185,13 @@ export const TechnicalShowcase: React.FC = () => {
             return (
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-primary to-brand-glow p-3 flex items-center justify-center">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${capability.color} p-3 flex items-center justify-center`}>
                     <div className="text-white scale-75">
                       {capability.icon}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-text-brand">{capability.title}</h4>
+                    <h4 className="text-xl font-cal font-bold text-text-brand">{capability.title}</h4>
                     <p className="text-text-secondary">Technical Deep Dive</p>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export const TechnicalShowcase: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-4">
                   {capability.metrics.map((metric, index) => (
                     <div key={index} className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                      <div className="text-2xl font-bold text-brand-primary">{metric.value}</div>
+                      <div className="text-2xl font-cal font-bold text-brand-accent">{metric.value}</div>
                       <div className="text-sm text-text-secondary">{metric.label}</div>
                     </div>
                   ))}
