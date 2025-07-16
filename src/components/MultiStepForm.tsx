@@ -242,7 +242,7 @@ export function MultiStepForm() {
                           type="number" 
                           placeholder="Enter age" 
                           {...field}
-                          onChange={(e) => field.onChange(e.target.value)}
+                          onChange={(e) => field.onChange(Number(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
