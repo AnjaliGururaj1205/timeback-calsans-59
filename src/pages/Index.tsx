@@ -48,10 +48,10 @@ const Index = () => {
     return () => clearInterval(typewriterInterval);
   }, []);
 
-  // Scroll scaling effect
+  // Scroll scaling effect for stats only
   useEffect(() => {
     const handleScroll = () => {
-      const elements = document.querySelectorAll('.scroll-scale-element');
+      const elements = document.querySelectorAll('.stats-scale-element');
       const viewportHeight = window.innerHeight;
       const centerY = viewportHeight / 2;
 
@@ -61,9 +61,9 @@ const Index = () => {
         const distanceFromCenter = Math.abs(elementCenterY - centerY);
         const maxDistance = viewportHeight / 2;
         
-        // Calculate scale based on distance from center (1x to 1.5x)
+        // Calculate scale based on distance from center (1x to 1.35x) - reduced by 30%
         const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
-        const scale = 1.5 - (normalizedDistance * 0.5);
+        const scale = 1.35 - (normalizedDistance * 0.35);
         
         (element as HTMLElement).style.transform = `scale(${scale})`;
       });
@@ -281,7 +281,7 @@ const Index = () => {
           
           <div className="flex flex-col gap-8 justify-center items-center">
             {/* Stat 1 - SAT Scores */}
-            <article className="scroll-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
+            <article className="stats-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
@@ -297,7 +297,7 @@ const Index = () => {
             </article>
 
             {/* Stat 2 - Performance */}
-            <article className="scroll-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
+            <article className="stats-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
@@ -313,7 +313,7 @@ const Index = () => {
             </article>
 
             {/* Stat 3 - Learning Speed */}
-            <article className="scroll-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
+            <article className="stats-scale-element group bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 max-w-md w-full">
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-secondary/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="text-5xl md:text-6xl font-cal font-bold mb-4 text-brand-secondary">
@@ -345,7 +345,7 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {/* Vision-powered understanding */}
-            <div className="scroll-scale-element group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <span className="text-red-400 text-2xl">👁️</span>
               </div>
@@ -358,7 +358,7 @@ const Index = () => {
             </div>
 
             {/* Instant feedback */}
-            <div className="scroll-scale-element group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <span className="text-orange-400 text-2xl">🏠</span>
               </div>
@@ -371,7 +371,7 @@ const Index = () => {
             </div>
 
             {/* Learning Science + Data-Driven */}
-            <div className="scroll-scale-element group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <span className="text-blue-400 text-2xl">📊</span>
               </div>
@@ -420,7 +420,7 @@ const Index = () => {
           </div>
 
           {/* Content Section - Centered */}
-          <div className="scroll-scale-element text-center mb-12 max-w-4xl mx-auto">
+          <div className="text-center mb-12 max-w-4xl mx-auto">
             {activeTab === 0 && (
               <>
                 <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
@@ -548,7 +548,7 @@ const Index = () => {
             {[...Array(3)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-6 shrink-0">
                 {/* Testimonial 1 */}
-                <div className="scroll-scale-element w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
+                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
                   <div className="h-full bg-gradient-to-br from-blue-100 to-blue-200 flex flex-col justify-between p-8">
                     <div className="flex-1 flex items-center justify-center">
                       <div className="text-center space-y-6">
