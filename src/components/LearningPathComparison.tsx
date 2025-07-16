@@ -81,7 +81,7 @@ export const LearningPathComparison: React.FC = () => {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">🏫</span>
+                <span className="text-lg font-bold text-red-600">TRAD</span>
               </div>
               <h4 className="text-xl font-cal font-bold text-text-brand">Traditional Education</h4>
               <p className="text-sm text-text-secondary">Linear, standardized approach</p>
@@ -133,7 +133,7 @@ export const LearningPathComparison: React.FC = () => {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">🚀</span>
+                <span className="text-lg font-bold text-brand-accent">AI</span>
               </div>
               <h4 className="text-xl font-cal font-bold text-text-brand">Timeback AI Learning</h4>
               <p className="text-sm text-text-secondary">Adaptive, personalized journey</p>
@@ -181,34 +181,6 @@ export const LearningPathComparison: React.FC = () => {
         </Card>
       </div>
 
-      {/* Comparison Metrics */}
-      <Card className="bg-gradient-to-r from-surface-primary to-surface-secondary border border-border/50 rounded-3xl p-8 shadow-lg">
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div className="space-y-2">
-            <div className="text-3xl font-cal font-bold text-red-500">8 weeks</div>
-            <div className="text-sm text-text-secondary">Traditional timeline to see progress</div>
-            <div className="text-xs text-red-600">vs</div>
-            <div className="text-3xl font-cal font-bold text-brand-accent">1 day</div>
-            <div className="text-sm text-text-secondary">Timeback adaptation begins</div>
-          </div>
-          
-          <div className="space-y-2">
-            <div className="text-3xl font-cal font-bold text-red-500">Fixed</div>
-            <div className="text-sm text-text-secondary">Traditional content flexibility</div>
-            <div className="text-xs text-red-600">vs</div>
-            <div className="text-3xl font-cal font-bold text-brand-accent">Infinite</div>
-            <div className="text-sm text-text-secondary">Timeback content variations</div>
-          </div>
-          
-          <div className="space-y-2">
-            <div className="text-3xl font-cal font-bold text-red-500">1x</div>
-            <div className="text-sm text-text-secondary">Traditional learning speed</div>
-            <div className="text-xs text-red-600">vs</div>
-            <div className="text-3xl font-cal font-bold text-brand-accent">10x</div>
-            <div className="text-sm text-text-secondary">Timeback acceleration potential</div>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 };

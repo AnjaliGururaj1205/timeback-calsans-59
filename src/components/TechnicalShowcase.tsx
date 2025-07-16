@@ -20,8 +20,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'computer-vision',
     title: 'Computer Vision Analysis',
-    description: 'Advanced visual processing of student work and learning materials',
-    technicalDetail: 'Uses deep learning models trained on millions of educational artifacts to understand handwriting, diagrams, mathematical notation, and visual problem-solving approaches with 98.3% accuracy.',
+    description: 'Instantly reads and understands student work',
+    technicalDetail: 'Deep learning models trained on millions of educational artifacts understand handwriting, diagrams, and mathematical notation with 98.3% accuracy.',
     icon: <Eye className="w-8 h-8" />,
     color: 'from-blue-500 to-cyan-500',
     metrics: [
@@ -33,8 +33,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'neural-adaptation',
     title: 'Neural Adaptation Engine',
-    description: 'Real-time learning path optimization based on cognitive patterns',
-    technicalDetail: 'Employs reinforcement learning algorithms that continuously optimize for maximum knowledge retention and skill transfer, adapting difficulty, pace, and content type in real-time.',
+    description: 'Adapts to each child\'s learning patterns instantly',
+    technicalDetail: 'Reinforcement learning algorithms continuously optimize difficulty, pace, and content type for maximum knowledge retention.',
     icon: <Brain className="w-8 h-8" />,
     color: 'from-purple-500 to-pink-500',
     metrics: [
@@ -46,8 +46,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'instant-generation',
     title: 'Dynamic Content Generation',
-    description: 'Unlimited personalized practice problems and explanations',
-    technicalDetail: 'Large language models fine-tuned on educational content generate contextually appropriate problems, hints, and explanations that match each student\'s current understanding level.',
+    description: 'Creates unlimited personalized practice instantly',
+    technicalDetail: 'Fine-tuned language models generate problems, hints, and explanations that match your child\'s understanding level.',
     icon: <Zap className="w-8 h-8" />,
     color: 'from-green-500 to-emerald-500',
     metrics: [
@@ -59,8 +59,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'predictive-modeling',
     title: 'Predictive Learning Models',
-    description: 'Advanced analytics predicting learning outcomes and optimal interventions',
-    technicalDetail: 'Machine learning models analyze thousands of learning signals to predict knowledge gaps, optimal review timing, and learning plateau risk with 94% accuracy.',
+    description: 'Predicts and prevents learning struggles',
+    technicalDetail: 'AI analyzes learning signals to predict knowledge gaps and optimal review timing with 94% accuracy.',
     icon: <Target className="w-8 h-8" />,
     color: 'from-orange-500 to-red-500',
     metrics: [
@@ -72,8 +72,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'learning-analytics',
     title: 'Multi-dimensional Analytics',
-    description: 'Comprehensive tracking of learning depth and skill transfer',
-    technicalDetail: 'Sophisticated analytics engine tracks not just correctness, but understanding depth, retention patterns, skill transfer, metacognitive development, and emotional engagement.',
+    description: 'Tracks true understanding, not just correct answers',
+    technicalDetail: 'Analytics tracks understanding depth, retention patterns, skill transfer, and emotional engagement beyond simple correctness.',
     icon: <BarChart3 className="w-8 h-8" />,
     color: 'from-indigo-500 to-purple-500',
     metrics: [
@@ -85,8 +85,8 @@ const capabilities: TechnicalCapability[] = [
   {
     id: 'distributed-processing',
     title: 'Distributed AI Processing',
-    description: 'Cloud-native architecture ensuring instant response times',
-    technicalDetail: 'Microservices architecture with edge computing ensures sub-second response times while processing complex AI workloads across distributed GPU clusters.',
+    description: 'Lightning-fast responses on any device',
+    technicalDetail: 'Cloud architecture with edge computing ensures instant response times across all devices and platforms.',
     icon: <Cpu className="w-8 h-8" />,
     color: 'from-teal-500 to-blue-500',
     metrics: [

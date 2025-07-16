@@ -95,8 +95,8 @@ export const SuccessStoryTimeline: React.FC = () => {
         {/* Timeline Line */}
         <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-primary via-brand-secondary to-brand-primary"></div>
 
-        <div className="space-y-12">
-          {timelineEvents.map((event, index) => (
+      <div className="space-y-12">
+        {timelineEvents.slice(0, 3).map((event, index) => (
             <div key={event.id} className="relative flex items-start space-x-8">
               {/* Timeline Node */}
               <div className="relative z-10 flex-shrink-0">

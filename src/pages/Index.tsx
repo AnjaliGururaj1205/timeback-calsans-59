@@ -304,7 +304,7 @@ const Index = () => {
             <div className="group bg-gradient-to-br from-card via-surface-secondary to-brand-accent/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">🏆</span>
+                  <span className="text-3xl font-bold text-brand-accent">SAT</span>
                 </div>
                 <AnimatedCounter 
                   end={1535} 
@@ -322,7 +322,7 @@ const Index = () => {
             <div className="group bg-gradient-to-br from-card via-surface-secondary to-brand-secondary/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">📊</span>
+                  <span className="text-2xl font-bold text-brand-secondary">%</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <AnimatedCounter 
@@ -344,7 +344,7 @@ const Index = () => {
             <div className="group bg-gradient-to-br from-card via-surface-secondary to-green-500/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">⚡</span>
+                  <span className="text-2xl font-bold text-green-500">10x</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <AnimatedCounter 
@@ -380,7 +380,7 @@ const Index = () => {
                 beforeValue="32nd percentile"
                 afterValue="94th percentile"
                 description="Average improvement after 6 months with Timeback's adaptive reading program"
-                icon={<span className="text-2xl text-brand-accent">📚</span>}
+                icon={<span className="text-2xl text-brand-accent font-bold">READ</span>}
               />
               
               <BeforeAfterCard
@@ -388,7 +388,7 @@ const Index = () => {
                 beforeValue="Grade level 4.2"
                 afterValue="Grade level 7.8"
                 description="Students advance 3.6 grade levels in mathematics within one academic year"
-                icon={<span className="text-2xl text-brand-secondary">🧮</span>}
+                icon={<span className="text-2xl text-brand-secondary font-bold">MATH</span>}
               />
               
               <BeforeAfterCard
@@ -396,7 +396,7 @@ const Index = () => {
                 beforeValue="38% motivated"
                 afterValue="96% engaged"
                 description="Students report significantly higher engagement and love for learning"
-                icon={<span className="text-2xl text-green-500">🎯</span>}
+                icon={<span className="text-2xl text-green-500 font-bold">GOAL</span>}
               />
             </div>
           </div>
@@ -486,137 +486,23 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <div className="min-h-screen flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: '#f8f9fa' }}>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>
-            Real families, real results
-          </h2>
-        </div>
-        
-        <div className="relative h-96 md:h-[500px]">
-          <div 
-            className="flex gap-6 transition-transform duration-300 ease-out"
-            style={{ transform: 'translateX(0)' }}
-            onMouseMove={(e) => {
-              const container = e.currentTarget;
-              const rect = container.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const containerWidth = rect.width;
-              const scrollAmount = ((x / containerWidth) - 0.5) * -200;
-              container.style.transform = `translateX(${scrollAmount}px)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateX(0)';
-            }}
-          >
-            {/* Duplicate testimonials for infinite scroll effect */}
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-6 shrink-0">
-                {/* Testimonial 1 */}
-                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
-                  <div className="h-full bg-gradient-to-br from-blue-100 to-blue-200 flex flex-col justify-between p-8">
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center space-y-6">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
-                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>95%</div>
-                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Improved Test Scores</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Sarah Martinez</h3>
-                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>Middle School Student</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial 2 */}
-                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
-                  <div className="h-full bg-gradient-to-br from-purple-100 to-purple-200 flex flex-col justify-between p-8">
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center space-y-6">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
-                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>2 Hours</div>
-                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Daily Study Time</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Maria Rodriguez</h3>
-                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>High School Parent</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial 3 */}
-                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
-                  <div className="h-full bg-gradient-to-br from-green-100 to-green-200 flex flex-col justify-between p-8">
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center space-y-6">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
-                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>A+ Average</div>
-                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>Grade Improvement</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>James Wilson</h3>
-                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>Middle School Student</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial 4 */}
-                <div className="w-80 h-full relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer shrink-0">
-                  <div className="h-full bg-gradient-to-br from-yellow-100 to-orange-200 flex flex-col justify-between p-8">
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center space-y-6">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200 mx-auto">
-                          <div className="w-0 h-0 border-l-[16px] border-l-blue-600 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-4xl font-cal font-normal" style={{ color: '#0f33bb' }}>1200→1480</div>
-                          <div className="text-lg font-cal font-normal" style={{ color: '#0f33bb' }}>SAT Score Jump</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                      <h3 className="font-cal text-lg font-normal" style={{ color: '#0f33bb' }}>Emma Thompson</h3>
-                      <p className="font-cal text-sm" style={{ color: '#0f33bb', opacity: 0.8 }}>High School Student</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
 
       {/* Testimonials Section */}
       <section className="py-24 bg-gradient-to-b from-surface-primary via-gray-900/50 to-black">
-        <div className="max-w-7xl mx-auto px-4 space-y-24">
+        <div className="max-w-7xl mx-auto px-4 space-y-16">
+          {/* Compact What People Are Saying */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-cal font-bold text-white mb-4">
+              Hear From Our Community
+            </h2>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+              Real stories from parents and educators who've witnessed the transformation
+            </p>
+          </div>
+          
           {/* Video Testimonials */}
           <VideoTestimonials />
-          
-          {/* Rotating Testimonial Carousel */}
-          <TestimonialCarousel />
-          
-          {/* Filterable Testimonial Grid */}
-          <TestimonialGrid />
-          
-          {/* Success Story Timeline */}
-          <SuccessStoryTimeline />
           
           {/* Trust Indicators */}
           <TrustIndicators />

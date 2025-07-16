@@ -22,167 +22,87 @@ const faqData: FAQ[] = [
     answer: 'Getting started is simple! First, create a parent account and add your child\'s profile. We\'ll assess their current level with a quick, fun diagnostic. Then our AI creates a personalized learning plan. Most families see engagement improvements within the first week.',
     category: 'Getting Started',
     keywords: ['start', 'begin', 'setup', 'account', 'profile'],
-    relatedQuestions: ['2', '3']
+    relatedQuestions: ['2']
   },
   {
     id: '2',
-    question: 'What information do you need about my child?',
-    answer: 'We only need basic information: your child\'s grade level, subjects they\'re working on, and any specific learning goals. Our initial assessment takes care of the rest. We follow strict privacy guidelines and never collect unnecessary personal data.',
-    category: 'Getting Started',
-    keywords: ['information', 'data', 'privacy', 'assessment'],
-    relatedQuestions: ['1', '15']
-  },
-  {
-    id: '3',
-    question: 'How long does the initial setup take?',
-    answer: 'The entire setup process takes about 15 minutes. This includes creating your account, adding your child\'s profile, and completing the initial assessment. Your child can start learning immediately after setup.',
-    category: 'Getting Started',
-    keywords: ['setup', 'time', 'duration', 'assessment'],
-    relatedQuestions: ['1', '4']
-  },
-  {
-    id: '4',
     question: 'Can I try Timeback before committing to a subscription?',
     answer: 'Absolutely! We offer a 14-day free trial with full access to all features. No credit card required. This gives you and your child plenty of time to experience the difference Timeback makes.',
     category: 'Getting Started',
     keywords: ['trial', 'free', 'test', 'subscription'],
-    relatedQuestions: ['19', '20']
+    relatedQuestions: ['1']
   },
 
   // Academic Results
   {
-    id: '5',
+    id: '3',
     question: 'How quickly will I see improvement in my child\'s grades?',
     answer: 'Most parents notice improved confidence and engagement within 1-2 weeks. Grade improvements typically appear within 4-6 weeks. Our data shows an average of 2.3 grade levels improvement within the first semester.',
     category: 'Academic Results',
     keywords: ['grades', 'improvement', 'results', 'time'],
-    relatedQuestions: ['6', '7']
+    relatedQuestions: ['4']
   },
   {
-    id: '6',
+    id: '4',
     question: 'What subjects does Timeback cover?',
     answer: 'Timeback covers all core subjects: Math, Reading, Science, and Social Studies for grades K-12. We also offer specialized programs for test prep (SAT, ACT), foreign languages, and advanced placement courses.',
     category: 'Academic Results',
     keywords: ['subjects', 'math', 'reading', 'science', 'coverage'],
-    relatedQuestions: ['5', '8']
-  },
-  {
-    id: '7',
-    question: 'How does Timeback adapt to my child\'s learning style?',
-    answer: 'Our AI analyzes how your child learns best through their interactions, response times, and success patterns. It then adapts the teaching style, pace, and content presentation. Visual learners get more diagrams, auditory learners get explanations, kinesthetic learners get interactive elements.',
-    category: 'Academic Results',
-    keywords: ['adapt', 'learning style', 'personalized', 'AI'],
-    relatedQuestions: ['8', '9']
-  },
-  {
-    id: '8',
-    question: 'Can Timeback help with homework and test preparation?',
-    answer: 'Yes! Timeback excels at homework support and test prep. It can help explain specific problems, provide practice questions, and create custom study plans. For major tests like SAT/ACT, we have specialized prep modules.',
-    category: 'Academic Results',
-    keywords: ['homework', 'test prep', 'SAT', 'ACT', 'study'],
-    relatedQuestions: ['6', '7']
+    relatedQuestions: ['3']
   },
 
   // Technology & Safety
   {
-    id: '9',
+    id: '5',
     question: 'Is Timeback safe for my child to use?',
     answer: 'Absolutely. We\'re COPPA certified and follow the strictest child safety standards. All interactions are monitored, content is age-appropriate, and we never collect unnecessary personal information. Our AI is designed specifically for educational purposes.',
     category: 'Technology & Safety',
     keywords: ['safety', 'COPPA', 'child protection', 'monitoring'],
-    relatedQuestions: ['10', '15']
+    relatedQuestions: ['6']
   },
   {
-    id: '10',
+    id: '6',
     question: 'What devices does Timeback work on?',
     answer: 'Timeback works on tablets, computers, and smartphones. We have dedicated apps for iOS and Android, plus a web version that works on any modern browser. All progress syncs across devices automatically.',
     category: 'Technology & Safety',
     keywords: ['devices', 'compatibility', 'iOS', 'Android', 'web'],
-    relatedQuestions: ['11', '12']
-  },
-  {
-    id: '11',
-    question: 'Do we need special equipment or internet requirements?',
-    answer: 'No special equipment needed! Any device with internet access works. We recommend a stable internet connection for the best experience, but Timeback works on standard home internet speeds.',
-    category: 'Technology & Safety',
-    keywords: ['equipment', 'internet', 'requirements', 'connection'],
-    relatedQuestions: ['10', '12']
-  },
-  {
-    id: '12',
-    question: 'How do you protect my child\'s privacy and data?',
-    answer: 'We use bank-level encryption and follow FERPA and COPPA guidelines. Your child\'s data is never sold or shared. We collect only what\'s needed for learning and delete inactive accounts according to legal requirements.',
-    category: 'Technology & Safety',
-    keywords: ['privacy', 'data protection', 'encryption', 'FERPA'],
-    relatedQuestions: ['9', '15']
+    relatedQuestions: ['5']
   },
 
   // Pricing & Plans
   {
-    id: '13',
+    id: '7',
     question: 'How much does Timeback cost?',
     answer: 'Plans start at $29/month per child for our Basic plan, $49/month for Premium (most popular), and $79/month for our Family plan (up to 4 children). All plans include unlimited subjects and 24/7 AI tutoring.',
     category: 'Pricing & Plans',
     keywords: ['cost', 'price', 'plans', 'monthly', 'subscription'],
-    relatedQuestions: ['14', '16']
+    relatedQuestions: ['8']
   },
   {
-    id: '14',
-    question: 'Are there any additional fees or hidden costs?',
-    answer: 'No hidden fees! The monthly subscription includes everything: all subjects, unlimited AI tutoring, progress tracking, parent dashboard, and customer support. The only optional add-on is our 1-on-1 human tutor sessions.',
-    category: 'Pricing & Plans',
-    keywords: ['fees', 'hidden costs', 'additional', 'subscription'],
-    relatedQuestions: ['13', '17']
-  },
-  {
-    id: '15',
+    id: '8',
     question: 'Can I cancel my subscription anytime?',
     answer: 'Yes, you can cancel anytime with no penalty. Your child retains access until the end of the current billing period. We also offer pause options if you need a temporary break.',
     category: 'Pricing & Plans',
     keywords: ['cancel', 'subscription', 'refund', 'billing'],
-    relatedQuestions: ['16', '19']
-  },
-  {
-    id: '16',
-    question: 'Do you offer discounts for multiple children?',
-    answer: 'Yes! Our Family plan covers up to 4 children for $79/month (normally $116). We also offer sibling discounts and financial assistance programs for qualifying families.',
-    category: 'Pricing & Plans',
-    keywords: ['discount', 'multiple children', 'family plan', 'siblings'],
-    relatedQuestions: ['13', '17']
+    relatedQuestions: ['7']
   },
 
   // Implementation
   {
-    id: '17',
+    id: '9',
     question: 'How much time should my child spend on Timeback daily?',
     answer: 'We recommend 20-30 minutes daily for elementary students and 30-45 minutes for middle/high school students. The key is consistency rather than long sessions. Our AI optimizes learning in shorter, focused bursts.',
     category: 'Implementation',
     keywords: ['time', 'daily', 'duration', 'schedule'],
-    relatedQuestions: ['18', '21']
+    relatedQuestions: ['10']
   },
   {
-    id: '18',
-    question: 'How involved do I need to be as a parent?',
-    answer: 'Timeback is designed to be independent for most children, but parent involvement enhances results. You\'ll receive weekly progress reports and can set learning goals. Many parents spend 5-10 minutes weekly reviewing progress.',
-    category: 'Implementation',
-    keywords: ['parent involvement', 'independent', 'progress', 'supervision'],
-    relatedQuestions: ['17', '22']
-  },
-  {
-    id: '19',
+    id: '10',
     question: 'What if my child doesn\'t like using Timeback?',
     answer: 'We have a 30-day satisfaction guarantee. If your child doesn\'t love Timeback within the first month, we\'ll refund your subscription. Our engagement rate is over 95%, so this rarely happens!',
     category: 'Implementation',
     keywords: ['engagement', 'satisfaction', 'refund', 'guarantee'],
-    relatedQuestions: ['4', '15']
-  },
-  {
-    id: '20',
-    question: 'Can Timeback replace traditional tutoring?',
-    answer: 'For many families, yes! Timeback provides 24/7 personalized instruction that adapts to your child\'s pace. However, we also offer hybrid options with human tutors for families who want both AI and human support.',
-    category: 'Implementation',
-    keywords: ['tutoring', 'replace', 'traditional', 'human tutor'],
-    relatedQuestions: ['21', '22']
+    relatedQuestions: ['9']
   }
 ];
 
