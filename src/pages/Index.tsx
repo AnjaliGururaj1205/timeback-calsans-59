@@ -10,6 +10,9 @@ import { InteractiveComparison } from "@/components/InteractiveComparison";
 import { TechnicalShowcase } from "@/components/TechnicalShowcase";
 import { DemoVideoPlayer } from "@/components/DemoVideoPlayer";
 import { LearningPathComparison } from "@/components/LearningPathComparison";
+import { InteractiveLearningScience } from "@/components/InteractiveLearningScience";
+import { LearningTimeline } from "@/components/LearningTimeline";
+import { AnimatedDiagrams } from "@/components/AnimatedDiagrams";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -450,128 +453,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Learning Science Section - Dashboard Style */}
-      <section className="px-6 py-20 bg-surface-primary" aria-labelledby="science-heading">
-        <div className="max-w-6xl mx-auto">
-          {/* Tab Navigation - Centered */}
-          <div className="border-b border-border bg-surface-primary mb-12">
-            <nav className="flex justify-center space-x-8 overflow-x-auto" role="tablist">
-              {["Bloom's 2 Sigma", "Mastery Based Progression", "Personalized & Adaptive Learning", "Zone of Proximal Development"].map((tab, index) => (
-                <button
-                  key={index}
-                  role="tab"
-                  aria-selected={index === activeTab}
-                  onClick={() => setActiveTab(index)}
-                  className={`py-4 px-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200 font-system ${
-                    index === activeTab
-                      ? "border-brand-secondary text-text-primary"
-                      : "border-transparent text-text-secondary hover:text-text-primary"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </nav>
-          </div>
-
-          {/* Content Section - Centered */}
-          <div className="text-center mb-12 max-w-4xl mx-auto">
-            {activeTab === 0 && (
-              <>
-                <h2 id="science-heading" className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
-                  Built on 40 Years of Learning Science
-                </h2>
-                
-                <div className="space-y-2 mb-8">
-                  <p className="text-text-secondary font-system">
-                    Benjamin Bloom demonstrated that students receiving one-on-one tutoring with mastery learning performed two standard deviations better than conventional classroom instruction.
-                  </p>
-                  <p className="text-text-secondary font-system">
-                    Alpha's 99th percentile results align perfectly with this finding. <span className="font-semibold text-text-primary">AI tutoring can theoretically provide this one-on-one experience at scale.</span>
-                  </p>
-                </div>
-
-                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  See the Science for Yourself
-                </button>
-              </>
-            )}
-            
-            {activeTab === 1 && (
-              <>
-                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
-                  Confidence Through Competence
-                </h2>
-                
-                <div className="space-y-2 mb-8">
-                  <p className="text-text-secondary font-system">
-                    Mastery-based learning has been proven in decades of research to dramatically improve student outcomes — especially when combined with personalized instruction. That's the engine behind Timeback.
-                  </p>
-                </div>
-
-                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  See the Science for Yourself
-                </button>
-              </>
-            )}
-
-            {activeTab === 2 && (
-              <>
-                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
-                  Learning That Adapts to Your Child — Not the Other Way Around
-                </h2>
-                
-                <div className="space-y-2 mb-8">
-                  <p className="text-text-secondary font-system">
-                    No two kids learn the same way — so why teach them the same way? Timeback creates a personalized, adaptive learning path for each child, adjusting every lesson in real time to meet their exact needs.
-                  </p>
-                </div>
-
-                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  See the Science for Yourself
-                </button>
-              </>
-            )}
-
-            {activeTab === 3 && (
-              <>
-                <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-6 font-system">
-                  Right in the Learning Sweet Spot
-                </h2>
-                
-                <div className="space-y-2 mb-8">
-                  <p className="text-text-secondary font-system">
-                    Every child has a "sweet spot" where learning is most effective — not too easy to be boring, not too hard to be discouraging. This is called the Zone of Proximal Development, and it's where real progress happens.
-                  </p>
-                  <p className="text-text-secondary font-system">
-                    Timeback's AI identifies this zone for your child in real time and delivers lessons that stretch them just enough to grow. That's how we build confidence, momentum, and rapid learning — without stress or burnout.
-                  </p>
-                </div>
-
-                <button className="text-brand-secondary hover:text-brand-secondary/80 font-medium transition-colors duration-200 font-system">
-                  See the Science for Yourself
-                </button>
-              </>
-            )}
-          </div>
+      {/* Learning Science Section */}
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="science-heading">
+        <div className="max-w-7xl mx-auto space-y-16">
           
-          {/* Video/Content Area - Dashboard Style and Centered */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-surface-secondary rounded-2xl p-8 shadow-sm border border-border">
-              <div className="aspect-video bg-surface-tertiary rounded-xl flex items-center justify-center relative overflow-hidden">
-                {/* Video placeholder matching dashboard style */}
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-10 h-10 text-text-inverse" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                  <p className="text-text-secondary font-medium text-lg font-system">Educational Research Video</p>
-                  <p className="text-text-secondary/80 text-sm mt-2 font-system">Click to play</p>
-                </div>
-              </div>
-            </div>
+          {/* Section Header */}
+          <div className="text-center space-y-6">
+            <h2 id="science-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-text-brand">
+              Built on Learning Science
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-text-secondary">
+              Four decades of educational research powers every aspect of Timeback's approach to accelerated learning
+            </p>
           </div>
+
+          {/* Learning Timeline */}
+          <LearningTimeline />
+
+          {/* Interactive Learning Science Principles */}
+          <InteractiveLearningScience />
+
+          {/* Animated Diagrams */}
+          <AnimatedDiagrams />
+
         </div>
       </section>
 
