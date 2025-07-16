@@ -6,6 +6,10 @@ import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";
 import { InteractiveTestimonial } from "@/components/InteractiveTestimonial";
 import { InteractiveUSMap } from "@/components/InteractiveUSMap";
+import { InteractiveComparison } from "@/components/InteractiveComparison";
+import { TechnicalShowcase } from "@/components/TechnicalShowcase";
+import { DemoVideoPlayer } from "@/components/DemoVideoPlayer";
+import { LearningPathComparison } from "@/components/LearningPathComparison";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -409,67 +413,40 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Learning Engine Section - New Page Style */}
-      <section className="min-h-screen bg-brand-primary px-4 py-20 flex flex-col items-center justify-center" aria-labelledby="learning-engine-heading">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <div className="space-y-6">
-            <h2 id="learning-engine-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
-              This Isn't a Chatbot. It's a Learning Engine.
+      {/* Why Our AI is Different Section */}
+      <section className="min-h-screen bg-brand-primary px-4 py-20" aria-labelledby="ai-different-heading">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          {/* Section Header */}
+          <div className="text-center space-y-6">
+            <h2 id="ai-different-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
+              Why Our AI is Different
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary opacity-90">
-              Our AI is far more advanced — it sees, understands, evaluates, and adapts. In real time.
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
+              Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            {/* Vision-powered understanding */}
-            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <span className="text-red-400 text-2xl">👁️</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-brand-secondary">
-                Vision-powered understanding
-              </h3>
-              <p className="text-brand-secondary/80 leading-relaxed">
-                It can actually see your child's work — not just typed answers. Whether your child is solving math on paper or diagramming a sentence, Timeback's AI can evaluate the work visually.
-              </p>
-            </div>
 
-            {/* Instant feedback */}
-            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <span className="text-orange-400 text-2xl">🏠</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-brand-secondary">
-                Instant feedback on actual performance
-              </h3>
-              <p className="text-brand-secondary/80 leading-relaxed">
-                The AI doesn't wait for input. It observes, identifies gaps, and provides next-step lessons.
-              </p>
-            </div>
-
-            {/* Learning Science + Data-Driven */}
-            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                <span className="text-blue-400 text-2xl">📊</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-brand-secondary">
-                Learning Science + Data-Driven Adaptation
-              </h3>
-              <p className="text-brand-secondary/80 leading-relaxed">
-                Every lesson is built on what your child just did, not a generic curriculum sequence.
-              </p>
-            </div>
+          {/* Interactive Comparison Table */}
+          <div className="space-y-8">
+            <InteractiveComparison />
           </div>
 
-          {/* Navigation dots */}
-          <div className="flex justify-center space-x-2 mt-12">
-            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
-            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
-            <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
-            <div className="w-2 h-2 bg-white/30 rounded-full"></div>
+          {/* Technical Capabilities Showcase */}
+          <div className="space-y-8">
+            <TechnicalShowcase />
           </div>
+
+          {/* Demo Video Player */}
+          <div className="space-y-8">
+            <DemoVideoPlayer />
+          </div>
+
+          {/* Learning Path Comparison */}
+          <div className="space-y-8">
+            <LearningPathComparison />
+          </div>
+
         </div>
       </section>
 
