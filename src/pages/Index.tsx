@@ -13,6 +13,11 @@ import { LearningPathComparison } from "@/components/LearningPathComparison";
 import { InteractiveLearningScience } from "@/components/InteractiveLearningScience";
 import { LearningTimeline } from "@/components/LearningTimeline";
 import { AnimatedDiagrams } from "@/components/AnimatedDiagrams";
+import { VideoTestimonials } from "@/components/VideoTestimonials";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { TestimonialGrid } from "@/components/TestimonialGrid";
+import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
+import { TrustIndicators } from "@/components/TrustIndicators";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -596,7 +601,26 @@ const Index = () => {
       </div>
 
 
-      {/* Background decoration */}
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-to-b from-surface-primary via-gray-900/50 to-black">
+        <div className="max-w-7xl mx-auto px-4 space-y-24">
+          {/* Video Testimonials */}
+          <VideoTestimonials />
+          
+          {/* Rotating Testimonial Carousel */}
+          <TestimonialCarousel />
+          
+          {/* Filterable Testimonial Grid */}
+          <TestimonialGrid />
+          
+          {/* Success Story Timeline */}
+          <SuccessStoryTimeline />
+          
+          {/* Trust Indicators */}
+          <TrustIndicators />
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="relative py-24 bg-gradient-to-b from-surface-primary via-gray-900 to-black text-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
