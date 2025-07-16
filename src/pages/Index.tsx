@@ -18,6 +18,8 @@ import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { TestimonialGrid } from "@/components/TestimonialGrid";
 import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
 import { TrustIndicators } from "@/components/TrustIndicators";
+import { FAQSection } from "@/components/FAQSection";
+import { FloatingFAQHelper } from "@/components/FloatingFAQHelper";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -621,6 +623,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq-section" className="py-24 bg-gradient-to-b from-black via-surface-primary to-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <FAQSection />
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="relative py-24 bg-gradient-to-b from-surface-primary via-gray-900 to-black text-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
@@ -702,6 +711,9 @@ const Index = () => {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
+
+      {/* Floating FAQ Helper */}
+      <FloatingFAQHelper />
     </div>
   );
 };
