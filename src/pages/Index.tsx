@@ -270,7 +270,7 @@ const Index = () => {
             ].map(({ role, path }, index) => (
               <Button 
                 key={role}
-                className="h-12 px-6 bg-brand-accent text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-full transition-all duration-200 font-cal"
+                className="h-12 px-6 bg-white text-blue-800 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-full font-cal"
                 onClick={() => {
                   if (index === 0) {
                     parentRef.current?.scrollIntoView({ behavior: 'smooth' });
