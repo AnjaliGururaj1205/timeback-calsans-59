@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";
@@ -364,18 +365,19 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Before/After Comparison Cards */}
-          <div className="space-y-12">
-            <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand mb-4">
-                Real Student Transformations
+          {/* Combined Student Results & MAP Comparison Section */}
+          <div className="space-y-16">
+            <div className="text-center space-y-6">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-cal font-bold text-text-brand">
+                Real Student Results & Performance Comparison
               </h3>
-              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                See the dramatic improvements our students achieve across key academic metrics
+              <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto">
+                See dramatic improvements our students achieve and compare TimeBack performance with your local school district
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            {/* Student Transformation Cards */}
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
               <BeforeAfterCard
                 title="Reading Comprehension"
                 beforeValue="32nd percentile"
@@ -400,12 +402,24 @@ const Index = () => {
                 icon={<span className="text-2xl text-green-500 font-bold">GOAL</span>}
               />
             </div>
-          </div>
 
-
-          {/* Interactive US Map */}
-          <div className="space-y-12">
-            <InteractiveUSMap />
+            {/* Enhanced Interactive US Map */}
+            <div className="space-y-8">
+              <div className="text-center space-y-4">
+                <h4 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
+                  Compare with Your Local District
+                </h4>
+                <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
+                  Enter your ZIP code to see how TimeBack students perform on standardized MAP assessments compared to your local school district
+                </p>
+              </div>
+              
+              <Card className="bg-gradient-to-br from-brand-accent/5 via-surface-primary to-brand-secondary/5 border border-brand-accent/20 rounded-3xl shadow-2xl overflow-hidden">
+                <div className="p-8">
+                  <InteractiveUSMap />
+                </div>
+              </Card>
+            </div>
           </div>
 
         </div>

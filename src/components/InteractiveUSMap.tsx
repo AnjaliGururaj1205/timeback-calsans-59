@@ -115,57 +115,62 @@ export const InteractiveUSMap: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
-          See How TimeBack Students Compare
-        </h3>
-        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-          Enter your zip code to see how TimeBack students perform compared to your local school district on standardized MAP assessments
-        </p>
-      </div>
-
       {/* Interactive Map with Search */}
-      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-3xl p-8 shadow-lg">
-        <div className="relative bg-brand-secondary/5 rounded-2xl p-8 min-h-[400px]">
+      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/30 rounded-2xl shadow-lg overflow-hidden">
+        <div className="relative min-h-[420px]">
           {/* Map Image */}
-          <div className="relative mb-8">
-            <div className="relative w-full h-64 rounded-2xl overflow-hidden border border-blue-200/50">
+          <div className="relative">
+            <div className="relative w-full h-80 overflow-hidden">
               <img 
                 src={usMapImage} 
                 alt="United States Map" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h4 className="text-xl font-cal font-semibold mb-1">TimeBack School Districts</h4>
-                <p className="text-blue-100">Enter your zip code to compare MAP test results</p>
-              </div>
-            </div>
-            
-            {/* Search Bar */}
-            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/30">
-              <div className="flex items-center space-x-2">
-                <Input
-                  type="text"
-                  placeholder="Enter zip code"
-                  value={searchZip}
-                  onChange={(e) => setSearchZip(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  className="w-32 text-sm"
-                  disabled={isLoading}
-                />
-                <Button
-                  onClick={handleZipSearch}
-                  size="sm"
-                  disabled={isLoading || !searchZip.trim()}
-                  className="bg-brand-secondary hover:bg-brand-accent text-white min-w-[40px]"
-                >
-                  {isLoading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Search className="w-4 h-4" />
-                  )}
-                </Button>
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/30 via-transparent to-brand-primary/10"></div>
+              
+              {/* Map Overlay Content */}
+              <div className="absolute inset-0 flex flex-col justify-between p-6">
+                <div className="text-center">
+                  <h4 className="text-2xl md:text-3xl font-cal font-bold text-white mb-2 drop-shadow-lg">
+                    TimeBack Performance Map
+                  </h4>
+                  <p className="text-white/90 text-lg font-medium drop-shadow-sm">
+                    Enter your ZIP code to see the comparison
+                  </p>
+                </div>
+                
+                {/* Enhanced Search Bar */}
+                <div className="flex justify-center">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-white/30 max-w-sm w-full">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-1">
+                        <Input
+                          type="text"
+                          placeholder="Enter ZIP code (e.g., 78701)"
+                          value={searchZip}
+                          onChange={(e) => setSearchZip(e.target.value)}
+                          onKeyPress={handleKeyPress}
+                          className="border-brand-primary/20 focus:border-brand-secondary focus:ring-brand-secondary text-center font-medium"
+                          disabled={isLoading}
+                        />
+                      </div>
+                      <Button
+                        onClick={handleZipSearch}
+                        disabled={isLoading || !searchZip.trim()}
+                        className="bg-brand-secondary hover:bg-brand-primary text-white shadow-lg hover:shadow-xl transition-all duration-200 min-w-[48px] h-[48px] rounded-xl"
+                      >
+                        {isLoading ? (
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                        ) : (
+                          <Search className="w-5 h-5" />
+                        )}
+                      </Button>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2 text-center">
+                      Available: Austin, Dallas, Houston, San Antonio, Beverly Hills, NYC
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
