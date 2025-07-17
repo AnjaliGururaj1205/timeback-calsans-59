@@ -334,107 +334,120 @@ export const CombinedLearningTimeline: React.FC = () => {
       </div>
 
       {/* Timeline Display */}
-      <div className="space-y-6">
-        {timelineEvents.map((event, index) => (
-          <Card key={index} className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-6">
-              {/* Always Visible Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${categoryColors[event.category]} p-3 flex items-center justify-center`}>
-                    <div className="text-white">
-                      {event.icon}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-cal font-bold text-brand-secondary">{event.year}</div>
-                    <div className="text-lg font-semibold text-text-primary">{event.title}</div>
-                    <div className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${categoryColors[event.category]} text-white font-medium inline-block mt-1`}>
-                      {categoryLabels[event.category]}
-                    </div>
-                  </div>
-                </div>
-                
-                <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" size="sm" className="p-2">
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expandedEvents.has(index) ? 'rotate-180' : ''}`} />
-                    </Button>
-                  </CollapsibleTrigger>
-                </Collapsible>
-              </div>
-
-              {/* Collapsible Content */}
-              <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
-                <CollapsibleContent className="space-y-6">
-                  {/* Description */}
-                  <div className="space-y-4">
-                    <p className="text-text-secondary leading-relaxed">{event.description}</p>
-                    
-                    {/* Researcher */}
-                    <div className="flex items-center space-x-2">
-                      <div className="text-sm font-medium text-text-primary">Key Researcher:</div>
-                      <div className="text-sm text-text-secondary">{event.researcher}</div>
-                    </div>
-                  </div>
-
-                  {/* Citations */}
-                  <div className="space-y-2">
-                    <div className="text-sm font-medium text-text-primary">Research Citations:</div>
-                    <div className="space-y-1">
-                      {event.citations.map((citation, citationIndex) => (
-                        <div key={citationIndex} className="text-xs text-text-secondary bg-surface-secondary/50 p-3 rounded-lg border border-border/30">
-                          {citation}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Timeback Application (if exists) */}
-                  {event.timebackApplication && (
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-brand-secondary">How Timeback Uses This:</div>
-                      <p className="text-sm text-text-secondary bg-brand-primary/10 p-4 rounded-lg border border-brand-primary/20">
-                        {event.timebackApplication}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Key Benefits (if exists) */}
-                  {event.keyBenefits && (
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-text-primary">Key Benefits:</div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {event.keyBenefits.map((benefit, benefitIndex) => (
-                          <div key={benefitIndex} className="flex items-center space-x-2 text-sm text-text-secondary">
-                            <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
-                            <span>{benefit}</span>
-                          </div>
-                        ))}
+      <div className="relative max-w-4xl mx-auto">
+        {/* Timeline Line */}
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-secondary to-brand-primary"></div>
+        
+        <div className="space-y-8">
+          {timelineEvents.map((event, index) => (
+            <div key={index} className="relative">
+              {/* Timeline Point */}
+              <div className="absolute left-4 top-6 w-4 h-4 bg-gradient-to-br from-brand-secondary to-brand-primary rounded-full border-4 border-surface-primary shadow-lg z-10"></div>
+              
+              {/* Timeline Content */}
+              <div className="ml-16 space-y-2">
+                {/* Year and Title - Always Visible */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${categoryColors[event.category]} p-2 flex items-center justify-center`}>
+                      <div className="text-white">
+                        {event.icon}
                       </div>
                     </div>
-                  )}
-
-                  {/* Research Basis (if exists) */}
-                  {event.researchBasis && (
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-text-primary">Research Evidence:</div>
-                      <p className="text-sm text-text-secondary italic">{event.researchBasis}</p>
+                    <div>
+                      <div className="text-xl font-cal font-bold text-brand-secondary">{event.year}</div>
+                      <div className="text-lg font-semibold text-text-primary">{event.title}</div>
+                      <div className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${categoryColors[event.category]} text-white font-medium inline-block mt-1`}>
+                        {categoryLabels[event.category]}
+                      </div>
                     </div>
-                  )}
+                  </div>
+                  
+                  <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
+                    <CollapsibleTrigger asChild>
+                      <Button variant="ghost" size="sm" className="p-2">
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expandedEvents.has(index) ? 'rotate-180' : ''}`} />
+                      </Button>
+                    </CollapsibleTrigger>
+                  </Collapsible>
+                </div>
 
-                  {/* Visual Diagram (if exists) */}
-                  {event.visualDiagram && (
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-text-primary">Visual Representation:</div>
-                      {renderDiagram(event.visualDiagram)}
-                    </div>
-                  )}
-                </CollapsibleContent>
-              </Collapsible>
+                {/* Collapsible Content */}
+                <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
+                  <CollapsibleContent>
+                    <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-xl shadow-sm mt-4">
+                      <div className="p-6 space-y-6">
+                        {/* Description */}
+                        <div className="space-y-4">
+                          <p className="text-text-secondary leading-relaxed">{event.description}</p>
+                          
+                          {/* Researcher */}
+                          <div className="flex items-center space-x-2">
+                            <div className="text-sm font-medium text-text-primary">Key Researcher:</div>
+                            <div className="text-sm text-text-secondary">{event.researcher}</div>
+                          </div>
+                        </div>
+
+                        {/* Citations */}
+                        <div className="space-y-2">
+                          <div className="text-sm font-medium text-text-primary">Research Citations:</div>
+                          <div className="space-y-1">
+                            {event.citations.map((citation, citationIndex) => (
+                              <div key={citationIndex} className="text-xs text-text-secondary bg-surface-secondary/50 p-3 rounded-lg border border-border/30">
+                                {citation}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Timeback Application (if exists) */}
+                        {event.timebackApplication && (
+                          <div className="space-y-2">
+                            <div className="text-sm font-medium text-brand-secondary">How Timeback Uses This:</div>
+                            <p className="text-sm text-text-secondary bg-brand-primary/10 p-4 rounded-lg border border-brand-primary/20">
+                              {event.timebackApplication}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Key Benefits (if exists) */}
+                        {event.keyBenefits && (
+                          <div className="space-y-2">
+                            <div className="text-sm font-medium text-text-primary">Key Benefits:</div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                              {event.keyBenefits.map((benefit, benefitIndex) => (
+                                <div key={benefitIndex} className="flex items-center space-x-2 text-sm text-text-secondary">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
+                                  <span>{benefit}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Research Basis (if exists) */}
+                        {event.researchBasis && (
+                          <div className="space-y-2">
+                            <div className="text-sm font-medium text-text-primary">Research Evidence:</div>
+                            <p className="text-sm text-text-secondary italic">{event.researchBasis}</p>
+                          </div>
+                        )}
+
+                        {/* Visual Diagram (if exists) */}
+                        {event.visualDiagram && (
+                          <div className="space-y-2">
+                            <div className="text-sm font-medium text-text-primary">Visual Representation:</div>
+                            {renderDiagram(event.visualDiagram)}
+                          </div>
+                        )}
+                      </div>
+                    </Card>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
             </div>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
