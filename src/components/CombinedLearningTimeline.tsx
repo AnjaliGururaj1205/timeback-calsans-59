@@ -239,18 +239,17 @@ const categoryLabels = {
 };
 
 export const CombinedLearningTimeline: React.FC = () => {
-  const [expandedEvents, setExpandedEvents] = useState<Set<number>>(new Set());
+  const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(null);
+  const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
 
-  const toggleEventExpansion = (index: number) => {
-    setExpandedEvents(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
+  const handleTimelineClick = (index: number) => {
+    if (selectedEventIndex === index) {
+      setSelectedEventIndex(null);
+      setExpandedEvent(null);
+    } else {
+      setSelectedEventIndex(index);
+      setExpandedEvent(index);
+    }
   };
 
   const renderDiagram = (diagram: string) => {
@@ -333,121 +332,148 @@ export const CombinedLearningTimeline: React.FC = () => {
         </p>
       </div>
 
-      {/* Timeline Display */}
-      <div className="relative max-w-4xl mx-auto">
-        {/* Timeline Line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-secondary to-brand-primary"></div>
-        
-        <div className="space-y-8">
-          {timelineEvents.map((event, index) => (
-            <div key={index} className="relative">
-              {/* Timeline Point */}
-              <div className="absolute left-4 top-6 w-4 h-4 bg-gradient-to-br from-brand-secondary to-brand-primary rounded-full border-4 border-surface-primary shadow-lg z-10"></div>
-              
-              {/* Timeline Content */}
-              <div className="ml-16 space-y-2">
-                {/* Year and Title - Always Visible */}
+      {/* Horizontal Timeline */}
+      <div className="space-y-8">
+        {/* Timeline Navigation */}
+        <div className="relative overflow-x-auto pb-4">
+          <div className="flex items-center justify-between min-w-[800px] px-4">
+            {/* Timeline Line */}
+            <div className="absolute top-1/2 left-4 right-4 h-1 bg-gradient-to-r from-brand-secondary to-brand-primary rounded-full transform -translate-y-1/2"></div>
+            
+            {/* Timeline Points */}
+            {timelineEvents.map((event, index) => (
+              <div key={index} className="relative flex flex-col items-center space-y-2 cursor-pointer group" onClick={() => handleTimelineClick(index)}>
+                {/* Timeline Point */}
+                <div className={`relative z-10 w-4 h-4 rounded-full border-4 transition-all duration-300 ${
+                  selectedEventIndex === index
+                    ? 'bg-brand-secondary border-brand-secondary scale-150 shadow-lg'
+                    : 'bg-surface-primary border-brand-primary hover:border-brand-secondary hover:scale-125'
+                }`}>
+                  {/* Icon */}
+                  <div className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-lg bg-gradient-to-br ${categoryColors[event.category]} p-1.5 flex items-center justify-center transition-all duration-300 ${
+                    selectedEventIndex === index ? 'scale-110' : 'group-hover:scale-105'
+                  }`}>
+                    <div className="text-white text-xs">
+                      {event.icon}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Year and Title */}
+                <div className="text-center min-w-[120px] max-w-[120px]">
+                  <div className={`text-lg font-cal font-bold transition-colors duration-300 ${
+                    selectedEventIndex === index ? 'text-brand-secondary' : 'text-text-primary group-hover:text-brand-secondary'
+                  }`}>
+                    {event.year}
+                  </div>
+                  <div className={`text-xs font-medium leading-tight transition-colors duration-300 ${
+                    selectedEventIndex === index ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
+                  }`}>
+                    {event.title}
+                  </div>
+                  <div className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${categoryColors[event.category]} text-white font-medium inline-block mt-1 opacity-70 group-hover:opacity-100 transition-opacity duration-300`}>
+                    {categoryLabels[event.category]}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Selected Event Details */}
+        {expandedEvent !== null && (
+          <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-2xl shadow-lg overflow-hidden animate-fade-in">
+            <div className="p-8">
+              <div className="space-y-6">
+                {/* Event Header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${categoryColors[event.category]} p-2 flex items-center justify-center`}>
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${categoryColors[timelineEvents[expandedEvent].category]} p-4 flex items-center justify-center`}>
                       <div className="text-white">
-                        {event.icon}
+                        {timelineEvents[expandedEvent].icon}
                       </div>
                     </div>
                     <div>
-                      <div className="text-xl font-cal font-bold text-brand-secondary">{event.year}</div>
-                      <div className="text-lg font-semibold text-text-primary">{event.title}</div>
-                      <div className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${categoryColors[event.category]} text-white font-medium inline-block mt-1`}>
-                        {categoryLabels[event.category]}
+                      <div className="text-3xl font-cal font-bold text-brand-secondary">{timelineEvents[expandedEvent].year}</div>
+                      <div className="text-xl font-semibold text-text-primary">{timelineEvents[expandedEvent].title}</div>
+                      <div className={`text-sm px-3 py-1 rounded-full bg-gradient-to-r ${categoryColors[timelineEvents[expandedEvent].category]} text-white font-medium inline-block mt-2`}>
+                        {categoryLabels[timelineEvents[expandedEvent].category]}
                       </div>
                     </div>
                   </div>
                   
-                  <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
-                    <CollapsibleTrigger asChild>
-                      <Button variant="ghost" size="sm" className="p-2">
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expandedEvents.has(index) ? 'rotate-180' : ''}`} />
-                      </Button>
-                    </CollapsibleTrigger>
-                  </Collapsible>
+                  <Button variant="ghost" size="sm" onClick={() => setExpandedEvent(null)}>
+                    <ChevronDown className="w-4 h-4 rotate-180" />
+                  </Button>
                 </div>
 
-                {/* Collapsible Content */}
-                <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
-                  <CollapsibleContent>
-                    <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-xl shadow-sm mt-4">
-                      <div className="p-6 space-y-6">
-                        {/* Description */}
-                        <div className="space-y-4">
-                          <p className="text-text-secondary leading-relaxed">{event.description}</p>
-                          
-                          {/* Researcher */}
-                          <div className="flex items-center space-x-2">
-                            <div className="text-sm font-medium text-text-primary">Key Researcher:</div>
-                            <div className="text-sm text-text-secondary">{event.researcher}</div>
-                          </div>
-                        </div>
+                {/* Description */}
+                <div className="space-y-4">
+                  <p className="text-text-secondary leading-relaxed text-lg">{timelineEvents[expandedEvent].description}</p>
+                  
+                  {/* Researcher */}
+                  <div className="flex items-center space-x-2">
+                    <div className="text-sm font-medium text-text-primary">Key Researcher:</div>
+                    <div className="text-sm text-text-secondary">{timelineEvents[expandedEvent].researcher}</div>
+                  </div>
+                </div>
 
-                        {/* Citations */}
-                        <div className="space-y-2">
-                          <div className="text-sm font-medium text-text-primary">Research Citations:</div>
-                          <div className="space-y-1">
-                            {event.citations.map((citation, citationIndex) => (
-                              <div key={citationIndex} className="text-xs text-text-secondary bg-surface-secondary/50 p-3 rounded-lg border border-border/30">
-                                {citation}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Timeback Application (if exists) */}
-                        {event.timebackApplication && (
-                          <div className="space-y-2">
-                            <div className="text-sm font-medium text-brand-secondary">How Timeback Uses This:</div>
-                            <p className="text-sm text-text-secondary bg-brand-primary/10 p-4 rounded-lg border border-brand-primary/20">
-                              {event.timebackApplication}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Key Benefits (if exists) */}
-                        {event.keyBenefits && (
-                          <div className="space-y-2">
-                            <div className="text-sm font-medium text-text-primary">Key Benefits:</div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                              {event.keyBenefits.map((benefit, benefitIndex) => (
-                                <div key={benefitIndex} className="flex items-center space-x-2 text-sm text-text-secondary">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
-                                  <span>{benefit}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Research Basis (if exists) */}
-                        {event.researchBasis && (
-                          <div className="space-y-2">
-                            <div className="text-sm font-medium text-text-primary">Research Evidence:</div>
-                            <p className="text-sm text-text-secondary italic">{event.researchBasis}</p>
-                          </div>
-                        )}
-
-                        {/* Visual Diagram (if exists) */}
-                        {event.visualDiagram && (
-                          <div className="space-y-2">
-                            <div className="text-sm font-medium text-text-primary">Visual Representation:</div>
-                            {renderDiagram(event.visualDiagram)}
-                          </div>
-                        )}
+                {/* Citations */}
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-text-primary">Research Citations:</div>
+                  <div className="space-y-2">
+                    {timelineEvents[expandedEvent].citations.map((citation, citationIndex) => (
+                      <div key={citationIndex} className="text-xs text-text-secondary bg-surface-secondary/50 p-3 rounded-lg border border-border/30">
+                        {citation}
                       </div>
-                    </Card>
-                  </CollapsibleContent>
-                </Collapsible>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Timeback Application (if exists) */}
+                {timelineEvents[expandedEvent].timebackApplication && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-brand-secondary">How Timeback Uses This:</div>
+                    <p className="text-sm text-text-secondary bg-brand-primary/10 p-4 rounded-lg border border-brand-primary/20">
+                      {timelineEvents[expandedEvent].timebackApplication}
+                    </p>
+                  </div>
+                )}
+
+                {/* Key Benefits (if exists) */}
+                {timelineEvents[expandedEvent].keyBenefits && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-text-primary">Key Benefits:</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {timelineEvents[expandedEvent].keyBenefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-center space-x-2 text-sm text-text-secondary">
+                          <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Research Basis (if exists) */}
+                {timelineEvents[expandedEvent].researchBasis && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-text-primary">Research Evidence:</div>
+                    <p className="text-sm text-text-secondary italic">{timelineEvents[expandedEvent].researchBasis}</p>
+                  </div>
+                )}
+
+                {/* Visual Diagram (if exists) */}
+                {timelineEvents[expandedEvent].visualDiagram && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-text-primary">Visual Representation:</div>
+                    {renderDiagram(timelineEvents[expandedEvent].visualDiagram)}
+                  </div>
+                )}
               </div>
             </div>
-          ))}
-        </div>
+          </Card>
+        )}
       </div>
     </div>
   );
