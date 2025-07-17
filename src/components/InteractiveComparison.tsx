@@ -91,9 +91,9 @@ export const InteractiveComparison: React.FC = () => {
           <div className="min-w-[600px]">
             {/* Header */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="text-center">
-                <div className="bg-brand-secondary/10 rounded-full px-4 py-2 border border-brand-secondary/30 inline-block">
-                  <div className="text-lg font-poppins font-semibold text-brand-secondary">Feature</div>
+              <div className="text-left">
+                <div className="bg-surface-secondary rounded-lg p-3 border border-border">
+                  <div className="text-lg font-poppins font-semibold text-text-primary">Feature</div>
                 </div>
               </div>
               <div className="text-left">
@@ -133,9 +133,9 @@ export const InteractiveComparison: React.FC = () => {
                     
                     <div className="flex items-center space-x-2">
                       {item.traditional.hasFeature ? (
-                        <Check className="w-5 h-5 text-warning" />
+                        <Check className="w-5 h-5 text-green-500" />
                       ) : (
-                        <X className="w-5 h-5 text-destructive" />
+                        <X className="w-5 h-5 text-red-500" />
                       )}
                       <span className="text-sm text-text-secondary text-left font-poppins">
                         {item.traditional.value}
@@ -143,7 +143,7 @@ export const InteractiveComparison: React.FC = () => {
                     </div>
                     
                     <div className="flex items-center space-x-2">
-                      <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-secondary' : 'text-success'}`} />
+                      <Check className="w-5 h-5 text-green-500" />
                       <span className={`text-sm text-left font-medium font-poppins ${
                         item.timeback.highlight ? 'text-brand-secondary' : 'text-text-primary'
                       }`}>
