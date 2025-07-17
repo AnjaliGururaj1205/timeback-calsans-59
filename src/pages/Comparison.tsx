@@ -13,7 +13,7 @@ const Comparison = () => {
       <div className="bg-brand-primary border-b border-brand-secondary/20">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <Button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#ai-different-heading")}
             variant="ghost"
             className="text-brand-secondary hover:text-brand-secondary/80 hover:bg-brand-secondary/10"
           >
