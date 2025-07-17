@@ -230,14 +230,6 @@ export const AnimatedDiagrams: React.FC = () => {
   };
 
   const renderDiagram = () => {
-    if (selectedDiagram === null) {
-      return (
-        <div className="flex items-center justify-center h-80 text-text-secondary">
-          <p className="text-lg">Click a button above to see the animated demonstration</p>
-        </div>
-      );
-    }
-    
     switch (diagrams[selectedDiagram].visualType) {
       case 'blooms-taxonomy':
         return renderBloomsTaxonomy();
@@ -255,11 +247,11 @@ export const AnimatedDiagrams: React.FC = () => {
           Learning Principles in Action
         </h3>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-          Watch animated demonstrations of how Timeback applies key educational theories
+          Click below to see animated demonstrations of how Timeback applies key educational theories
         </p>
       </div>
 
-      {/* Diagram Selector */}
+      {/* Diagram Selector Buttons */}
       <div className="flex justify-center space-x-4">
         {diagrams.map((diagram, index) => (
           <button
@@ -276,10 +268,10 @@ export const AnimatedDiagrams: React.FC = () => {
         ))}
       </div>
 
-      {/* Main Diagram */}
-      <Card className="bg-surface-primary border border-border rounded-lg shadow-lg">
-        <div className="p-8 space-y-6">
-          {selectedDiagram !== null && (
+      {/* Animation Container - Only visible when a diagram is selected */}
+      {selectedDiagram !== null && (
+        <Card className="bg-surface-primary border border-border rounded-lg shadow-lg animate-fade-in">
+          <div className="p-8 space-y-6">
             <div className="text-center space-y-2">
               <h4 className="text-xl font-poppins font-bold text-text-primary">
                 {diagrams[selectedDiagram].title}
@@ -288,13 +280,13 @@ export const AnimatedDiagrams: React.FC = () => {
                 {diagrams[selectedDiagram].description}
               </p>
             </div>
-          )}
 
-          <div className="bg-surface-secondary rounded-lg p-6 border border-border">
-            {renderDiagram()}
+            <div className="bg-surface-secondary rounded-lg p-6 border border-border">
+              {renderDiagram()}
+            </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      )}
     </div>
   );
 };
