@@ -116,7 +116,7 @@ const learningPrinciples: LearningPrinciple[] = [
 ];
 
 export const InteractiveLearningScience: React.FC = () => {
-  const [expandedPrinciple, setExpandedPrinciple] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [currentProgress, setCurrentProgress] = useState(0);
   const [animatingDiagram, setAnimatingDiagram] = useState<string | null>(null);
 
@@ -127,12 +127,10 @@ export const InteractiveLearningScience: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePrincipleToggle = (principleId: string) => {
-    if (expandedPrinciple === principleId) {
-      setExpandedPrinciple(null);
-    } else {
-      setExpandedPrinciple(principleId);
-      setAnimatingDiagram(principleId);
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+    if (!isExpanded) {
+      setAnimatingDiagram('all');
       setTimeout(() => setAnimatingDiagram(null), 1000);
     }
   };
@@ -215,31 +213,36 @@ export const InteractiveLearningScience: React.FC = () => {
         <p className="text-lg text-text-secondary max-w-2xl mx-auto">
           Explore the research-backed principles that power Timeback's approach to accelerated learning
         </p>
-        <div className="max-w-md mx-auto">
-          <Progress value={currentProgress} className="h-2" />
-          <p className="text-xs text-text-secondary mt-2">Continuously optimizing based on learning science</p>
+        
+        {/* Single Toggle Button */}
+        <div className="flex justify-center">
+          <Button
+            onClick={handleToggle}
+            variant="outline"
+            className="bg-surface-primary border-brand-accent/30 hover:bg-brand-accent/10 hover:border-brand-accent/50 text-text-brand font-medium px-8 py-3 rounded-xl transition-all duration-300"
+          >
+            {isExpanded ? 'Hide' : 'Explore'} Research Principles
+            {isExpanded ? 
+              <ChevronUp className="w-5 h-5 ml-2 text-brand-secondary" /> : 
+              <ChevronDown className="w-5 h-5 ml-2 text-text-secondary" />
+            }
+          </Button>
         </div>
       </div>
 
-      <div className="space-y-4">
-        {learningPrinciples.map((principle, index) => (
-          <Card 
-            key={principle.id}
-            className={`transition-all duration-500 ${
-              expandedPrinciple === principle.id 
-                ? 'shadow-xl border-brand-accent/50 bg-gradient-to-r from-brand-accent/5 to-brand-secondary/5' 
-                : 'shadow-lg hover:shadow-xl border-border/50 hover:border-border'
-            }`}
-          >
-            <div className="p-6">
-              {/* Header */}
-              <div 
-                className="flex items-center justify-between cursor-pointer"
-                onClick={() => handlePrincipleToggle(principle.id)}
-              >
-                <div className="flex items-center space-x-4">
+      {/* Expanded Content - All Principles */}
+      {isExpanded && (
+        <div className="space-y-6 animate-fade-in">
+          {learningPrinciples.map((principle, index) => (
+            <Card 
+              key={principle.id}
+              className="shadow-lg border-border/50 bg-surface-primary transition-all duration-300 hover:shadow-xl"
+            >
+              <div className="p-6">
+                {/* Header */}
+                <div className="flex items-center space-x-4 mb-6">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${principle.visualElements.color} p-3 flex items-center justify-center transition-transform duration-300 ${
-                    animatingDiagram === principle.id ? 'scale-110' : ''
+                    animatingDiagram === 'all' ? 'scale-110' : ''
                   }`}>
                     <div className="text-white">
                       {principle.visualElements.icon}
@@ -250,17 +253,9 @@ export const InteractiveLearningScience: React.FC = () => {
                     <p className="text-sm text-text-secondary leading-relaxed">{principle.shortDescription}</p>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm">
-                  {expandedPrinciple === principle.id ? 
-                    <ChevronUp className="w-5 h-5 text-brand-secondary" /> : 
-                    <ChevronDown className="w-5 h-5 text-text-secondary" />
-                  }
-                </Button>
-              </div>
 
-              {/* Expanded Content */}
-              {expandedPrinciple === principle.id && (
-                <div className="mt-6 space-y-6 animate-fade-in">
+                {/* Content */}
+                <div className="space-y-6">
                   {/* Full Explanation */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-4">
@@ -312,11 +307,11 @@ export const InteractiveLearningScience: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
-          </Card>
-        ))}
-      </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
