@@ -1,246 +1,295 @@
-import React, { useRef, useEffect } from 'react'
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion'
-import { Clock, Star, Users, BookOpen, Zap, Target, Trophy, Heart, ChevronDown, Play, Pause, Volume2, VolumeX, Check, ArrowRight, BarChart, Calendar, Shield, Award, MessageSquare, Sparkles, TrendingUp, User, MapPin, Phone, Mail } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { Progress } from '@/components/ui/progress'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Input } from '@/components/ui/input'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { DemoVideoPlayer } from '@/components/DemoVideoPlayer'
-import { TechnicalShowcase } from '@/components/TechnicalShowcase'
-import { VideoTestimonials } from '@/components/VideoTestimonials'
-import { TestimonialCarousel } from '@/components/TestimonialCarousel'
-import { InteractiveComparison } from '@/components/InteractiveComparison'
-import { InteractiveLearningScience } from '@/components/InteractiveLearningScience'
-import { AnimatedCounter } from '@/components/AnimatedCounter'
-import { FAQSection } from '@/components/FAQSection'
-import { MultiStepForm } from '@/components/MultiStepForm'
-import { FloatingFAQHelper } from '@/components/FloatingFAQHelper'
-import { TrustIndicators } from '@/components/TrustIndicators'
-import { ScheduleComparison } from '@/components/ScheduleComparison'
-import { LearningTimeline } from '@/components/LearningTimeline'
-import { InteractiveTestimonial } from '@/components/InteractiveTestimonial'
-import { TestimonialGrid } from '@/components/TestimonialGrid'
-import { SuccessStoryTimeline } from '@/components/SuccessStoryTimeline'
-import { InteractiveUSMap } from '@/components/InteractiveUSMap'
-import { LearningPathComparison } from '@/components/LearningPathComparison'
-import { AnimatedDiagrams } from '@/components/AnimatedDiagrams'
+import React, { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { BeforeAfterCard } from "@/components/BeforeAfterCard";
+import { InteractiveTestimonial } from "@/components/InteractiveTestimonial";
+import { InteractiveUSMap } from "@/components/InteractiveUSMap";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { DemoVideoPlayer } from "@/components/DemoVideoPlayer";
+import { LearningPathComparison } from "@/components/LearningPathComparison";
+import { InteractiveLearningScience } from "@/components/InteractiveLearningScience";
+import { LearningTimeline } from "@/components/LearningTimeline";
+import { AnimatedDiagrams } from "@/components/AnimatedDiagrams";
+import { VideoTestimonials } from "@/components/VideoTestimonials";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { TestimonialGrid } from "@/components/TestimonialGrid";
+import { SuccessStoryTimeline } from "@/components/SuccessStoryTimeline";
+import { TrustIndicators } from "@/components/TrustIndicators";
+import { FAQSection } from "@/components/FAQSection";
+import { FloatingFAQHelper } from "@/components/FloatingFAQHelper";
+import { MultiStepForm } from "@/components/MultiStepForm";
+import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
+import { z } from "zod";
+
+// Email validation schema
+const emailSchema = z.object({
+  email: z.string().email("Please enter a valid email address").min(1, "Email is required"),
+});
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('traditional')
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(false)
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
-  const [email, setEmail] = useState("")
-  const controls = useAnimation()
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const { scrollYProgress } = useScroll()
-  const navigate = useNavigate()
-
-  // Parallax transforms
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '150%'])
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [typewriterText, setTypewriterText] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const fullText = "COMING IN 2026";
 
   useEffect(() => {
-    controls.start('visible')
-  }, [controls])
+    let currentIndex = 0;
+    let isPaused = false;
+    
+    const typewriterInterval = setInterval(() => {
+      if (!isPaused && currentIndex <= fullText.length) {
+        setTypewriterText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else if (!isPaused && currentIndex > fullText.length) {
+        // Pause at the end before starting fade out
+        isPaused = true;
+        setTimeout(() => {
+          setIsVisible(false);
+          setTimeout(() => {
+            setTypewriterText("");
+            currentIndex = 0;
+            setIsVisible(true);
+            isPaused = false;
+          }, 500); // Wait for fade out to complete
+        }, 2000);
+      }
+    }, 100);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+    return () => clearInterval(typewriterInterval);
+  }, []);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  // Scroll scaling effect for stats only
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.stats-scale-element');
+      const viewportHeight = window.innerHeight;
+      const centerY = viewportHeight / 2;
+
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const elementCenterY = rect.top + rect.height / 2;
+        const distanceFromCenter = Math.abs(elementCenterY - centerY);
+        const maxDistance = viewportHeight / 2;
+        
+        // Calculate scale based on distance from center (1x to 1.35x) - reduced by 30%
+        const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
+        const scale = 1.35 - (normalizedDistance * 0.35);
+        
+        (element as HTMLElement).style.transform = `scale(${scale})`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      localStorage.setItem('userEmail', email);
-      navigate('/about');
+    
+    // Rate limiting: prevent submissions within 2 seconds
+    const now = Date.now();
+    if (now - lastSubmissionTime < 2000) {
+      toast({
+        title: "Please wait",
+        description: "Please wait a moment before submitting again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate email
+    const validation = emailSchema.safeParse({ email });
+    if (!validation.success) {
+      toast({
+        title: "Invalid email",
+        description: validation.error.issues[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setLastSubmissionTime(now);
+
+    try {
+      // Check if email already exists
+      const { data: existingEmail, error: checkError } = await supabase
+        .from('email_signups')
+        .select('email')
+        .eq('email', email.toLowerCase())
+        .maybeSingle();
+
+      if (checkError) {
+        console.error('Error checking existing email:', checkError);
+        throw new Error('Failed to verify email');
+      }
+
+      if (existingEmail) {
+        toast({
+          title: "Already registered!",
+          description: "This email is already on our waitlist. We'll notify you when Timeback launches!",
+        });
+        setEmail("");
+        return;
+      }
+
+      // Insert new email signup
+      const { error: insertError } = await supabase
+        .from('email_signups')
+        .insert([{ email: email.toLowerCase() }]);
+
+      if (insertError) {
+        console.error('Error inserting email:', insertError);
+        throw new Error('Failed to save email');
+      }
+
+      toast({
+        title: "Thanks for signing up!",
+        description: "We'll notify you when Timeback launches in 2026.",
+      });
+      setEmail("");
+      
+      // Scroll to About section
+      setTimeout(() => {
+        aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 1000);
+    } catch (error) {
+      console.error('Email submission error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later or contact support if the problem persists.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  }
-
-  const testimonials = [
-    {
-      name: "Sarah Chen",
-      role: "Parent of Alex (9)",
-      content: "Alex now finishes school by 10 AM and spends the rest of the day pursuing his passion for robotics. His test scores have never been higher.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b732?w=400&h=400&fit=crop&crop=face",
-      outcome: "300% improvement in standardized test scores"
-    },
-    {
-      name: "Maria Rodriguez", 
-      role: "Parent of Sofia (12)",
-      content: "Sofia discovered her love for art when she wasn't trapped in a classroom all day. She's now painting masterpieces while excelling academically.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-      outcome: "Discovered hidden artistic talents"
-    },
-    {
-      name: "David Thompson",
-      role: "Parent of Emma (10)", 
-      content: "Emma's confidence has soared. She's learning at her own pace and has time for music lessons, coding, and quality family time.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      outcome: "Regained love for learning"
-    }
-  ]
-
   return (
-    <div className="min-h-screen bg-surface-primary text-gray-800 overflow-x-hidden">
-      {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted={isMuted}
-            playsInline
-            className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=1080&fit=crop"
-          >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-student-working-on-homework-at-home-4754-large.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Video Controls */}
-          <div className="absolute top-4 right-4 flex gap-2 z-10">
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-black/50 border-white/20 text-white hover:bg-black/70"
-              onClick={() => {
-                if (videoRef.current) {
-                  if (isPlaying) {
-                    videoRef.current.pause()
-                  } else {
-                    videoRef.current.play()
-                  }
-                  setIsPlaying(!isPlaying)
-                }
-              }}
-            >
-              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-black/50 border-white/20 text-white hover:bg-black/70"
-              onClick={() => setIsMuted(!isMuted)}
-            >
-              {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-            </Button>
+    <div className="min-h-screen bg-brand-primary">
+      {/* Main Section */}
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div className="max-w-4xl mx-auto text-center space-y-8 lg:space-y-12">
+          {/* Logo */}
+          <div className="animate-fade-in">
+            <img 
+              src="/lovable-uploads/5914131b-3128-49af-af97-d359cb8d0d5f.png" 
+              alt="Timeback - Learning just got schooled"
+              className="mx-auto w-60 md:w-72 h-auto"
+              style={{ opacity: 0.95 }}
+            />
+          </div>
+
+          {/* Main Headline with improved hierarchy */}
+          <div className="space-y-4 animate-fade-in-up">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal leading-tight text-brand-secondary">
+              {/* Mobile version - optimized spacing */}
+              <div className="block md:hidden">
+                <div className="mb-2">Your kid can crush academics</div>
+                <div>in only 2 hours per day</div>
+              </div>
+              {/* Desktop/Tablet version */}
+              <div className="hidden md:block">
+                <div>Your kid can crush academics</div>
+                <div className="mt-2">in only 2 hours per day</div>
+              </div>
+            </h1>
+          </div>
+
+          {/* Email Signup with improved UX */}
+          <div className="max-w-md mx-auto animate-fade-in-up delay-200">
+            <form onSubmit={handleEmailSubmit} className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 h-12 text-base border-2 border-brand-secondary bg-brand-secondary text-brand-primary placeholder:text-brand-primary/70 rounded-xl font-medium focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all"
+                  disabled={isSubmitting}
+                  required
+                  aria-label="Email address for Timeback updates"
+                />
+                <Button 
+                  type="submit"
+                  className="h-12 px-8 bg-white text-brand-secondary hover:bg-surface-secondary hover:scale-105 focus:ring-2 focus:ring-brand-secondary focus:ring-offset-2 font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-cal"
+                  disabled={isSubmitting}
+                  aria-label={isSubmitting ? "Submitting..." : "Get started with Timeback"}
+                >
+                  {isSubmitting ? "..." : "Get Started"}
+                </Button>
+              </div>
+            </form>
+          </div>
+
+          {/* Coming Soon Message with improved accessibility */}
+          <div className="animate-fade-in-up delay-300">
+            <div className="h-7 flex items-center justify-center">
+              <p 
+                className={`text-lg font-medium font-cal text-brand-secondary transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                aria-live="polite"
+                aria-label="Coming soon announcement"
+              >
+                {typewriterText}
+              </p>
+            </div>
           </div>
         </div>
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
-        
-        {/* Content */}
-        <motion.div 
-          className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white"
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          <motion.div variants={itemVariants} className="space-y-8">
-            <motion.h1 
-              className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight font-cal"
-              variants={itemVariants}
-            >
-              Give Your Kid Their{' '}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Time Back
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed font-system text-blue-100"
-              variants={itemVariants}
-            >
-              Master academics in just 2 hours a day. Unlock 6+ hours for passions, creativity, and childhood.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
-              variants={itemVariants}
-            >
-              {/* Email Collection Form */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
-                <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 w-full">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="flex-1 px-4 py-3 text-lg rounded-lg border-2 border-white/20 bg-white/10 text-white placeholder:text-white/70 focus:border-white focus:bg-white/20"
-                  />
-                  <Button 
-                    type="submit"
-                    size="lg" 
-                    className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg text-lg transition-all duration-300 hover:scale-105 font-system"
-                  >
-                    Get Started
-                  </Button>
-                </form>
-              </div>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                onClick={() => scrollToSection('proof-section')}
-                className="bg-transparent border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 font-system"
-              >
-                See the Proof
-                <ChevronDown className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-        
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="h-8 w-8 text-white opacity-70" />
-        </motion.div>
-      </section>
+      </div>
 
-      {/* Trust Indicators Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <TrustIndicators />
+      {/* About Section with improved spacing and hierarchy */}
+      <section ref={aboutRef} className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-brand-primary">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
+            About
+          </h2>
+          <p className="text-lg md:text-xl leading-relaxed max-w-3xl text-brand-secondary opacity-90">
+            TimeBack is the AI-powered EducationOS behind Alpha schools, empowering kids to master their academics in just 2 hours a day—freeing up the rest of the day for what they love. Built on learning science, it generates personalized lessons, optimal lesson plans, and AI coaching to create self-driven learners. Independent standardized tests confirm learning gains up to 10× faster.
+          </p>
+          
+          {/* Action Buttons with improved accessibility */}
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            {[
+              { role: "Parent", path: "/dashboard" },
+              { role: "Government", path: "/dashboard" },
+              { role: "Philanthropist", path: "/dashboard" },
+              { role: "School", path: "/dashboard" },
+              { role: "Entrepreneur", path: "/dashboard" }
+            ].map(({ role, path }, index) => (
+              <Button 
+                key={role}
+                className="h-12 px-6 bg-white text-blue-800 focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 font-semibold rounded-full font-cal"
+                onClick={() => {
+                  if (index === 0) {
+                    parentRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = path;
+                  }
+                }}
+                aria-label={`Learn more about Timeback for ${role.toLowerCase()}s`}
+              >
+                {role}
+              </Button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Proven Results Section */}
-      <section id="proof-section" className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white px-4 py-20" aria-labelledby="proof-heading">
-        <div className="max-w-7xl mx-auto space-y-16">
+      {/* Comprehensive Proof Section */}
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="proof-heading">
+        <div className="max-w-7xl mx-auto space-y-20">
           
           {/* Section Header */}
           <div className="text-center space-y-6">
@@ -248,110 +297,131 @@ const Index = () => {
               Proven Results That Speak for Themselves
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
-              Independent standardized tests confirm learning gains up to 10× faster than traditional methods
+              Independent testing confirms what our families already know: Alpha students consistently outperform traditional education by remarkable margins.
             </p>
           </div>
 
-          {/* Key Metrics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#0033cc' }}>
-                  <AnimatedCounter end={10} duration={2000} />×
+          {/* Animated Dashboard Stats */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="group bg-gradient-to-br from-card via-surface-secondary to-brand-accent/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-brand-secondary">SAT</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 font-cal" style={{ color: '#0033cc' }}>Faster Learning</h3>
-                <p className="text-gray-600">Independent tests show up to 10× acceleration in academic mastery</p>
-              </CardContent>
-            </Card>
+                <AnimatedCounter 
+                  end={1535} 
+                  className="text-5xl md:text-6xl font-cal font-bold text-brand-secondary"
+                />
+                <h3 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
+                  Average SAT Score
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
+                  Highest in Texas — 300+ points above state average
+                </p>
+              </div>
+            </div>
 
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#0033cc' }}>
-                  <AnimatedCounter end={85} duration={2000} />%
+            <div className="group bg-gradient-to-br from-card via-surface-secondary to-brand-secondary/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-brand-secondary/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-brand-secondary">%</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 font-cal" style={{ color: '#0033cc' }}>Time Saved</h3>
-                <p className="text-gray-600">Students complete traditional curriculum in 85% less time</p>
-              </CardContent>
-            </Card>
+                <div className="flex items-center justify-center">
+                  <AnimatedCounter 
+                    end={99} 
+                    suffix="th"
+                    className="text-5xl md:text-6xl font-cal font-bold text-brand-secondary"
+                  />
+                  <span className="text-3xl font-cal font-bold text-brand-secondary ml-1">%</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
+                  Academic Percentile
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
+                  Outperforming 99% of peers nationwide in standardized testing
+                </p>
+              </div>
+            </div>
 
-            <Card className="border-none shadow-lg bg-white/80 backdrop-blur hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#0033cc' }}>
-                  <AnimatedCounter end={98} duration={2000} />%
+            <div className="group bg-gradient-to-br from-card via-surface-secondary to-green-500/5 border border-border/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 backdrop-blur-sm">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-green-500">10x</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 font-cal" style={{ color: '#0033cc' }}>Parent Satisfaction</h3>
-                <p className="text-gray-600">Parents report dramatically improved family life and child happiness</p>
-              </CardContent>
-            </Card>
+                <div className="flex items-center justify-center">
+                  <AnimatedCounter 
+                    end={10} 
+                    suffix="x"
+                    className="text-5xl md:text-6xl font-cal font-bold text-green-500"
+                  />
+                </div>
+                <h3 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
+                  Learning Acceleration
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed text-text-secondary">
+                  Up to 10x faster learning gains than traditional methods
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Before/After Comparison */}
+          {/* Before/After Comparison Cards */}
           <div className="space-y-12">
             <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 font-cal" style={{ color: '#0033cc' }}>
-                Traditional School vs. TimeBack
+              <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand mb-4">
+                Real Student Transformations
               </h3>
-              <p className="text-lg" style={{ color: '#66b2ff' }}>
-                See the dramatic difference in daily schedules
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                See the dramatic improvements our students achieve across key academic metrics
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <ScheduleComparison 
-                title="Traditional School Day"
-                timeBlocks={[
-                  { time: "7:00 AM", activity: "Wake up, get ready", color: "#94a3b8" },
-                  { time: "8:00 AM", activity: "School starts", color: "#64748b" },
-                  { time: "3:00 PM", activity: "School ends", color: "#64748b" },
-                  { time: "4:00 PM", activity: "Homework begins", color: "#475569" },
-                  { time: "7:00 PM", activity: "Finally done!", color: "#334155" },
-                  { time: "8:00 PM", activity: "Family time (rushed)", color: "#1e293b" }
-                ]}
-                problems={[
-                  "6+ hours of inefficient learning",
-                  "2-3 hours of additional homework", 
-                  "Minimal time for passions",
-                  "Exhausted, stressed children"
-                ]}
+            <div className="grid md:grid-cols-3 gap-8">
+              <BeforeAfterCard
+                title="Reading Comprehension"
+                beforeValue="32nd percentile"
+                afterValue="94th percentile"
+                description="Average improvement after 6 months with Timeback's adaptive reading program"
+                icon={<span className="text-2xl text-brand-secondary font-bold">READ</span>}
               />
               
-              <ScheduleComparison 
-                title="TimeBack Day"
-                timeBlocks={[
-                  { time: "8:00 AM", activity: "Start personalized learning", color: "#3b82f6" },
-                  { time: "10:00 AM", activity: "Academic goals achieved!", color: "#2563eb" },
-                  { time: "10:30 AM", activity: "Passion time begins", color: "#16a34a" },
-                  { time: "2:00 PM", activity: "Outdoor play & exercise", color: "#22c55e" },
-                  { time: "4:00 PM", activity: "Family time", color: "#f59e0b" },
-                  { time: "7:00 PM", activity: "Creative projects", color: "#8b5cf6" }
-                ]}
-                benefits={[
-                  "2 hours of efficient, personalized learning",
-                  "6+ hours for passions & interests",
-                  "Quality family time",
-                  "Happy, energized children"
-                ]}
+              <BeforeAfterCard
+                title="Math Proficiency"
+                beforeValue="Grade level 4.2"
+                afterValue="Grade level 7.8"
+                description="Students advance 3.6 grade levels in mathematics within one academic year"
+                icon={<span className="text-2xl text-brand-secondary font-bold">MATH</span>}
+              />
+              
+              <BeforeAfterCard
+                title="Learning Confidence"
+                beforeValue="38% motivated"
+                afterValue="96% engaged"
+                description="Students report significantly higher engagement and love for learning"
+                icon={<span className="text-2xl text-green-500 font-bold">GOAL</span>}
               />
             </div>
           </div>
 
-          {/* Results Timeline */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <LearningTimeline />
+          {/* Interactive Testimonials */}
+          <div className="space-y-12">
+            <div className="text-center">
+              <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand mb-4">
+                Hear From Our Families
+              </h3>
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                Real stories from parents and educators who've witnessed the transformation
+              </p>
+            </div>
+            
+            <InteractiveTestimonial />
           </div>
 
           {/* Interactive US Map */}
-          <div className="space-y-8">
-            <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 font-cal" style={{ color: '#0033cc' }}>
-                Results Across America
-              </h3>
-              <p className="text-lg" style={{ color: '#66b2ff' }}>
-                See how families nationwide are transforming their children's education
-              </p>
-            </div>
+          <div className="space-y-12">
             <InteractiveUSMap />
           </div>
+
         </div>
       </section>
 
@@ -366,24 +436,33 @@ const Index = () => {
             </h2>
             <div className="space-y-4">
               <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
-                Unlike generic AI tutors, TimeBack was built specifically for mastery-based learning
+                Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
               </p>
-              <p className="text-lg leading-relaxed max-w-4xl mx-auto" style={{ color: '#66b2ff' }}>
-                Our proprietary EducationOS adapts in real-time, identifies knowledge gaps instantly, and ensures true understanding before moving forward
-              </p>
+              <Button
+                onClick={() => navigate("/comparison")}
+                variant="ghost"
+                className="text-brand-secondary hover:text-brand-secondary/80 hover:bg-brand-secondary/10 text-base font-medium"
+              >
+                See more <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
             </div>
           </div>
 
-          {/* Interactive Comparison */}
-          <InteractiveComparison />
+          {/* Demo Video Player */}
+          <div className="space-y-8">
+            <DemoVideoPlayer />
+          </div>
 
-          {/* Technical Showcase */}
-          <TechnicalShowcase />
+          {/* Learning Path Comparison */}
+          <div className="space-y-8">
+            <LearningPathComparison />
+          </div>
+
         </div>
       </section>
 
-      {/* Built on Learning Science Section */}
-      <section className="min-h-screen bg-white px-4 py-20" aria-labelledby="science-heading">
+      {/* Learning Science Section */}
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="science-heading">
         <div className="max-w-7xl mx-auto space-y-16">
           
           {/* Section Header */}
@@ -392,23 +471,26 @@ const Index = () => {
               Built on Learning Science
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
-              Decades of cognitive research compressed into an intelligent system that understands how children actually learn
+              Four decades of educational research powers every aspect of Timeback's approach to accelerated learning
             </p>
           </div>
 
-          {/* Interactive Learning Science Component */}
-          <InteractiveLearningScience />
+          {/* Learning Timeline */}
+          <LearningTimeline />
 
-          {/* Learning Path Comparison */}
-          <LearningPathComparison />
+          {/* Interactive Learning Science Principles */}
+          <InteractiveLearningScience />
 
           {/* Animated Diagrams */}
           <AnimatedDiagrams />
+
         </div>
       </section>
 
-      {/* Community Section */}
-      <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20">
+
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-to-b from-surface-primary via-gray-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 space-y-16">
           {/* Compact What People Are Saying */}
           <div className="text-center mb-8">
