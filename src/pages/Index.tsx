@@ -431,35 +431,19 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="ai-different-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal text-brand-secondary">
+            <h2 id="ai-different-heading" className="text-xl md:text-2xl lg:text-3xl font-bold font-cal text-brand-secondary">
               Why Our AI is Different
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
-              Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
-            </p>
-            <Button
-              onClick={() => navigate("/comparison")}
-              variant="ghost"
-              className="text-brand-secondary hover:text-brand-secondary/80 hover:bg-brand-secondary/10 text-base font-medium mt-4"
-            >
-              See more <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-
-          {/* Technical Capabilities Preview with Redirect */}
-          <div className="space-y-8 text-center">
-            <div className="bg-brand-secondary/5 border border-brand-secondary/20 rounded-3xl p-8">
-              <h3 className="text-xl md:text-2xl font-cal font-bold text-brand-secondary mb-4">
-                Technical Capabilities & AI Comparison
-              </h3>
-              <p className="text-brand-secondary/80 mb-6 max-w-2xl mx-auto">
-                Discover our advanced AI features and see detailed comparisons with traditional systems.
+            <div className="space-y-4">
+              <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
+                Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
               </p>
               <Button
                 onClick={() => navigate("/comparison")}
-                className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-8 py-3 rounded-xl"
+                variant="ghost"
+                className="text-brand-secondary hover:text-brand-secondary/80 hover:bg-brand-secondary/10 text-base font-medium"
               >
-                View Full Comparison <ArrowRight className="w-4 h-4 ml-2" />
+                See more <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </div>

@@ -25,16 +25,6 @@ const Comparison = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-20 space-y-20">
-        
-        {/* Why Our AI is Different Section */}
-        <div className="text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
-            Why Our AI is Different
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
-            Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
-          </p>
-        </div>
 
         {/* Interactive Comparison Table */}
         <div className="space-y-8">

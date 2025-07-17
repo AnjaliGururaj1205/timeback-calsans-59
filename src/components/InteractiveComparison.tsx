@@ -103,8 +103,8 @@ export const InteractiveComparison: React.FC = () => {
                 </div>
               </div>
               <div className="text-left">
-                <div className="bg-brand-secondary/5 rounded-lg p-3 border border-brand-secondary/20">
-                  <div className="text-lg font-poppins font-semibold text-brand-secondary">Timeback AI</div>
+                <div className="bg-surface-secondary rounded-lg p-3 border border-border">
+                  <div className="text-lg font-poppins font-semibold text-text-primary">Timeback AI</div>
                   <div className="text-sm text-text-secondary font-poppins">Advanced Learning Engine</div>
                 </div>
               </div>
