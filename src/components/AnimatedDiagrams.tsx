@@ -45,7 +45,7 @@ const diagrams: AnimatedDiagram[] = [
 ];
 
 export const AnimatedDiagrams: React.FC = () => {
-  const [selectedDiagram, setSelectedDiagram] = useState(0);
+  const [selectedDiagram, setSelectedDiagram] = useState<number | null>(null);
   const [animationStep, setAnimationStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -53,7 +53,7 @@ export const AnimatedDiagrams: React.FC = () => {
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     
-    if (isAnimating) {
+    if (isAnimating && selectedDiagram !== null) {
       interval = setInterval(() => {
         setAnimationStep((prev) => {
           const currentDiagram = diagrams[selectedDiagram];
@@ -75,16 +75,15 @@ export const AnimatedDiagrams: React.FC = () => {
     };
   }, [selectedDiagram, isAnimating]);
 
-  const startAnimation = () => {
-    setIsAnimating(true);
+  const handleDiagramClick = (index: number) => {
+    setSelectedDiagram(index);
     setAnimationStep(0);
-  };
-
-  const stopAnimation = () => {
-    setIsAnimating(false);
+    setIsAnimating(true);
   };
 
   const renderBloomsTaxonomy = () => {
+    if (selectedDiagram === null) return null;
+    
     const currentDiagram = diagrams[selectedDiagram];
     return (
       <div className="relative w-full h-80">
@@ -142,6 +141,8 @@ export const AnimatedDiagrams: React.FC = () => {
   };
 
   const renderMasteryLearning = () => {
+    if (selectedDiagram === null) return null;
+    
     const currentDiagram = diagrams[selectedDiagram];
     return (
       <div className="relative w-full h-80">
@@ -229,6 +230,14 @@ export const AnimatedDiagrams: React.FC = () => {
   };
 
   const renderDiagram = () => {
+    if (selectedDiagram === null) {
+      return (
+        <div className="flex items-center justify-center h-80 text-text-secondary">
+          <p className="text-lg">Click a button above to see the animated demonstration</p>
+        </div>
+      );
+    }
+    
     switch (diagrams[selectedDiagram].visualType) {
       case 'blooms-taxonomy':
         return renderBloomsTaxonomy();
@@ -255,15 +264,11 @@ export const AnimatedDiagrams: React.FC = () => {
         {diagrams.map((diagram, index) => (
           <button
             key={index}
-            onClick={() => {
-              setSelectedDiagram(index);
-              setIsAnimating(false);
-              setAnimationStep(0);
-            }}
-            className={`px-4 py-2 rounded-lg font-medium font-poppins transition-all duration-300 ${
+            onClick={() => handleDiagramClick(index)}
+            className={`px-6 py-3 rounded-lg font-medium font-poppins transition-all duration-300 ${
               selectedDiagram === index
-                ? 'bg-brand-primary text-white'
-                : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary'
+                ? 'bg-brand-primary text-white shadow-lg scale-105'
+                : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary hover:scale-102'
             }`}
           >
             {diagram.title}
@@ -274,34 +279,19 @@ export const AnimatedDiagrams: React.FC = () => {
       {/* Main Diagram */}
       <Card className="bg-surface-primary border border-border rounded-lg shadow-lg">
         <div className="p-8 space-y-6">
-          <div className="text-center space-y-2">
-            <h4 className="text-xl font-poppins font-bold text-text-primary">
-              {diagrams[selectedDiagram].title}
-            </h4>
-            <p className="text-text-secondary font-poppins">
-              {diagrams[selectedDiagram].description}
-            </p>
-          </div>
+          {selectedDiagram !== null && (
+            <div className="text-center space-y-2">
+              <h4 className="text-xl font-poppins font-bold text-text-primary">
+                {diagrams[selectedDiagram].title}
+              </h4>
+              <p className="text-text-secondary font-poppins">
+                {diagrams[selectedDiagram].description}
+              </p>
+            </div>
+          )}
 
           <div className="bg-surface-secondary rounded-lg p-6 border border-border">
             {renderDiagram()}
-          </div>
-
-          <div className="flex justify-center space-x-4">
-            <button
-              onClick={startAnimation}
-              disabled={isAnimating}
-              className="px-6 py-2 bg-brand-primary text-white rounded-lg font-medium font-poppins hover:bg-brand-secondary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isAnimating ? 'Playing...' : 'Start Animation'}
-            </button>
-            <button
-              onClick={stopAnimation}
-              disabled={!isAnimating}
-              className="px-6 py-2 bg-surface-secondary text-text-primary rounded-lg font-medium font-poppins hover:bg-surface-tertiary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Stop
-            </button>
           </div>
         </div>
       </Card>
