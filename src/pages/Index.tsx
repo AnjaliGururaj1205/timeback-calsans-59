@@ -6,8 +6,8 @@ import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";
 import { InteractiveTestimonial } from "@/components/InteractiveTestimonial";
 import { InteractiveUSMap } from "@/components/InteractiveUSMap";
-import { InteractiveComparison } from "@/components/InteractiveComparison";
-import { TechnicalShowcase } from "@/components/TechnicalShowcase";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { DemoVideoPlayer } from "@/components/DemoVideoPlayer";
 import { LearningPathComparison } from "@/components/LearningPathComparison";
 import { InteractiveLearningScience } from "@/components/InteractiveLearningScience";
@@ -39,6 +39,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState(0);
   const aboutRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const fullText = "COMING IN 2026";
 
   useEffect(() => {
@@ -430,22 +431,37 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="ai-different-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-brand-secondary">
+            <h2 id="ai-different-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal text-brand-secondary">
               Why Our AI is Different
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
               Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
             </p>
+            <Button
+              onClick={() => navigate("/comparison")}
+              variant="ghost"
+              className="text-brand-secondary hover:text-brand-secondary/80 hover:bg-brand-secondary/10 text-base font-medium mt-4"
+            >
+              See more <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
           </div>
 
-          {/* Interactive Comparison Table */}
-          <div className="space-y-8">
-            <InteractiveComparison />
-          </div>
-
-          {/* Technical Capabilities Showcase */}
-          <div className="space-y-8">
-            <TechnicalShowcase />
+          {/* Technical Capabilities Preview with Redirect */}
+          <div className="space-y-8 text-center">
+            <div className="bg-brand-secondary/5 border border-brand-secondary/20 rounded-3xl p-8">
+              <h3 className="text-xl md:text-2xl font-cal font-bold text-brand-secondary mb-4">
+                Technical Capabilities & AI Comparison
+              </h3>
+              <p className="text-brand-secondary/80 mb-6 max-w-2xl mx-auto">
+                Discover our advanced AI features and see detailed comparisons with traditional systems.
+              </p>
+              <Button
+                onClick={() => navigate("/comparison")}
+                className="bg-brand-secondary text-brand-primary hover:bg-brand-secondary/90 font-semibold px-8 py-3 rounded-xl"
+              >
+                View Full Comparison <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </div>
 
           {/* Demo Video Player */}
