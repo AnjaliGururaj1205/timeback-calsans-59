@@ -10,8 +10,7 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { DemoVideoPlayer } from "@/components/DemoVideoPlayer";
 import { LearningPathComparison } from "@/components/LearningPathComparison";
-import { InteractiveLearningScience } from "@/components/InteractiveLearningScience";
-import { LearningTimeline } from "@/components/LearningTimeline";
+import { CombinedLearningTimeline } from "@/components/CombinedLearningTimeline";
 import { AnimatedDiagrams } from "@/components/AnimatedDiagrams";
 import { VideoTestimonials } from "@/components/VideoTestimonials";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
@@ -462,11 +461,8 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Learning Timeline */}
-          <LearningTimeline />
-
-          {/* Interactive Learning Science Principles */}
-          <InteractiveLearningScience />
+          {/* Combined Learning Science Timeline */}
+          <CombinedLearningTimeline />
 
           {/* Animated Diagrams */}
           <AnimatedDiagrams />
