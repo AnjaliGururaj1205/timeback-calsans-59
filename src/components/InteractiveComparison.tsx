@@ -18,6 +18,7 @@ interface ComparisonFeature {
 }
 
 const comparisonFeatures: ComparisonFeature[] = [
+  // Traditional AI limitations first (X's at top)
   {
     feature: 'Visual Learning Assessment',
     traditional: { value: 'Text-based only', hasFeature: false },
@@ -31,16 +32,17 @@ const comparisonFeatures: ComparisonFeature[] = [
     details: 'Learning path adjusts in real-time based on student performance and engagement patterns.'
   },
   {
-    feature: 'Personalization Depth',
-    traditional: { value: 'Basic difficulty levels', hasFeature: true },
-    timeback: { value: 'Multi-dimensional personalization', hasFeature: true, highlight: true },
-    details: 'Considers learning style, pace, interests, emotional state, and cognitive load simultaneously.'
-  },
-  {
     feature: 'Learning Science Integration',
     traditional: { value: 'Generic curriculum', hasFeature: false },
     timeback: { value: 'Research-backed methodology', hasFeature: true, highlight: true },
     details: 'Built on decades of cognitive science research with continuous optimization based on learning outcomes.'
+  },
+  // Mixed features in middle
+  {
+    feature: 'Personalization Depth',
+    traditional: { value: 'Basic difficulty levels', hasFeature: true },
+    timeback: { value: 'Multi-dimensional personalization', hasFeature: true, highlight: true },
+    details: 'Considers learning style, pace, interests, emotional state, and cognitive load simultaneously.'
   },
   {
     feature: 'Progress Tracking',
@@ -48,6 +50,7 @@ const comparisonFeatures: ComparisonFeature[] = [
     timeback: { value: 'Comprehensive analytics', hasFeature: true },
     details: 'Tracks mastery depth, retention patterns, skill transfer, and meta-cognitive development.'
   },
+  // TimeBack advantages at bottom (checkmarks)
   {
     feature: 'Content Generation',
     traditional: { value: 'Pre-built lessons', hasFeature: true },
@@ -88,14 +91,18 @@ export const InteractiveComparison: React.FC = () => {
           <div className="min-w-[600px]">
             {/* Header */}
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="text-lg font-poppins font-semibold text-text-primary">Feature</div>
               <div className="text-center">
+                <div className="bg-brand-secondary/10 rounded-full px-4 py-2 border border-brand-secondary/30 inline-block">
+                  <div className="text-lg font-poppins font-semibold text-brand-secondary">Feature</div>
+                </div>
+              </div>
+              <div className="text-left">
                 <div className="bg-surface-secondary rounded-lg p-3 border border-border">
                   <div className="text-lg font-poppins font-semibold text-text-primary">Traditional AI</div>
                   <div className="text-sm text-text-secondary font-poppins">Chatbots & Basic Tutoring</div>
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-left">
                 <div className="bg-brand-secondary/5 rounded-lg p-3 border border-brand-secondary/20">
                   <div className="text-lg font-poppins font-semibold text-brand-secondary">Timeback AI</div>
                   <div className="text-sm text-text-secondary font-poppins">Advanced Learning Engine</div>
@@ -116,7 +123,7 @@ export const InteractiveComparison: React.FC = () => {
                     onClick={() => handleFeatureClick(item.feature)}
                   >
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium text-text-primary font-poppins">{item.feature}</span>
+                      <span className="font-medium text-text-primary font-poppins text-left">{item.feature}</span>
                       {item.details && (
                         expandedFeature === item.feature 
                           ? <ChevronUp className="w-4 h-4 text-brand-secondary" />
@@ -124,20 +131,20 @@ export const InteractiveComparison: React.FC = () => {
                       )}
                     </div>
                     
-                    <div className="flex items-center justify-center space-x-2">
+                    <div className="flex items-center space-x-2">
                       {item.traditional.hasFeature ? (
                         <Check className="w-5 h-5 text-warning" />
                       ) : (
                         <X className="w-5 h-5 text-destructive" />
                       )}
-                      <span className="text-sm text-text-secondary text-center font-poppins">
+                      <span className="text-sm text-text-secondary text-left font-poppins">
                         {item.traditional.value}
                       </span>
                     </div>
                     
-                    <div className="flex items-center justify-center space-x-2">
+                    <div className="flex items-center space-x-2">
                       <Check className={`w-5 h-5 ${item.timeback.highlight ? 'text-brand-secondary' : 'text-success'}`} />
-                      <span className={`text-sm text-center font-medium font-poppins ${
+                      <span className={`text-sm text-left font-medium font-poppins ${
                         item.timeback.highlight ? 'text-brand-secondary' : 'text-text-primary'
                       }`}>
                         {item.timeback.value}
