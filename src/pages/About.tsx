@@ -51,24 +51,9 @@ const About = () => {
           </p>
         </div>
 
-        {/* Interactive Bubbles */}
+        {/* Category Descriptions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 animate-fade-in-up delay-400">
-          <div 
-            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            onClick={() => window.open('/', '_blank')}
-          >
-            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
-              Parents
-            </h3>
-            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
-              Unlock your child's full potential with just 2 hours of school a day. Give them time back to explore passions, deepen learning, and grow at their own pace — all with proven results and AI-powered support.
-            </p>
-          </div>
-          
-          <div 
-            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            onClick={() => window.open('/', '_blank')}
-          >
+          <div className="bg-white/90 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
               Entrepreneurs
             </h3>
@@ -77,10 +62,16 @@ const About = () => {
             </p>
           </div>
           
-          <div 
-            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            onClick={() => window.open('/', '_blank')}
-          >
+          <div className="bg-white/90 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Parents
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Unlock your child's full potential with just 2 hours of school a day. Give them time back to explore passions, deepen learning, and grow at their own pace — all with proven results and AI-powered support.
+            </p>
+          </div>
+          
+          <div className="bg-white/90 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
               Schools
             </h3>
@@ -89,10 +80,7 @@ const About = () => {
             </p>
           </div>
           
-          <div 
-            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            onClick={() => window.open('/', '_blank')}
-          >
+          <div className="bg-white/90 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
               Government
             </h3>
@@ -101,10 +89,7 @@ const About = () => {
             </p>
           </div>
           
-          <div 
-            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer md:col-span-2 lg:col-span-1"
-            onClick={() => window.open('/', '_blank')}
-          >
+          <div className="bg-white/90 p-6 rounded-lg shadow-lg md:col-span-2 lg:col-span-1">
             <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
               Philanthropists
             </h3>
