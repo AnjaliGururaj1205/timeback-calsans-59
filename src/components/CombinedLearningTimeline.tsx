@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Calendar, Users, Trophy, Brain, BookOpen, Target, TrendingUp, Clock, Award } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { ChevronDown, Target, TrendingUp, Clock, Award, Zap, RotateCcw, Trophy, Brain } from 'lucide-react';
 
 interface TimelineEvent {
   year: number;
@@ -39,6 +40,28 @@ const timelineEvents: TimelineEvent[] = [
     researchBasis: "Students learning within their ZPD show increased motivation, better retention, and faster skill acquisition compared to those working on material too easy or too difficult.",
     category: 'theory',
     icon: <TrendingUp className="w-4 h-4" />
+  },
+  {
+    year: 1983,
+    title: "Retrieval Practice",
+    description: "Testing yourself on material strengthens memory pathways more effectively than repeated studying. Active recall transforms weak memories into strong, accessible knowledge.",
+    researcher: "Roediger & Karpicke",
+    citations: [
+      "Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: taking memory tests improves long-term retention. Psychological science, 17(3), 249-255.",
+      "Karpicke, J. D., & Roediger, H. L. (2008). The critical importance of retrieval for learning. Science, 319(5865), 966-968.",
+      "Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T. (2013). Improving students' learning with effective learning techniques. Psychological science in the public interest, 14(1), 4-58."
+    ],
+    impact: "Proved active recall is superior to passive review",
+    timebackApplication: "Timeback generates varied practice questions and scenarios that require students to actively retrieve and apply knowledge, strengthening neural pathways through continuous testing.",
+    keyBenefits: [
+      "Stronger memory consolidation",
+      "Improved knowledge transfer",
+      "Better test performance",
+      "Reduced study time needed"
+    ],
+    researchBasis: "Studies show retrieval practice can improve retention by 50-100% compared to repeated study, with benefits lasting weeks to months.",
+    category: 'research',
+    icon: <RotateCcw className="w-4 h-4" />
   },
   {
     year: 1984,
@@ -154,6 +177,28 @@ const timelineEvents: TimelineEvent[] = [
     icon: <Brain className="w-4 h-4" />
   },
   {
+    year: 2019,
+    title: "Interleaving & Mixed Practice",
+    description: "Mixing different types of problems or concepts during practice sessions improves discrimination skills and long-term retention compared to blocked practice.",
+    researcher: "Rohrer & Taylor",
+    citations: [
+      "Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. Instructional Science, 35(6), 481-498.",
+      "Taylor, K., & Rohrer, D. (2010). The effects of interleaved practice. Applied Cognitive Psychology, 24(6), 837-848.",
+      "Sana, F., Yan, V. X., & Kim, J. A. (2017). Study sequence matters for the inductive learning of cognitive concepts. Journal of Educational Psychology, 109(1), 84."
+    ],
+    impact: "Revealed the power of varied and mixed practice for deeper learning",
+    timebackApplication: "Timeback's AI intentionally mixes different problem types and concepts within practice sessions, helping students develop stronger pattern recognition and transferable skills.",
+    keyBenefits: [
+      "Enhanced discrimination between concepts",
+      "Improved transfer to new situations",
+      "Better long-term retention",
+      "Stronger problem-solving flexibility"
+    ],
+    researchBasis: "Interleaved practice shows 15-25% improvement in learning outcomes compared to blocked practice, particularly for discriminating between similar concepts.",
+    category: 'research',
+    icon: <Zap className="w-4 h-4" />
+  },
+  {
     year: 2020,
     title: "Large Language Models",
     description: "GPT and similar models demonstrated ability to generate unlimited, personalized educational content.",
@@ -194,35 +239,18 @@ const categoryLabels = {
 };
 
 export const CombinedLearningTimeline: React.FC = () => {
-  const [currentEventIndex, setCurrentEventIndex] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [expandedEvents, setExpandedEvents] = useState<Set<number>>(new Set());
 
-  useEffect(() => {
-    if (!autoPlay) return;
-    
-    const interval = setInterval(() => {
-      setCurrentEventIndex((prev) => (prev + 1) % timelineEvents.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [autoPlay]);
-
-  const currentEvent = timelineEvents[currentEventIndex];
-  const progress = ((currentEventIndex + 1) / timelineEvents.length) * 100;
-
-  const goToEvent = (index: number) => {
-    setCurrentEventIndex(index);
-    setAutoPlay(false);
-  };
-
-  const nextEvent = () => {
-    setCurrentEventIndex((prev) => (prev + 1) % timelineEvents.length);
-    setAutoPlay(false);
-  };
-
-  const prevEvent = () => {
-    setCurrentEventIndex((prev) => (prev - 1 + timelineEvents.length) % timelineEvents.length);
-    setAutoPlay(false);
+  const toggleEventExpansion = (index: number) => {
+    setExpandedEvents(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
   };
 
   const renderDiagram = (diagram: string) => {
@@ -305,207 +333,109 @@ export const CombinedLearningTimeline: React.FC = () => {
         </p>
       </div>
 
-      {/* Timeline Navigation */}
-      <div className="space-y-4">
-        <div className="relative">
-          <div className="w-full bg-surface-secondary/50 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-brand-secondary to-brand-primary h-2 rounded-full transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-          <div className="absolute top-0 flex justify-between w-full">
-            {timelineEvents.map((event, index) => (
-              <button
-                key={index}
-                onClick={() => goToEvent(index)}
-                className={`w-4 h-4 rounded-full border-2 transition-all duration-300 -mt-1 ${
-                  index === currentEventIndex
-                    ? 'bg-brand-secondary border-brand-secondary scale-125'
-                    : index < currentEventIndex
-                    ? 'bg-brand-secondary border-brand-secondary'
-                    : 'bg-surface-primary border-border hover:border-brand-secondary'
-                }`}
-                style={{ marginLeft: index === 0 ? '0' : '-8px', marginRight: index === timelineEvents.length - 1 ? '0' : '-8px' }}
-              />
-            ))}
-          </div>
-        </div>
-        
-        {/* Year Labels */}
-        <div className="flex justify-between text-xs text-text-secondary">
-          <span>1978</span>
-          <span>1980s</span>
-          <span>1990s</span>
-          <span>2000s</span>
-          <span>2010s</span>
-          <span>2024</span>
-        </div>
-      </div>
-
-      {/* Main Event Display */}
-      <Card className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-3xl shadow-xl overflow-hidden">
-        <div className="p-8">
-          <div className="space-y-8">
-            {/* Event Header */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${categoryColors[currentEvent.category]} p-4 flex items-center justify-center`}>
-                  <div className="text-white">
-                    {currentEvent.icon}
+      {/* Timeline Display */}
+      <div className="space-y-6">
+        {timelineEvents.map((event, index) => (
+          <Card key={index} className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border/50 rounded-2xl shadow-lg overflow-hidden">
+            <div className="p-6">
+              {/* Always Visible Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${categoryColors[event.category]} p-3 flex items-center justify-center`}>
+                    <div className="text-white">
+                      {event.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-cal font-bold text-brand-secondary">{event.year}</div>
+                    <div className="text-lg font-semibold text-text-primary">{event.title}</div>
+                    <div className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${categoryColors[event.category]} text-white font-medium inline-block mt-1`}>
+                      {categoryLabels[event.category]}
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="text-3xl font-cal font-bold text-brand-secondary">{currentEvent.year}</div>
-                  <div className={`text-sm px-3 py-1 rounded-full bg-gradient-to-r ${categoryColors[currentEvent.category]} text-white font-medium`}>
-                    {categoryLabels[currentEvent.category]}
-                  </div>
-                </div>
+                
+                <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" size="sm" className="p-2">
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expandedEvents.has(index) ? 'rotate-180' : ''}`} />
+                    </Button>
+                  </CollapsibleTrigger>
+                </Collapsible>
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm" onClick={prevEvent}>
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={() => setAutoPlay(!autoPlay)}
-                  className={autoPlay ? 'bg-brand-secondary/10 text-brand-secondary' : ''}
-                >
-                  {autoPlay ? 'Pause' : 'Play'}
-                </Button>
-                <Button variant="outline" size="sm" onClick={nextEvent}>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
 
-            {/* Main Content */}
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* Primary Content */}
-              <div className="lg:col-span-2 space-y-6">
-                <div className="space-y-4">
-                  <h4 className="text-xl font-cal font-bold text-text-brand">
-                    {currentEvent.title}
-                  </h4>
-                  <p className="text-text-secondary leading-relaxed">
-                    {currentEvent.description}
-                  </p>
-                </div>
-
-                {/* Research Details */}
-                {(currentEvent.timebackApplication || currentEvent.researchBasis) && (
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {currentEvent.researchBasis && (
-                      <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                        <h5 className="font-semibold text-text-brand mb-2 flex items-center space-x-2">
-                          <Brain className="w-4 h-4" />
-                          <span>Research Foundation</span>
-                        </h5>
-                        <p className="text-sm text-text-secondary leading-relaxed">{currentEvent.researchBasis}</p>
-                      </div>
-                    )}
+              {/* Collapsible Content */}
+              <Collapsible open={expandedEvents.has(index)} onOpenChange={() => toggleEventExpansion(index)}>
+                <CollapsibleContent className="space-y-6">
+                  {/* Description */}
+                  <div className="space-y-4">
+                    <p className="text-text-secondary leading-relaxed">{event.description}</p>
                     
-                    {currentEvent.timebackApplication && (
-                      <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                        <h5 className="font-semibold text-text-brand mb-2 flex items-center space-x-2">
-                          <Target className="w-4 h-4" />
-                          <span>How Timeback Applies This</span>
-                        </h5>
-                        <p className="text-sm text-text-secondary leading-relaxed">{currentEvent.timebackApplication}</p>
-                      </div>
-                    )}
+                    {/* Researcher */}
+                    <div className="flex items-center space-x-2">
+                      <div className="text-sm font-medium text-text-primary">Key Researcher:</div>
+                      <div className="text-sm text-text-secondary">{event.researcher}</div>
+                    </div>
                   </div>
-                )}
 
-                {/* Key Benefits */}
-                {currentEvent.keyBenefits && (
-                  <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                    <h5 className="font-semibold text-text-brand mb-3 flex items-center space-x-2">
-                      <Award className="w-4 h-4" />
-                      <span>Key Benefits</span>
-                    </h5>
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {currentEvent.keyBenefits.map((benefit, i) => (
-                        <div key={i} className="flex items-center space-x-2 text-sm text-text-secondary">
-                          <div className="w-2 h-2 bg-brand-accent rounded-full"></div>
-                          <span>{benefit}</span>
+                  {/* Citations */}
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-text-primary">Research Citations:</div>
+                    <div className="space-y-1">
+                      {event.citations.map((citation, citationIndex) => (
+                        <div key={citationIndex} className="text-xs text-text-secondary bg-surface-secondary/50 p-3 rounded-lg border border-border/30">
+                          {citation}
                         </div>
                       ))}
                     </div>
                   </div>
-                )}
 
-                {/* Visual Diagram */}
-                {currentEvent.visualDiagram && renderDiagram(currentEvent.visualDiagram)}
-              </div>
-
-              {/* Sidebar */}
-              <div className="space-y-6">
-                {/* Researcher Info */}
-                <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                  <h5 className="font-semibold text-text-brand mb-2">Key Researcher</h5>
-                  <p className="text-sm text-text-secondary">{currentEvent.researcher}</p>
-                </div>
-
-                {/* Impact */}
-                <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                  <h5 className="font-semibold text-text-brand mb-2">Impact on Education</h5>
-                  <p className="text-sm text-text-secondary">{currentEvent.impact}</p>
-                </div>
-
-                {/* Timeline Position */}
-                <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-                  <h5 className="font-semibold text-text-brand mb-3">Timeline Position</h5>
-                  <div className="space-y-3">
-                    {timelineEvents.slice(Math.max(0, currentEventIndex - 1), currentEventIndex + 2).map((event, index) => (
-                      <div 
-                        key={event.year}
-                        className={`flex items-center space-x-3 p-2 rounded-lg transition-all duration-300 ${
-                          event.year === currentEvent.year 
-                            ? 'bg-brand-secondary/10 border border-brand-secondary/20' 
-                            : 'opacity-60'
-                        }`}
-                      >
-                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${categoryColors[event.category]} p-2 flex items-center justify-center`}>
-                          <div className="text-white scale-75">
-                            {event.icon}
-                          </div>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-sm">{event.year}</div>
-                          <div className="text-xs text-text-secondary truncate">{event.title}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-center mt-4">
-                    <div className="text-sm text-text-secondary">
-                      Event {currentEventIndex + 1} of {timelineEvents.length}
+                  {/* Timeback Application (if exists) */}
+                  {event.timebackApplication && (
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium text-brand-secondary">How Timeback Uses This:</div>
+                      <p className="text-sm text-text-secondary bg-brand-primary/10 p-4 rounded-lg border border-brand-primary/20">
+                        {event.timebackApplication}
+                      </p>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  )}
 
-            {/* Research Citations */}
-            <div className="bg-surface-secondary/50 rounded-xl p-4 border border-border/30">
-              <h5 className="font-semibold text-text-brand mb-3 flex items-center space-x-2">
-                <BookOpen className="w-4 h-4" />
-                <span>Research Citations</span>
-              </h5>
-              <div className="space-y-2">
-                {currentEvent.citations.map((citation, i) => (
-                  <p key={i} className="text-xs text-text-secondary leading-relaxed font-mono bg-surface-primary/50 p-2 rounded border">
-                    {citation}
-                  </p>
-                ))}
-              </div>
+                  {/* Key Benefits (if exists) */}
+                  {event.keyBenefits && (
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium text-text-primary">Key Benefits:</div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {event.keyBenefits.map((benefit, benefitIndex) => (
+                          <div key={benefitIndex} className="flex items-center space-x-2 text-sm text-text-secondary">
+                            <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
+                            <span>{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Research Basis (if exists) */}
+                  {event.researchBasis && (
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium text-text-primary">Research Evidence:</div>
+                      <p className="text-sm text-text-secondary italic">{event.researchBasis}</p>
+                    </div>
+                  )}
+
+                  {/* Visual Diagram (if exists) */}
+                  {event.visualDiagram && (
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium text-text-primary">Visual Representation:</div>
+                      {renderDiagram(event.visualDiagram)}
+                    </div>
+                  )}
+                </CollapsibleContent>
+              </Collapsible>
             </div>
-          </div>
-        </div>
-      </Card>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
