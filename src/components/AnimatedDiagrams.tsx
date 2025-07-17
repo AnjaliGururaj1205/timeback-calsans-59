@@ -49,17 +49,30 @@ export const AnimatedDiagrams: React.FC = () => {
   const [animationStep, setAnimationStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Remove auto-playing animation - only trigger on user interaction
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (isAnimating) {
+    let interval: NodeJS.Timeout | null = null;
+    
+    if (isAnimating) {
+      interval = setInterval(() => {
         setAnimationStep((prev) => {
           const currentDiagram = diagrams[selectedDiagram];
-          return (prev + 1) % currentDiagram.steps.length;
+          const nextStep = (prev + 1) % currentDiagram.steps.length;
+          
+          // Stop animation when it reaches the end
+          if (nextStep === 0 && prev === currentDiagram.steps.length - 1) {
+            setIsAnimating(false);
+            return prev;
+          }
+          
+          return nextStep;
         });
-      }
-    }, 2000);
+      }, 2000);
+    }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [selectedDiagram, isAnimating]);
 
   const startAnimation = () => {
