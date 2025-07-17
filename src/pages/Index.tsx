@@ -412,6 +412,32 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Learning Science Section */}
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="science-heading">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          {/* Section Header */}
+          <div className="text-center space-y-6">
+            <h2 id="science-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal" style={{ color: '#0033cc' }}>
+              Built on Learning Science
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
+              Four decades of educational research powers every aspect of Timeback's approach to accelerated learning
+            </p>
+          </div>
+
+          {/* Learning Timeline */}
+          <LearningTimeline />
+
+          {/* Interactive Learning Science Principles */}
+          <InteractiveLearningScience />
+
+          {/* Animated Diagrams */}
+          <AnimatedDiagrams />
+
+        </div>
+      </section>
+
       {/* Why Our AI is Different Section */}
       <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="ai-different-heading">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -444,32 +470,6 @@ const Index = () => {
           <div className="space-y-8">
             <LearningPathComparison />
           </div>
-
-        </div>
-      </section>
-
-      {/* Learning Science Section */}
-      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="science-heading">
-        <div className="max-w-7xl mx-auto space-y-16">
-          
-          {/* Section Header */}
-          <div className="text-center space-y-6">
-            <h2 id="science-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal" style={{ color: '#0033cc' }}>
-              Built on Learning Science
-            </h2>
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
-              Four decades of educational research powers every aspect of Timeback's approach to accelerated learning
-            </p>
-          </div>
-
-          {/* Learning Timeline */}
-          <LearningTimeline />
-
-          {/* Interactive Learning Science Principles */}
-          <InteractiveLearningScience />
-
-          {/* Animated Diagrams */}
-          <AnimatedDiagrams />
 
         </div>
       </section>
