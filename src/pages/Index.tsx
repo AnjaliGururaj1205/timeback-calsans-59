@@ -293,10 +293,10 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="proof-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-text-brand">
+            <h2 id="proof-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Proven Results That Speak for Themselves
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-text-secondary">
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
               Independent testing confirms what our families already know: Alpha students consistently outperform traditional education by remarkable margins.
             </p>
           </div>
@@ -431,11 +431,11 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="ai-different-heading" className="text-xl md:text-2xl lg:text-3xl font-bold font-cal text-brand-secondary">
+            <h2 id="ai-different-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Why Our AI is Different
             </h2>
             <div className="space-y-4">
-              <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-brand-secondary/90">
+              <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
                 Move beyond chatbots. Experience the next generation of AI-powered education that sees, understands, and adapts in real-time.
               </p>
               <Button
@@ -467,10 +467,10 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="science-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal text-text-brand">
+            <h2 id="science-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Built on Learning Science
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-text-secondary">
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
               Four decades of educational research powers every aspect of Timeback's approach to accelerated learning
             </p>
           </div>
@@ -494,10 +494,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 space-y-16">
           {/* Compact What People Are Saying */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-cal font-bold text-blue-800 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-cal font-bold mb-4" style={{ color: '#0033cc' }}>
               Hear From Our Community
             </h2>
-            <p className="text-blue-400 text-lg max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
               Real stories from parents, students, and educators
             </p>
           </div>
