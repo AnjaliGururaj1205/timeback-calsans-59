@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { useForm, FormProvider } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -58,9 +57,7 @@ const gradeOptions = [
 ]
 
 export function MultiStepForm() {
-  const [currentStep, setCurrentStep] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
-  const totalSteps = 4
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -76,7 +73,7 @@ export function MultiStepForm() {
     },
   })
 
-  const { watch, trigger, setValue, getValues } = form
+  const { watch, setValue, getValues } = form
 
   const interests = watch("interests")
 
@@ -89,46 +86,14 @@ export function MultiStepForm() {
     }
   }
 
-  const nextStep = async () => {
-    const fieldsToValidate = getFieldsForStep(currentStep)
-    const isValid = await trigger(fieldsToValidate)
-    
-    if (isValid && currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1)
-    }
-  }
-
-  const prevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
-    }
-  }
-
-  const getFieldsForStep = (step: number) => {
-    switch (step) {
-      case 1:
-        return ["interests"] as const
-      case 2:
-        return ["childFirstName", "age", "grade", "location"] as const
-      case 3:
-        return ["parentName"] as const
-      case 4:
-        return [] as const
-      default:
-        return [] as const
-    }
-  }
-
   const onSubmit = async (data: FormData) => {
     console.log("Form submitted:", data)
     // Here you would typically send the data to your backend
     setIsOpen(false)
-    setCurrentStep(1)
     form.reset()
   }
 
   const resetForm = () => {
-    setCurrentStep(1)
     form.reset()
   }
 
@@ -146,34 +111,19 @@ export function MultiStepForm() {
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center text-foreground font-system">
             Tell Us About Your Child
           </DialogTitle>
-          <div className="flex items-center justify-center mt-4">
-            <div className="flex space-x-2">
-              {[1, 2, 3, 4].map((step) => (
-                <div
-                  key={step}
-                  className={`w-3 h-3 rounded-full ${
-                    step <= currentStep ? "bg-brand-primary" : "bg-gray-300"
-                  }`}
-                />
-              ))}
-            </div>
-            <span className="ml-4 text-sm text-muted-foreground">
-              Step {currentStep} of {totalSteps}
-            </span>
-          </div>
         </DialogHeader>
 
-        <FormProvider {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            {/* Step 1: Interests */}
-            {currentStep === 1 && (
+        <div className="overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+          <FormProvider {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-1">
+              {/* Section 1: Interests */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground font-system">
+                <h3 className="text-lg font-semibold text-foreground font-system border-b border-gray-200 pb-2">
                   What are you interested in?
                 </h3>
                 <p className="text-sm text-muted-foreground">
@@ -208,12 +158,10 @@ export function MultiStepForm() {
                   )}
                 />
               </div>
-            )}
 
-            {/* Step 2: Child's Info */}
-            {currentStep === 2 && (
+              {/* Section 2: Child's Info */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground font-system">
+                <h3 className="text-lg font-semibold text-foreground font-system border-b border-gray-200 pb-2">
                   Your Child's Information
                 </h3>
                 
@@ -289,12 +237,10 @@ export function MultiStepForm() {
                   )}
                 />
               </div>
-            )}
 
-            {/* Step 3: Parent Contact Info */}
-            {currentStep === 3 && (
+              {/* Section 3: Parent Contact Info */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground font-system">
+                <h3 className="text-lg font-semibold text-foreground font-system border-b border-gray-200 pb-2">
                   Your Contact Information
                 </h3>
                 
@@ -326,12 +272,10 @@ export function MultiStepForm() {
                   )}
                 />
               </div>
-            )}
 
-            {/* Step 4: Additional Info */}
-            {currentStep === 4 && (
+              {/* Section 4: Additional Info */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground font-system">
+                <h3 className="text-lg font-semibold text-foreground font-system border-b border-gray-200 pb-2">
                   Additional Information
                 </h3>
                 
@@ -353,41 +297,19 @@ export function MultiStepForm() {
                   )}
                 />
               </div>
-            )}
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-between pt-6">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={prevStep}
-                disabled={currentStep === 1}
-                className="flex items-center space-x-2"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                <span>Previous</span>
-              </Button>
-
-              {currentStep < totalSteps ? (
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  className="flex items-center space-x-2 bg-brand-primary hover:bg-brand-primary/90"
-                >
-                  <span>Next</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              ) : (
+              {/* Submit Button */}
+              <div className="flex justify-center pt-6 border-t border-gray-200">
                 <Button
                   type="submit"
-                  className="bg-brand-primary hover:bg-brand-primary/90"
+                  className="bg-brand-primary hover:bg-brand-primary/90 px-8 py-2"
                 >
                   Submit
                 </Button>
-              )}
-            </div>
-          </form>
-        </FormProvider>
+              </div>
+            </form>
+          </FormProvider>
+        </div>
       </DialogContent>
     </Dialog>
   )
