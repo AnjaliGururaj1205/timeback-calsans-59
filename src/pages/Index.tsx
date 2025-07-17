@@ -365,61 +365,59 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Combined Student Results & MAP Comparison Section */}
-          <div className="space-y-16">
-            <div className="text-center space-y-6">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-cal font-bold text-text-brand">
-                Real Student Results & Performance Comparison
+          {/* Compact Student Results & Interactive Comparison */}
+          <div className="space-y-12">
+            <div className="text-center space-y-4">
+              <h3 className="text-2xl md:text-3xl font-cal font-bold text-text-brand">
+                Real Student Results & District Comparison
               </h3>
-              <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto">
-                See dramatic improvements our students achieve and compare TimeBack performance with your local school district
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                See how TimeBack students dramatically outperform traditional education
               </p>
             </div>
             
-            {/* Student Transformation Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <BeforeAfterCard
-                title="Reading Comprehension"
-                beforeValue="32nd percentile"
-                afterValue="94th percentile"
-                description="Average improvement after 6 months with Timeback's adaptive reading program"
-                icon={<span className="text-2xl text-brand-secondary font-bold">READ</span>}
-              />
-              
-              <BeforeAfterCard
-                title="Math Proficiency"
-                beforeValue="Grade level 4.2"
-                afterValue="Grade level 7.8"
-                description="Students advance 3.6 grade levels in mathematics within one academic year"
-                icon={<span className="text-2xl text-brand-secondary font-bold">MATH</span>}
-              />
-              
-              <BeforeAfterCard
-                title="Learning Confidence"
-                beforeValue="38% motivated"
-                afterValue="96% engaged"
-                description="Students report significantly higher engagement and love for learning"
-                icon={<span className="text-2xl text-green-500 font-bold">GOAL</span>}
-              />
-            </div>
-
-            {/* Enhanced Interactive US Map */}
-            <div className="space-y-8">
-              <div className="text-center space-y-4">
-                <h4 className="text-xl md:text-2xl font-cal font-semibold text-text-brand">
-                  Compare with Your Local District
-                </h4>
-                <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
-                  Enter your ZIP code to see how TimeBack students perform on standardized MAP assessments compared to your local school district
-                </p>
-              </div>
-              
-              <Card className="bg-gradient-to-br from-brand-accent/5 via-surface-primary to-brand-secondary/5 border border-brand-accent/20 rounded-3xl shadow-2xl overflow-hidden">
-                <div className="p-8">
-                  <InteractiveUSMap />
+            {/* Integrated Performance Map Section */}
+            <Card className="bg-gradient-to-br from-brand-accent/5 via-surface-primary to-brand-secondary/5 border border-brand-accent/20 rounded-3xl shadow-xl overflow-hidden">
+              <div className="p-6 md:p-8">
+                
+                {/* Compact Student Performance Metrics */}
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                  <div className="text-center p-4 bg-surface-primary/50 rounded-2xl border border-border/30">
+                    <div className="text-sm font-medium text-text-secondary mb-1">Reading</div>
+                    <div className="text-xl md:text-2xl font-bold text-brand-secondary">32nd → 94th</div>
+                    <div className="text-xs text-text-secondary">percentile</div>
+                  </div>
+                  
+                  <div className="text-center p-4 bg-surface-primary/50 rounded-2xl border border-border/30">
+                    <div className="text-sm font-medium text-text-secondary mb-1">Math</div>
+                    <div className="text-xl md:text-2xl font-bold text-brand-secondary">+3.6</div>
+                    <div className="text-xs text-text-secondary">grade levels</div>
+                  </div>
+                  
+                  <div className="text-center p-4 bg-surface-primary/50 rounded-2xl border border-border/30">
+                    <div className="text-sm font-medium text-text-secondary mb-1">Engagement</div>
+                    <div className="text-xl md:text-2xl font-bold text-green-500">38% → 96%</div>
+                    <div className="text-xs text-text-secondary">motivated</div>
+                  </div>
                 </div>
-              </Card>
-            </div>
+
+                {/* Interactive Map Section */}
+                <div className="space-y-6">
+                  <div className="text-center space-y-2">
+                    <h4 className="text-xl font-cal font-semibold text-text-brand">
+                      Compare with Your Local District
+                    </h4>
+                    <p className="text-sm md:text-base text-text-secondary">
+                      Enter your ZIP code to see MAP assessment comparisons
+                    </p>
+                  </div>
+                  
+                  <div className="bg-surface-primary/30 rounded-2xl p-4 md:p-6">
+                    <InteractiveUSMap />
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
 
         </div>
