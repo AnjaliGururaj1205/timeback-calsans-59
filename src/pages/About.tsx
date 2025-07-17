@@ -51,42 +51,67 @@ const About = () => {
           </p>
         </div>
 
-        {/* Interactive Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 animate-fade-in-up delay-400">
-          <button 
-            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        {/* Interactive Bubbles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 animate-fade-in-up delay-400">
+          <div 
+            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             onClick={() => window.open('/', '_blank')}
           >
-            Timeback for my kid
-          </button>
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Parents
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Unlock your child's full potential with just 2 hours of school a day. Give them time back to explore passions, deepen learning, and grow at their own pace — all with proven results and AI-powered support.
+            </p>
+          </div>
           
-          <button 
-            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          <div 
+            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             onClick={() => window.open('/', '_blank')}
           >
-            Timeback for my country
-          </button>
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Entrepreneurs
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Launch your own AI-powered school with our turnkey platform. Join the education revolution with proven technology and full support.
+            </p>
+          </div>
           
-          <button 
-            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          <div 
+            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             onClick={() => window.open('/', '_blank')}
           >
-            Support Timeback
-          </button>
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Schools
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Supercharge your curriculum with AI-driven mastery learning. Seamlessly integrate TimeBack into your existing system to boost outcomes and personalize instruction.
+            </p>
+          </div>
           
-          <button 
-            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          <div 
+            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
             onClick={() => window.open('/', '_blank')}
           >
-            Timeback for my school
-          </button>
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Government
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Deliver cost-effective, high-impact education at scale. Empower every student with mastery-based, AI-supported learning — reducing operational load while raising academic performance.
+            </p>
+          </div>
           
-          <button 
-            className="bg-white/90 hover:bg-white text-blue-900 font-cal font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 md:col-span-2 lg:col-span-1"
+          <div 
+            className="bg-white/90 hover:bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer md:col-span-2 lg:col-span-1"
             onClick={() => window.open('/', '_blank')}
           >
-            Want to start my own Timeback school
-          </button>
+            <h3 className="text-xl font-bold font-cal mb-3" style={{ color: '#0f33bb' }}>
+              Philanthropists
+            </h3>
+            <p className="text-sm font-cal leading-relaxed" style={{ color: '#0f33bb' }}>
+              Back a breakthrough in education with exponential impact. Accelerate access to high-quality, low-time education for underserved communities — with measurable outcomes and sustainable scalability.
+            </p>
+          </div>
         </div>
       </div>
     </div>
