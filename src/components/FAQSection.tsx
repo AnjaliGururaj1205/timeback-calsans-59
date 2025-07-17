@@ -158,7 +158,7 @@ export const FAQSection: React.FC = () => {
   return (
     <div className="space-y-12 bg-surface-primary py-12 px-4">
       <div className="text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold mb-4" style={{ color: '#0033cc' }}>Frequently Asked Questions</h2>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-poppins font-bold mb-4" style={{ color: '#0033cc' }}>Frequently Asked Questions</h2>
         <p className="text-lg md:text-xl font-poppins" style={{ color: '#66b2ff' }}>Everything parents want to know about Timeback</p>
       </div>
 

@@ -293,7 +293,7 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="proof-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
+            <h2 id="proof-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Proven Results That Speak for Themselves
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
@@ -426,12 +426,12 @@ const Index = () => {
       </section>
 
       {/* Why Our AI is Different Section */}
-      <section className="min-h-screen bg-brand-primary px-4 py-20" aria-labelledby="ai-different-heading">
+      <section className="min-h-screen bg-gradient-to-br from-surface-primary via-surface-secondary to-brand-secondary/5 px-4 py-20" aria-labelledby="ai-different-heading">
         <div className="max-w-7xl mx-auto space-y-16">
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="ai-different-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
+            <h2 id="ai-different-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Why Our AI is Different
             </h2>
             <div className="space-y-4">
@@ -467,7 +467,7 @@ const Index = () => {
           
           {/* Section Header */}
           <div className="text-center space-y-6">
-            <h2 id="science-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold font-cal" style={{ color: '#0033cc' }}>
+            <h2 id="science-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold font-cal" style={{ color: '#0033cc' }}>
               Built on Learning Science
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
@@ -494,7 +494,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 space-y-16">
           {/* Compact What People Are Saying */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-cal font-bold mb-4" style={{ color: '#0033cc' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-cal font-bold mb-4" style={{ color: '#0033cc' }}>
               Hear From Our Community
             </h2>
             <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#66b2ff' }}>
