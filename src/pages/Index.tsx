@@ -504,9 +504,6 @@ const Index = () => {
           
           {/* Video Testimonials */}
           <VideoTestimonials />
-          
-          {/* Trust Indicators */}
-          <TrustIndicators />
         </div>
       </section>
 
