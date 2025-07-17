@@ -494,11 +494,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 space-y-16">
           {/* Compact What People Are Saying */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-cal font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-cal font-bold text-blue-800 mb-4">
               Hear From Our Community
             </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Real stories from parents and educators who've witnessed the transformation
+            <p className="text-blue-400 text-lg max-w-2xl mx-auto">
+              Real stories from parents, students, and educators
             </p>
           </div>
           

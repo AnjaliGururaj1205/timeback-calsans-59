@@ -56,10 +56,6 @@ export const VideoTestimonials: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="text-center">
-        <h3 className="text-3xl font-bold text-white mb-4">Hear From Our Community</h3>
-        <p className="text-gray-300 text-lg">Real stories from parents, students, and educators</p>
-      </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {videoTestimonials.map((testimonial) => (
