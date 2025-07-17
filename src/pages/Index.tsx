@@ -534,11 +534,13 @@ const Index = () => {
         {/* Timeback Branding Section */}
         <div className="mt-16 py-16 border-t border-gray-800">
           <div className="max-w-6xl mx-auto px-4">
-            <h3 className="text-6xl md:text-8xl lg:text-9xl font-bold text-center">
-              <span className="bg-gradient-to-r from-brand-secondary via-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                timeback
-              </span>
-            </h3>
+            <div className="text-center">
+              <img 
+                src="/lovable-uploads/4eb150f2-6ac1-4c7f-9112-13fd94c64a90.png" 
+                alt="TimeBack" 
+                className="h-16 md:h-24 lg:h-32 mx-auto object-contain"
+              />
+            </div>
             
             {/* Footer Links */}
             <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-8 text-left max-w-4xl mx-auto">
